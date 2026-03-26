@@ -20,19 +20,16 @@ class LoginActivity : AppCompatActivity() {
         val passwordInput = findViewById<EditText>(R.id.passwordInput)
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val signupText = findViewById<TextView>(R.id.signupText)
+        val forgotPassword = findViewById<TextView>(R.id.forgotPassword)
 
         // Login button click
         loginBtn.setOnClickListener {
-
             val email = emailInput.text.toString()
             val password = passwordInput.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-
                 Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
-
             } else {
-
                 // Open MainActivity
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
@@ -41,8 +38,12 @@ class LoginActivity : AppCompatActivity() {
 
         // Go to Signup Page
         signupText.setOnClickListener {
-
             startActivity(Intent(this, SignupActivity::class.java))
+        }
+
+        // Go to Forget Password Page
+        forgotPassword.setOnClickListener {
+            startActivity(Intent(this, ForgetPassword::class.java))
         }
     }
 }
