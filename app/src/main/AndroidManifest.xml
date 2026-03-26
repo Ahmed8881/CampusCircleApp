@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusCircleApp">
         <activity
+            android:name=".ForgetPassword"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
