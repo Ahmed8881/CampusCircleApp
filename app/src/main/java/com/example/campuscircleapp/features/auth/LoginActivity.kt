@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.campuscircleapp.MainActivity
 import com.example.campuscircleapp.R
@@ -17,6 +18,8 @@ import com.example.campuscircleapp.features.auth.viewModels.LoginViewModel
 import com.example.campuscircleapp.shared.enums.MessageSeverity
 import com.example.campuscircleapp.shared.services.MessageService
 import kotlinx.coroutines.launch
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 class LoginActivity : AppCompatActivity() {
 
@@ -63,12 +66,28 @@ class LoginActivity : AppCompatActivity() {
                         // Handle loading state (e.g., show a spinner)
                     }
                     is UiState.Success -> {
-                        MessageService.show(this@LoginActivity, "Login Successful!", MessageSeverity.SUCCESS)
+                        MotionToast.createColorToast(
+                            this@LoginActivity,
+                            "Login Successful!",
+                            "Welcome to Campus Circle!",
+                            MotionToastStyle.SUCCESS,
+                            MotionToast.GRAVITY_TOP,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(this@LoginActivity, www.sanju.motiontoast.R.font.helvetica_regular)
+                        )
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
                     }
                     is UiState.Error -> {
-                        MessageService.show(this@LoginActivity, state.message, MessageSeverity.ERROR)
+                        MotionToast.createColorToast(
+                            this@LoginActivity,
+                            "Login Failed",
+                            state.message,
+                            MotionToastStyle.ERROR,
+                            MotionToast.GRAVITY_BOTTOM,
+                            MotionToast.LONG_DURATION,
+                            ResourcesCompat.getFont(this@LoginActivity, www.sanju.motiontoast.R.font.helvetica_regular)
+                        )
                     }
                     is UiState.Idle -> {}
                 }
