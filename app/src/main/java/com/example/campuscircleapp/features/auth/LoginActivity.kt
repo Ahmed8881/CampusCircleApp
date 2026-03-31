@@ -69,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
                         MotionToast.createColorToast(
                             this@LoginActivity,
                             "Login Successful!",
-                            "Welcome to Campus Circle!",
+                            state.message ?: "Welcome to Campus Circle!",
                             MotionToastStyle.SUCCESS,
                             MotionToast.GRAVITY_TOP,
                             MotionToast.LONG_DURATION,

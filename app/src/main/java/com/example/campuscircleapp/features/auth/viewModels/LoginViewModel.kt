@@ -21,7 +21,7 @@ class LoginViewModel() : ViewModel() {
             _loginState.value = UiState.Loading
             try {
                 val response = authService.login(request)
-                _loginState.value = UiState.Success(response)
+                _loginState.value = UiState.Success(response.data, response.message)
             } catch (e: Exception) {
                 _loginState.value = UiState.Error(e.message ?: "Unknown Error")
             }
