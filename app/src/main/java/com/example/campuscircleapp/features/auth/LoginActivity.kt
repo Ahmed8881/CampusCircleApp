@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.MainActivity
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.core.models.UiState
@@ -75,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                             MotionToast.LONG_DURATION,
                             ResourcesCompat.getFont(this@LoginActivity, www.sanju.motiontoast.R.font.helvetica_regular)
                         )
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, AttendenceActivity::class.java))
                         finish()
                     }
                     is UiState.Error -> {
