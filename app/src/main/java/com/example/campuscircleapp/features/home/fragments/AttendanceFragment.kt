@@ -87,6 +87,7 @@ class AttendanceFragment : Fragment() {
                     showLoading(false)
                     showError(state.message)
                 }
+                else -> {}
             }
         }
 
@@ -107,6 +108,7 @@ class AttendanceFragment : Fragment() {
                     showLoading(false)
                     showError(state.message)
                 }
+                else -> {}
             }
         }
     }
