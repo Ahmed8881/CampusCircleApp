@@ -3,7 +3,9 @@ package com.example.campuscircleapp.features.home.services
 import com.example.campuscircleapp.core.models.ServiceResult
 import com.example.campuscircleapp.core.utils.RetrofitInstance
 import com.example.campuscircleapp.features.auth.models.UserDataResponse
+import com.example.campuscircleapp.features.home.models.AttendanceHistoryItem
 import com.example.campuscircleapp.features.home.models.DashboardAnalyticsResponse
+import com.example.campuscircleapp.features.home.models.StudentEnrollmentResponse
 import com.google.gson.Gson
 
 class HomeService {
@@ -24,6 +26,34 @@ class HomeService {
 
     suspend fun getUserData(token: String): ServiceResult<UserDataResponse> {
         val response = RetrofitInstance.api.getUserData("Bearer $token")
+        val body = response.body()
+
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) {
+                return ServiceResult(body.data, body.responseMessage)
+            }
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun getStudentCourses(token: String): ServiceResult<List<StudentEnrollmentResponse>> {
+        val response = RetrofitInstance.api.getStudentCourses("Bearer $token")
+        val body = response.body()
+
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) {
+                return ServiceResult(body.data, body.responseMessage)
+            }
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun getAttendanceHistory(token: String, courseId: Long): ServiceResult<List<AttendanceHistoryItem>> {
+        val response = RetrofitInstance.api.getAttendanceHistory("Bearer $token", courseId)
         val body = response.body()
 
         if (response.isSuccessful && body != null) {

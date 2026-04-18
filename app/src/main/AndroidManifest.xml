@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusCircleApp">
         <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".AttendenceActivity"
             android:exported="false" />
         <activity

@@ -10,10 +10,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.campuscircleapp.AdminActivity
 import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.features.auth.models.LoginRequest
+import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.features.auth.viewModels.LoginViewModel
 import com.example.campuscircleapp.shared.enums.MessageSeverity
 import com.example.campuscircleapp.shared.services.MessageService
@@ -25,6 +27,7 @@ import www.sanju.motiontoast.MotionToastStyle
 class LoginActivity : AppCompatActivity() {
 
     private val viewModel: LoginViewModel by viewModels()
+    private val homeService = HomeService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,17 +71,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is UiState.Success -> {
                         SessionManager.saveToken(this@LoginActivity, state.data.token)
-                        MotionToast.createColorToast(
-                            this@LoginActivity,
-                            "Login Successful!",
-                            state.message ?: "Welcome to Campus Circle!",
-                            MotionToastStyle.SUCCESS,
-                            MotionToast.GRAVITY_TOP,
-                            MotionToast.LONG_DURATION,
-                            ResourcesCompat.getFont(this@LoginActivity, www.sanju.motiontoast.R.font.helvetica_regular)
-                        )
-                        startActivity(Intent(this@LoginActivity, AttendenceActivity::class.java))
-                        finish()
+                        fetchProfileAndNavigate(state.data.token, state.message)
                     }
                     is UiState.Error -> {
                         MotionToast.createColorToast(
@@ -93,6 +86,41 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is UiState.Idle -> {}
                 }
+            }
+        }
+    }
+
+    private fun fetchProfileAndNavigate(token: String, successMessage: String?) {
+        lifecycleScope.launch {
+            try {
+                val userResponse = homeService.getUserData(token)
+                val role = userResponse.data.role.trim().lowercase()
+
+                SessionManager.saveRole(this@LoginActivity, role)
+                SessionManager.saveName(this@LoginActivity, userResponse.data.name)
+
+                MotionToast.createColorToast(
+                    this@LoginActivity,
+                    "Login Successful!",
+                    successMessage ?: "Welcome to Campus Circle!",
+                    MotionToastStyle.SUCCESS,
+                    MotionToast.GRAVITY_TOP,
+                    MotionToast.LONG_DURATION,
+                    ResourcesCompat.getFont(this@LoginActivity, www.sanju.motiontoast.R.font.helvetica_regular)
+                )
+
+                val intent = when (role) {
+                    "admin", "superadmin" -> Intent(this@LoginActivity, AdminActivity::class.java)
+                    else -> Intent(this@LoginActivity, AttendenceActivity::class.java)
+                }
+                startActivity(intent)
+                finish()
+            } catch (e: Exception) {
+                MessageService.show(
+                    this@LoginActivity,
+                    e.message ?: "Unable to load profile after login",
+                    MessageSeverity.ERROR
+                )
             }
         }
     }
