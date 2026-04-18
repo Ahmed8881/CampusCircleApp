@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="#ECF3FF"
     android:padding="0dp">
 
     <androidx.core.widget.NestedScrollView
@@ -20,29 +20,64 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="22dp">
 
-            <TextView
-                android:id="@+id/adminTitle"
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Admin Dashboard"
-                android:textColor="#0F172A"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                app:cardBackgroundColor="#0F2E7A"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#1E4BAF"
+                app:strokeWidth="1dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Analytics overview of courses, instructors, and students"
-                android:textColor="#64748B"
-                android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/adminTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin Dashboard"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Analytics overview of courses, instructors, and students"
+                        android:textColor="#BFD7FF"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Average Attendance"
+                        android:textColor="#CFE1FF"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/averageAttendanceValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="0%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="38sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
@@ -51,8 +86,8 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="6dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="14dp"
-                    app:strokeColor="#E2E8F0"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#D8E7FF"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -65,7 +100,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Active Courses"
-                            android:textColor="#64748B"
+                            android:textColor="#4B6A9B"
                             android:textSize="12sp" />
 
                         <TextView
@@ -74,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="0"
-                            android:textColor="#0F172A"
+                            android:textColor="#12337A"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -86,8 +121,8 @@
                     android:layout_weight="1"
                     android:layout_marginStart="6dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="14dp"
-                    app:strokeColor="#E2E8F0"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#D8E7FF"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -100,7 +135,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total Students"
-                            android:textColor="#64748B"
+                            android:textColor="#4B6A9B"
                             android:textSize="12sp" />
 
                         <TextView
@@ -109,7 +144,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="0"
-                            android:textColor="#0F172A"
+                            android:textColor="#12337A"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -128,8 +163,8 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="6dp"
                     app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="14dp"
-                    app:strokeColor="#E2E8F0"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#D8E7FF"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -142,7 +177,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Instructors"
-                            android:textColor="#64748B"
+                            android:textColor="#4B6A9B"
                             android:textSize="12sp" />
 
                         <TextView
@@ -151,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="0"
-                            android:textColor="#0F172A"
+                            android:textColor="#12337A"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -162,8 +197,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="6dp"
-                    app:cardBackgroundColor="#0F766E"
-                    app:cardCornerRadius="14dp">
+                    app:cardBackgroundColor="#DBEAFE"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="#BFDBFE"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -174,29 +211,109 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Avg Attendance"
-                            android:textColor="#CCFBF1"
+                            android:text="Blue Index"
+                            android:textColor="#3B5D9A"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/averageAttendanceValue"
+                            android:id="@+id/adminBlueIndexValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="0%"
-                            android:textColor="#FFFFFF"
+                            android:text="100"
+                            android:textColor="#1D4ED8"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#D8E7FF"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Attendance Health"
+                        android:textColor="#1E3A8A"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Distribution of attendance percentage"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/adminAttendancePieChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#D8E7FF"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Top Course Attendance"
+                        android:textColor="#1E3A8A"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Highest-attendance courses in your space"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+
+                    <com.github.mikephil.charting.charts.HorizontalBarChart
+                        android:id="@+id/adminCourseBarChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Course Performance"
-                android:textColor="#0F172A"
+                android:layout_marginTop="18dp"
+                android:text="Course Performance List"
+                android:textColor="#1E3A8A"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -205,6 +322,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:nestedScrollingEnabled="false" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -215,7 +333,7 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:indicatorColor="#1E293B"
+        app:indicatorColor="#1D4ED8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
