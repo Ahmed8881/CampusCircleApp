@@ -3,47 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
-    android:padding="0dp">
+    android:background="#F8FAFC">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <TextView
                 android:id="@+id/markAttendanceTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="-0.02"
                 android:text="Mark Attendance"
                 android:textColor="#0F172A"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textSize="28sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Select course, set date-time, and submit attendance"
-                android:textColor="#64748B"
+                android:alpha="0.7"
+                android:text="Select course and schedule to manage records"
+                android:textColor="#475569"
                 android:textSize="14sp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="24dp"
                 app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="14dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
                 app:strokeColor="#E2E8F0"
                 app:strokeWidth="1dp">
 
@@ -51,68 +54,115 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="14dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Course"
-                        android:textColor="#475569"
-                        android:textSize="12sp" />
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Select Course"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.05" />
 
-                    <Spinner
-                        android:id="@+id/adminCourseSpinner"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:layout_marginTop="6dp"
-                        android:background="#F8FAFC" />
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        app:cardBackgroundColor="#F1F5F9"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp">
+
+                        <Spinner
+                            android:id="@+id/adminCourseSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="#F1F5F9" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Attendance Date &amp; Time"
-                        android:textColor="#475569"
-                        android:textSize="12sp" />
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Schedule"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.05" />
 
-                    <TextView
-                        android:id="@+id/attendanceDateValue"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:background="#F8FAFC"
-                        android:padding="10dp"
-                        android:text="Not selected"
-                        android:textColor="#0F172A"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/pickDateTimeBtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Pick Date &amp; Time"
-                        android:textAllCaps="false"
-                        app:backgroundTint="#1E293B" />
+                        <TextView
+                            android:id="@+id/attendanceDateValue"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="12dp"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="4dp"
+                            android:text="Not selected"
+                            android:textColor="#0F172A"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/pickDateTimeBtn"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Set Time"
+                            android:textAllCaps="false"
+                            app:cornerRadius="12dp"
+                            app:backgroundTint="#E2E8F0"
+                            android:textColor="#1E293B"/>
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Student Roster"
+                android:textColor="#1E293B"
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/markStudentsRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/markAttendanceBtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="Submit Attendance"
                 android:textAllCaps="false"
-                app:backgroundTint="#0F766E" />
+                android:textSize="16sp"
+                app:backgroundTint="#0F172A"
+                app:cornerRadius="16dp" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -123,23 +173,25 @@
         android:indeterminate="true"
         android:visibility="gone"
         app:indicatorColor="#1E293B"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/markAttendanceError"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        android:layout_marginHorizontal="32dp"
+        android:background="#FEF2F2"
         android:gravity="center"
+        android:padding="16dp"
         android:textColor="#B91C1C"
         android:textSize="14sp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
