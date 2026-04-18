@@ -6,6 +6,10 @@ import com.example.campuscircleapp.features.auth.models.UserDataResponse
 import com.example.campuscircleapp.features.auth.models.SignUpRequest
 import com.example.campuscircleapp.features.auth.models.SignUpResponse
 import com.example.campuscircleapp.features.home.models.AttendanceHistoryItem
+import com.example.campuscircleapp.features.home.models.AdminCourseResponse
+import com.example.campuscircleapp.features.home.models.AdminDashboardResponse
+import com.example.campuscircleapp.features.home.models.EnrollmentByCourseResponse
+import com.example.campuscircleapp.features.home.models.MarkAttendanceRequest
 import com.example.campuscircleapp.features.home.models.DashboardAnalyticsResponse
 import com.example.campuscircleapp.features.home.models.StudentEnrollmentResponse
 import retrofit2.Response
@@ -31,4 +35,25 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("courseId") courseId: Long
     ): Response<apiResponse<List<AttendanceHistoryItem>>>
+
+    @GET("User/DashboardAnalytics")
+    suspend fun getAdminDashboardAnalytics(
+        @Header("Authorization") token: String,
+        @Query("spaceId") spaceId: Long
+    ): Response<apiResponse<AdminDashboardResponse>>
+
+    @GET("Course/GetAllCourses")
+    suspend fun getAllCourses(@Header("Authorization") token: String): Response<apiResponse<List<AdminCourseResponse>>>
+
+    @GET("Enrollment/GetEnrollmentsByCourseId")
+    suspend fun getEnrollmentsByCourseId(
+        @Header("Authorization") token: String,
+        @Query("courseId") courseId: Long
+    ): Response<apiResponse<List<EnrollmentByCourseResponse>>>
+
+    @POST("Attendance/MarkAttendance")
+    suspend fun markAttendance(
+        @Header("Authorization") token: String,
+        @Body request: MarkAttendanceRequest
+    ): Response<apiResponse<Any>>
 }
