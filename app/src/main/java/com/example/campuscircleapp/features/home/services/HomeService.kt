@@ -1,0 +1,50 @@
+package com.example.campuscircleapp.features.home.services
+
+import com.example.campuscircleapp.core.models.ServiceResult
+import com.example.campuscircleapp.core.utils.RetrofitInstance
+import com.example.campuscircleapp.features.auth.models.UserDataResponse
+import com.example.campuscircleapp.features.home.models.DashboardAnalyticsResponse
+import com.google.gson.Gson
+
+class HomeService {
+
+    suspend fun getDashboardAnalytics(token: String): ServiceResult<DashboardAnalyticsResponse> {
+        val response = RetrofitInstance.api.getStudentDashboardAnalytics("Bearer $token")
+        val body = response.body()
+
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) {
+                return ServiceResult(body.data, body.responseMessage)
+            }
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun getUserData(token: String): ServiceResult<UserDataResponse> {
+        val response = RetrofitInstance.api.getUserData("Bearer $token")
+        val body = response.body()
+
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) {
+                return ServiceResult(body.data, body.responseMessage)
+            }
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    private fun parseErrorMessage(errorJson: String?, code: Int): String {
+        val errorMessage = try {
+            val errorObj = Gson().fromJson(errorJson, Map::class.java)
+            errorObj["errorMessage"]?.toString()
+                ?: errorObj["responseMessage"]?.toString()
+        } catch (_: Exception) {
+            null
+        }
+
+        return errorMessage ?: "Server Error: $code"
+    }
+}
