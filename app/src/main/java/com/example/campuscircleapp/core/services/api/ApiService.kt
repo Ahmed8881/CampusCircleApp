@@ -15,7 +15,7 @@ interface ApiService {
     @POST("User/CreateUser")
     suspend fun signup(@Body signupRequest: SignUpRequest): Response<apiResponse<SignUpResponse>>
 
-    @GET("Student/GetStudentDashboardAnalytics")
+    @GET("Attendance/GetStudentDashboardAnalytics")
     suspend fun getStudentDashboardAnalytics(@Header("Authorization") token: String): Response<apiResponse<DashboardAnalyticsResponse>>
 
     @GET("User/GetUserData")

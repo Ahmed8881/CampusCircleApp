@@ -10,6 +10,7 @@ import com.example.campuscircleapp.features.home.fragments.CoursesFragment
 import com.example.campuscircleapp.features.home.fragments.DashboardFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+
 class AttendenceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,13 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.campuscircleapp.AttendenceActivity
-import com.example.campuscircleapp.MainActivity
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.features.auth.models.LoginRequest
 import com.example.campuscircleapp.features.auth.viewModels.LoginViewModel
 import com.example.campuscircleapp.shared.enums.MessageSeverity
 import com.example.campuscircleapp.shared.services.MessageService
+import com.example.campuscircleapp.shared.services.SessionManager
 import kotlinx.coroutines.launch
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
                         // Handle loading state (e.g., show a spinner)
                     }
                     is UiState.Success -> {
+                        SessionManager.saveToken(this@LoginActivity, state.data.token)
                         MotionToast.createColorToast(
                             this@LoginActivity,
                             "Login Successful!",
