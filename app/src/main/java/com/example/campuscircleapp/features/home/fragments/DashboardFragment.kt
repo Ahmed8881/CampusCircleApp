@@ -105,6 +105,7 @@ class DashboardFragment : Fragment() {
                     renderDashboard(state.data)
                 }
                 is UiState.Error -> showError(state.message)
+                else -> {}
             }
         }
     }
