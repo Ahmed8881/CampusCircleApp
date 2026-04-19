@@ -126,6 +126,9 @@ class MarkAttendanceFragment : Fragment() {
                     showError(state.message)
                 }
                 is UiState.Idle -> Unit
+                else -> {
+
+                }
             }
         }
 
@@ -151,6 +154,10 @@ class MarkAttendanceFragment : Fragment() {
                     showError(state.message)
                 }
                 is UiState.Idle -> Unit
+
+                else -> {
+
+                }
             }
         }
 
@@ -172,6 +179,7 @@ class MarkAttendanceFragment : Fragment() {
                     showError(state.message)
                 }
                 is UiState.Idle -> Unit
+                else->{}
             }
         }
     }
