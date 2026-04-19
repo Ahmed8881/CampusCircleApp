@@ -1,5 +1,6 @@
 package com.example.campuscircleapp.core.utils
 
+import com.example.campuscircleapp.core.interceptor.LoaderInterceptor
 import com.example.campuscircleapp.core.services.api.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,6 +19,7 @@ object RetrofitInstance {
     // Attach the interceptor to OkHttpClient
     private val client = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
+        .addInterceptor(LoaderInterceptor())
         .build()
 
     val api : ApiService by lazy{

@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F9FF"
-    android:padding="32dp">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="32dp"
         android:fillViewport="true">
 
         <LinearLayout
@@ -187,5 +188,6 @@
                 android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
+    <include android:id="@+id/globalLoader" layout="@layout/view_global_loader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

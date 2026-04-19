@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -31,6 +32,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.progressindicator.CircularProgressIndicator
+import www.sanju.motiontoast.MotionToast
 import java.util.Locale
 
 class AdminDashboardFragment : Fragment() {
@@ -115,6 +117,8 @@ class AdminDashboardFragment : Fragment() {
                     renderDashboard(state.data)
                 }
                 is UiState.Error -> showError(state.message)
+                else->{
+                }
             }
         }
     }

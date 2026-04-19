@@ -22,6 +22,7 @@ interface ApiService {
     @POST("User/LoginUser")
     suspend fun login(@Body loginRequest: LoginRequest): Response<apiResponse<LoginResponse>>
 
+    @Headers("No-Loader: true")
     @POST("User/GoogleSignup")
     suspend fun googleSignup(@Body request: GoogleAuthRequest): Response<apiResponse<Any>> // We use Any for now until we define GoogleSignupResponseDTO
 

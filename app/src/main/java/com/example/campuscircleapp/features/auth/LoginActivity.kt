@@ -17,6 +17,7 @@ import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.lifecycleScope
 import com.example.campuscircleapp.AdminActivity
 import com.example.campuscircleapp.AttendenceActivity
+import com.example.campuscircleapp.BaseActivity
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.features.auth.models.GoogleAuthRequest
@@ -32,7 +33,7 @@ import kotlinx.coroutines.launch
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity(){
 
     private val viewModel: LoginViewModel by viewModels()
     private val homeService = HomeService()
@@ -43,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
-
+        bindGlobalLoader(R.id.globalLoader)
         credentialManager = CredentialManager.create(this)
 
         val emailInput = findViewById<EditText>(R.id.emailInput)
