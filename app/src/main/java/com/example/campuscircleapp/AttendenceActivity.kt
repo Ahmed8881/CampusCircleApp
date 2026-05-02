@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.coroutines.launch
 
-
 class AttendenceActivity : AppCompatActivity() {
     private val homeService = HomeService()
 
@@ -29,16 +28,14 @@ class AttendenceActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_attendence)
 
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        val profileImage = findViewById<ShapeableImageView>(R.id.profileImage)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
-            findViewById<BottomNavigationView>(R.id.bottomNavigation)
-                .setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
-
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        val profileImage = findViewById<ShapeableImageView>(R.id.profileImage)
 
         setupProfileHeader(profileImage)
 
@@ -52,12 +49,12 @@ class AttendenceActivity : AppCompatActivity() {
             val fragment = when (item.itemId) {
                 R.id.nav_dashboard -> DashboardFragment()
                 R.id.nav_courses -> CoursesFragment()
-                R.id.nav_attendance -> AttendanceFragment()
                 else -> null
             }
 
             fragment?.let {
                 supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                     .replace(R.id.fragmentContainer, it)
                     .commit()
                 true
@@ -66,29 +63,16 @@ class AttendenceActivity : AppCompatActivity() {
     }
 
     private fun setupProfileHeader(profileImage: ShapeableImageView) {
-        profileImage.setOnClickListener {
-            showProfileMenu(profileImage)
-        }
-
+        profileImage.setOnClickListener { showProfileMenu(profileImage) }
         val token = SessionManager.getToken(this)
-        if (token.isNullOrBlank()) {
-            navigateToLogin()
-            return
-        }
+        if (token.isNullOrBlank()) { navigateToLogin(); return }
 
         lifecycleScope.launch {
             try {
                 val userData = homeService.getUserData(token).data
                 findViewById<TextView>(R.id.headerUserName).text = userData.name
-
-                Glide.with(this@AttendenceActivity)
-                    .load(userData.image)
-                    .placeholder(R.drawable.logo_2)
-                    .error(R.drawable.logo_2)
-                    .into(profileImage)
-            } catch (_: Exception) {
-                findViewById<TextView>(R.id.headerUserName).text = "Welcome"
-            }
+                Glide.with(this@AttendenceActivity).load(userData.image).into(profileImage)
+            } catch (_: Exception) {}
         }
     }
 
@@ -96,22 +80,19 @@ class AttendenceActivity : AppCompatActivity() {
         val popup = PopupMenu(this, anchor)
         popup.menuInflater.inflate(R.menu.profile_menu, popup.menu)
         popup.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.menu_logout -> {
-                    SessionManager.clearToken(this)
-                    navigateToLogin()
-                    true
-                }
-                else -> false
-            }
+            if (item.itemId == R.id.menu_logout) {
+                SessionManager.clearToken(this)
+                navigateToLogin()
+                true
+            } else false
         }
         popup.show()
     }
 
     private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+        startActivity(Intent(this, LoginActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        })
         finish()
     }
 }

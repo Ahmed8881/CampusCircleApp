@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">CampusCircleApp</string>
     <string name="google_web_client_id">779187393962-pjj6rvvlgse27pp59k9fohcb1t6dmvsm.apps.googleusercontent.com</string>
+    <string name="welcome_back">WELCOME BACK</string>
+    <string name="sign_in_subtitle">Sign in to your account</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="or_separator">OR</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="new_user_signup">New user? Create an account</string>
+    <string name="app_logo_desc">App Logo</string>
+    <string name="student_portal">Student Portal</string>
+    <string name="explore_journey">Explore your academic journey</string>
+    <string name="quick_access">Quick Access</string>
+    <string name="schedule">Schedule</string>
+    <string name="events">Events</string>
+    <string name="courses">Courses</string>
+    <string name="settings">Settings</string>
+    <string name="overall_attendance">Overall Attendance</string>
+    <string name="total_classes">Total Classes: %1$d</string>
+    <string name="weekly_overview">Weekly Overview</string>
 </resources>
