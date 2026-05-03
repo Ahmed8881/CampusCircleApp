@@ -94,7 +94,13 @@ class LoginActivity : BaseActivity() {
                         SessionManager.saveToken(this@LoginActivity, state.data.token)
                         val emailInput = findViewById<EditText>(R.id.emailInput)
                         val passwordInput = findViewById<EditText>(R.id.passwordInput)
-                        saveCredentials(emailInput.text.toString(), passwordInput.text.toString())
+                        val email = emailInput.text.toString()
+                        val password = passwordInput.text.toString()
+                        
+                        if (email.isNotEmpty() && password.isNotEmpty()) {
+                            saveCredentials(email, password)
+                        }
+                        
                         fetchProfileAndNavigate(state.data.token, state.message)
                     }
                     is UiState.Error -> {
@@ -255,6 +261,8 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun saveCredentials(email: String, password: String) {
+        if (email.isBlank() || password.isBlank()) return
+
         val request = CreatePasswordRequest(email, password)
 
         lifecycleScope.launch {

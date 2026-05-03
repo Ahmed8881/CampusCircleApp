@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>EVALUATION_PREP</title>
+  <link rel="stylesheet" href="evaluation_style.css">
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="campuscircleapp-evaluation-preparation">CampusCircleApp
+Evaluation Preparation</h1>
+<h2 id="architecture-diagram">1. Architecture Diagram</h2>
+<h2 id="alt-text"><img src="image.png" alt="alt text" /></h2>
+<h2 id="features-of-the-app">2. Features of the App</h2>
+<h3 id="user-authentication">2.1 User Authentication</h3>
+<ul>
+<li><strong>Login (Email/Password &amp; Google Sign-In)</strong></li>
+<li><strong>Signup (Email/Password &amp; Google Sign-Up)</strong></li>
+<li><strong>Forgot Password</strong></li>
+</ul>
+<h3 id="student-dashboard">2.2 Student Dashboard</h3>
+<ul>
+<li><strong>View Dashboard Analytics</strong></li>
+<li><strong>View Enrolled Courses</strong></li>
+<li><strong>View Attendance History</strong></li>
+</ul>
+<h3 id="attendance-management">2.3 Attendance Management</h3>
+<ul>
+<li><strong>Mark Attendance (Student &amp; Admin)</strong></li>
+<li><strong>View Attendance History</strong></li>
+</ul>
+<h3 id="admin-features">2.4 Admin Features</h3>
+<ul>
+<li><strong>Admin Dashboard Analytics</strong></li>
+<li><strong>View All Courses</strong></li>
+<li><strong>View Enrollments by Course</strong></li>
+<li><strong>Mark Attendance for Students</strong></li>
+</ul>
+<h3 id="profile-management">2.5 Profile Management</h3>
+<ul>
+<li><strong>View &amp; Update Profile</strong></li>
+</ul>
+<hr />
+<h2 id="detailed-explanation-of-each-feature">3. Detailed Explanation of
+Each Feature</h2>
+<h3 id="user-authentication-1">3.1 User Authentication</h3>
+<h4 id="login-emailpassword-google-sign-in">Login (Email/Password &amp;
+Google Sign-In)</h4>
+<ul>
+<li><strong>Purpose:</strong> Securely authenticate users to access the
+app.</li>
+<li><strong>Details:</strong>
+<ul>
+<li><strong>Email/Password:</strong>
+<ul>
+<li>User enters credentials in LoginActivity.</li>
+<li>LoginViewModel handles logic, calls AuthService, which uses Retrofit
+to communicate with the backend.</li>
+<li>On success, user session is managed by SessionManager.</li>
+</ul></li>
+<li><strong>Google Sign-In:</strong>
+<ul>
+<li>Integrates Google Identity API for OAuth.</li>
+<li>Handles both existing and new users (if not found, triggers Google
+sign-up flow).</li>
+<li>ViewModel manages UI state (loading, error, success).</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="signup-emailpassword-google-sign-up">Signup (Email/Password
+&amp; Google Sign-Up)</h4>
+<ul>
+<li><strong>Purpose:</strong> Register new users.</li>
+<li><strong>Details:</strong>
+<ul>
+<li><strong>Email/Password:</strong>
+<ul>
+<li>User provides details in SignupActivity.</li>
+<li>SignUpViewModel and AuthService handle registration via
+Retrofit.</li>
+</ul></li>
+<li><strong>Google Sign-Up:</strong>
+<ul>
+<li>Uses Google account info to pre-fill registration.</li>
+<li>Handles partial account creation and completion.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="forgot-password">Forgot Password</h4>
+<ul>
+<li><strong>Purpose:</strong> Account recovery for users who forget
+their password.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>User enters email, backend sends reset instructions (handled in
+ForgetPassword.kt).</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="student-dashboard-1">3.2 Student Dashboard</h3>
+<h4 id="view-dashboard-analytics">View Dashboard Analytics</h4>
+<ul>
+<li><strong>Purpose:</strong> Show students their academic and
+attendance stats.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>DashboardFragment fetches analytics via HomeService and
+DashboardViewModel.</li>
+<li>Data visualized using MPAndroidChart.</li>
+</ul></li>
+</ul>
+<h4 id="view-enrolled-courses">View Enrolled Courses</h4>
+<ul>
+<li><strong>Purpose:</strong> List all courses a student is enrolled
+in.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>CoursesFragment displays courses using CourseAdapter
+(RecyclerView).</li>
+<li>Data fetched from backend.</li>
+</ul></li>
+</ul>
+<h4 id="view-attendance-history">View Attendance History</h4>
+<ul>
+<li><strong>Purpose:</strong> Show attendance records per course.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>AttendanceFragment uses AttendanceHistoryAdapter to display
+history.</li>
+<li>Data fetched via HomeService.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="attendance-management-1">3.3 Attendance Management</h3>
+<h4 id="mark-attendance-student-admin">Mark Attendance (Student &amp;
+Admin)</h4>
+<ul>
+<li><strong>Purpose:</strong> Allow marking of attendance.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>Students: Mark their own attendance in AttendenceActivity.</li>
+<li>Admins: Use MarkAttendanceFragment and MarkAttendanceStudentAdapter
+to mark for students.</li>
+<li>Data sent to backend via Retrofit.</li>
+</ul></li>
+</ul>
+<h4 id="view-attendance-history-1">View Attendance History</h4>
+<ul>
+<li><strong>Purpose:</strong> See section 3.2 above (feature
+reused).</li>
+</ul>
+<hr />
+<h3 id="admin-features-1">3.4 Admin Features</h3>
+<h4 id="admin-dashboard-analytics">Admin Dashboard Analytics</h4>
+<ul>
+<li><strong>Purpose:</strong> Show overall stats to admins.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>AdminDashboardFragment and AdminDashboardViewModel fetch and display
+analytics.</li>
+</ul></li>
+</ul>
+<h4 id="view-all-courses">View All Courses</h4>
+<ul>
+<li><strong>Purpose:</strong> List all courses for admin
+management.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>AdminDashboardCourseAdapter displays courses in
+AdminDashboardFragment.</li>
+</ul></li>
+</ul>
+<h4 id="view-enrollments-by-course">View Enrollments by Course</h4>
+<ul>
+<li><strong>Purpose:</strong> Show which students are in each
+course.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>Data fetched and displayed in AdminDashboardFragment.</li>
+</ul></li>
+</ul>
+<h4 id="mark-attendance-for-students">Mark Attendance for Students</h4>
+<ul>
+<li><strong>Purpose:</strong> Admins can mark attendance for any
+student.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>MarkAttendanceFragment and MarkAttendanceStudentAdapter handle UI
+and logic.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="profile-management-1">3.5 Profile Management</h3>
+<h4 id="view-update-profile">View &amp; Update Profile</h4>
+<ul>
+<li><strong>Purpose:</strong> Allow users to view and update their
+info.</li>
+<li><strong>Details:</strong>
+<ul>
+<li>UserDataResponse model used to fetch and display data.</li>
+<li>UpdateUserRequest used for updates.</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="components-list-adapters-retrofit-recyclerview-etc.">4.
+Components List (Adapters, Retrofit, RecyclerView, etc.)</h2>
+<h3 id="adapters">4.1 Adapters</h3>
+<ul>
+<li><strong>AdminDashboardCourseAdapter</strong>: Displays courses in
+the admin dashboard (RecyclerView).</li>
+<li><strong>AttendanceHistoryAdapter</strong>: Shows attendance history
+for students (RecyclerView).</li>
+<li><strong>CourseAdapter</strong>: Lists courses for students
+(RecyclerView).</li>
+<li><strong>MarkAttendanceStudentAdapter</strong>: Used by admin to mark
+attendance for students (RecyclerView).</li>
+<li><strong>StudentAdapter</strong>: Displays student lists
+(RecyclerView).</li>
+</ul>
+<h3 id="activities">4.2 Activities</h3>
+<ul>
+<li><strong>LoginActivity</strong>: Handles user login (email/password
+&amp; Google).</li>
+<li><strong>SignupActivity</strong>: Handles user registration
+(email/password &amp; Google).</li>
+<li><strong>AdminActivity</strong>: Main activity for admin users.</li>
+<li><strong>AttendenceActivity</strong>: Main activity for student
+attendance.</li>
+<li><strong>BaseActivity</strong>: Common base for activities.</li>
+<li><strong>MainActivity</strong>: App entry point.</li>
+</ul>
+<h3 id="fragments">4.3 Fragments</h3>
+<ul>
+<li><strong>DashboardFragment</strong>: Student dashboard
+analytics.</li>
+<li><strong>CoursesFragment</strong>: Shows enrolled courses.</li>
+<li><strong>AttendanceFragment</strong>: Shows attendance history.</li>
+<li><strong>MarkAttendanceFragment</strong>: Admin marks attendance for
+students.</li>
+<li><strong>AdminDashboardFragment</strong>: Admin dashboard analytics
+and course management.</li>
+</ul>
+<h3 id="viewmodels">4.4 ViewModels</h3>
+<ul>
+<li><strong>LoginViewModel</strong>: Handles login logic and state.</li>
+<li><strong>SignUpViewModel</strong>: Handles signup logic and
+state.</li>
+<li><strong>AdminDashboardViewModel</strong>: Admin dashboard
+logic.</li>
+<li><strong>AttendanceViewModel</strong>: Attendance logic for
+students.</li>
+<li><strong>DashboardViewModel</strong>: Student dashboard logic.</li>
+<li><strong>MarkAttendanceViewModel</strong>: Admin attendance marking
+logic.</li>
+</ul>
+<h3 id="services">4.5 Services</h3>
+<ul>
+<li><strong>AuthService</strong>: Handles authentication (login, signup,
+Google sign-in, etc.).</li>
+<li><strong>HomeService</strong>: Handles home/dashboard data
+fetching.</li>
+</ul>
+<h3 id="retrofit-networking">4.6 Retrofit &amp; Networking</h3>
+<ul>
+<li><strong>RetrofitInstance</strong>: Singleton for Retrofit
+setup.</li>
+<li><strong>ApiService</strong>: Retrofit interface for all backend API
+calls.</li>
+</ul>
+<h3 id="models">4.7 Models</h3>
+<ul>
+<li><strong>LoginRequest, LoginResponse, SignUpRequest, SignUpResponse,
+UpdateUserRequest, UserDataResponse, GoogleAuthRequest</strong>: Auth
+models.</li>
+<li><strong>AdminCourseResponse, AdminDashboardResponse,
+AttendanceHistoryItem, DashboardAnalyticsResponse,
+EnrollmentByCourseResponse, MarkAttendanceRequest,
+StudentEnrollmentResponse</strong>: Home/admin models.</li>
+<li><strong>apiResponse, UiState, ServiceResult</strong>: Core response
+and state models.</li>
+</ul>
+<h3 id="utilities-helpers">4.8 Utilities &amp; Helpers</h3>
+<ul>
+<li><strong>SessionManager</strong>: Manages user session and
+tokens.</li>
+<li><strong>MessageService</strong>: Shows messages/toasts.</li>
+<li><strong>LoaderManager</strong>: Manages loading UI.</li>
+</ul>
+<h3 id="libraries-used">4.9 Libraries Used</h3>
+<ul>
+<li><strong>Retrofit2</strong>: Networking.</li>
+<li><strong>Gson</strong>: JSON serialization.</li>
+<li><strong>OkHttp</strong>: HTTP client.</li>
+<li><strong>Kotlin Coroutines</strong>: Async operations.</li>
+<li><strong>MPAndroidChart</strong>: Charts and analytics.</li>
+<li><strong>Glide</strong>: Image loading.</li>
+<li><strong>Google Identity API</strong>: Google sign-in.</li>
+<li><strong>AndroidX Lifecycle/ViewModel</strong>: MVVM
+architecture.</li>
+<li><strong>MotionToast</strong>: Custom toasts.</li>
+<li><strong>Material Components</strong>: UI components.</li>
+<li><strong>RecyclerView</strong>: List rendering.</li>
+</ul>
+<h3 id="resources">4.10 Resources</h3>
+<ul>
+<li><strong>Layouts</strong>: XML files for activities, fragments, and
+list items.</li>
+<li><strong>Drawables</strong>: Icons and images.</li>
+<li><strong>Strings/Colors/Themes</strong>: App resources.</li>
+<li><strong>Menus</strong>: Navigation and profile menus.</li>
+</ul>
+<hr />
+<h2 id="feature-to-component-mapping-usagealternatives">5.
+Feature-to-Component Mapping &amp; Usage/Alternatives</h2>
+<h3 id="user-authentication-2">5.1 User Authentication</h3>
+<ul>
+<li><strong>Login (Email/Password &amp; Google Sign-In)</strong>
+<ul>
+<li><strong>Components:</strong> LoginActivity, LoginViewModel,
+AuthService, RetrofitInstance, ApiService, SessionManager, Google
+Identity API</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>LoginActivity provides UI, ViewModel separates logic, AuthService
+abstracts API calls, SessionManager manages tokens.</li>
+<li>Google Identity API is standard for OAuth.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>Firebase Authentication (alternative to custom backend)</li>
+<li>Manual HTTP calls (less maintainable than Retrofit)</li>
+</ul></li>
+</ul></li>
+<li><strong>Signup (Email/Password &amp; Google Sign-Up)</strong>
+<ul>
+<li><strong>Components:</strong> SignupActivity, SignUpViewModel,
+AuthService, RetrofitInstance, ApiService</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>MVVM separation, Retrofit for networking, Google Identity for
+OAuth.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>Firebase Auth, custom HTTP clients</li>
+</ul></li>
+</ul></li>
+<li><strong>Forgot Password</strong>
+<ul>
+<li><strong>Components:</strong> ForgetPassword.kt, AuthService,
+RetrofitInstance, ApiService</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Standard flow for password recovery.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>Firebase Auth password reset</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="student-dashboard-2">5.2 Student Dashboard</h3>
+<ul>
+<li><strong>View Dashboard Analytics</strong>
+<ul>
+<li><strong>Components:</strong> DashboardFragment, DashboardViewModel,
+HomeService, RetrofitInstance, ApiService, MPAndroidChart</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Fragment for UI, ViewModel for logic, HomeService for API,
+MPAndroidChart for visualization.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>AnyChart, GraphView (other chart libraries)</li>
+</ul></li>
+</ul></li>
+<li><strong>View Enrolled Courses</strong>
+<ul>
+<li><strong>Components:</strong> CoursesFragment, CourseAdapter,
+RecyclerView, HomeService</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>RecyclerView is standard for lists, Adapter for binding data.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>ListView (less flexible), Compose LazyColumn (Jetpack Compose)</li>
+</ul></li>
+</ul></li>
+<li><strong>View Attendance History</strong>
+<ul>
+<li><strong>Components:</strong> AttendanceFragment,
+AttendanceHistoryAdapter, RecyclerView, HomeService</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Same as above, Adapter for attendance data.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>ListView, Compose LazyColumn</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="attendance-management-2">5.3 Attendance Management</h3>
+<ul>
+<li><strong>Mark Attendance (Student &amp; Admin)</strong>
+<ul>
+<li><strong>Components:</strong> AttendenceActivity,
+MarkAttendanceFragment, MarkAttendanceStudentAdapter, HomeService,
+RetrofitInstance</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Activity/Fragment for UI, Adapter for student list, Service for
+API.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>Manual HTTP, Jetpack Compose UI</li>
+</ul></li>
+</ul></li>
+<li><strong>View Attendance History</strong>
+<ul>
+<li><strong>Components:</strong> AttendanceFragment,
+AttendanceHistoryAdapter</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>See above.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="admin-features-2">5.4 Admin Features</h3>
+<ul>
+<li><strong>Admin Dashboard Analytics</strong>
+<ul>
+<li><strong>Components:</strong> AdminDashboardFragment,
+AdminDashboardViewModel, HomeService, MPAndroidChart</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Fragment for UI, ViewModel for logic, chart for analytics.</li>
+</ul></li>
+<li><strong>Alternatives:</strong>
+<ul>
+<li>Other chart libraries</li>
+</ul></li>
+</ul></li>
+<li><strong>View All Courses</strong>
+<ul>
+<li><strong>Components:</strong> AdminDashboardCourseAdapter,
+RecyclerView</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Adapter for course list.</li>
+</ul></li>
+</ul></li>
+<li><strong>View Enrollments by Course</strong>
+<ul>
+<li><strong>Components:</strong> AdminDashboardFragment,
+HomeService</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Fragment for UI, Service for API.</li>
+</ul></li>
+</ul></li>
+<li><strong>Mark Attendance for Students</strong>
+<ul>
+<li><strong>Components:</strong> MarkAttendanceFragment,
+MarkAttendanceStudentAdapter</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Adapter for student list, Fragment for UI.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="profile-management-2">5.5 Profile Management</h3>
+<ul>
+<li><strong>View &amp; Update Profile</strong>
+<ul>
+<li><strong>Components:</strong> UserDataResponse, UpdateUserRequest,
+AuthService, SessionManager</li>
+<li><strong>Why Used:</strong>
+<ul>
+<li>Models for data, Service for API, SessionManager for
+persistence.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="how-each-component-is-used-technical-details">6. How Each
+Component is Used (Technical Details)</h2>
+<h3 id="adapters-1">6.1 Adapters</h3>
+<ul>
+<li><strong>AdminDashboardCourseAdapter</strong>: Receives a list of
+<code>AdminCourseResponse</code> objects from the ViewModel (which
+fetches them via HomeService/Retrofit from the backend). The adapter
+binds each course to a RecyclerView item, displaying course name, code,
+and actions. Handles click listeners for course management (e.g., view
+enrollments, mark attendance).</li>
+<li><strong>AttendanceHistoryAdapter</strong>: Gets a list of
+<code>AttendanceHistoryItem</code> from the ViewModel. Each item is
+rendered with date, status (present/absent), and remarks. The adapter is
+notified when new data arrives from the API, and
+<code>notifyDataSetChanged()</code> is called to refresh the UI.</li>
+<li><strong>CourseAdapter</strong>: Used in CoursesFragment. The
+ViewModel fetches enrolled courses from the backend (via HomeService and
+Retrofit), and passes the list to the adapter. The adapter binds course
+details to the UI and handles item clicks to show course details or
+actions.</li>
+<li><strong>MarkAttendanceStudentAdapter</strong>: Admin selects a
+course, and the ViewModel fetches enrolled students from the backend.
+The adapter displays each student with a checkbox or toggle for marking
+attendance. On submit, the adapter collects marked students and passes
+them back to the ViewModel for API submission.</li>
+<li><strong>StudentAdapter</strong>: Used wherever a list of students is
+needed (e.g., enrollment, attendance). Receives a list of
+<code>Student</code> objects and binds their info to the UI.</li>
+</ul>
+<h3 id="activities-1">6.2 Activities</h3>
+<ul>
+<li><strong>LoginActivity</strong>: Collects user credentials and passes
+them to LoginViewModel. Observes <code>loginState</code> (StateFlow) for
+UI updates. On login, ViewModel calls AuthService, which uses Retrofit
+to send a POST request to the backend. On success, SessionManager saves
+the token, and the user is navigated to the main screen. Handles Google
+sign-in by launching the Google Identity API, receiving a token, and
+passing it to the ViewModel for backend verification.</li>
+<li><strong>SignupActivity</strong>: Collects registration info in
+multiple steps. On submit, passes data to SignUpViewModel, which calls
+AuthService and Retrofit to register the user. Observes
+<code>signupState</code> for UI updates. Handles Google sign-up by
+pre-filling fields and completing registration with backend.</li>
+<li><strong>AdminActivity</strong>: Hosts admin fragments (dashboard,
+mark attendance, etc.) and manages navigation. Receives navigation
+events and swaps fragments accordingly.</li>
+<li><strong>AttendenceActivity</strong>: Similar to AdminActivity but
+for students. Hosts dashboard, courses, and attendance fragments.</li>
+<li><strong>BaseActivity</strong>: Provides shared methods like
+<code>bindGlobalLoader()</code> to show/hide loading indicators. Used by
+all other activities for consistency.</li>
+<li><strong>MainActivity</strong>: Entry point. Sets up navigation and
+checks if the user is logged in (using SessionManager). Navigates to the
+appropriate activity (login or main).</li>
+</ul>
+<h3 id="fragments-1">6.3 Fragments</h3>
+<ul>
+<li><strong>DashboardFragment</strong>: On load, requests analytics data
+from DashboardViewModel. The ViewModel calls HomeService, which uses
+Retrofit to fetch analytics from the backend. Data is parsed and
+displayed using MPAndroidChart (e.g., attendance percentage, course
+stats).</li>
+<li><strong>CoursesFragment</strong>: On load, asks ViewModel to fetch
+enrolled courses. The ViewModel calls HomeService/Retrofit, receives a
+list, and passes it to CourseAdapter for display.</li>
+<li><strong>AttendanceFragment</strong>: Requests attendance history
+from ViewModel, which fetches it from the backend.
+AttendanceHistoryAdapter displays the data. Supports filtering by
+course/date.</li>
+<li><strong>MarkAttendanceFragment</strong>: Admin selects a course,
+ViewModel fetches enrolled students, and MarkAttendanceStudentAdapter
+displays them. Admin marks attendance, and on submit, ViewModel sends
+the marked list to the backend via HomeService/Retrofit.</li>
+<li><strong>AdminDashboardFragment</strong>: On load, fetches admin
+analytics and course list via ViewModel and HomeService. Uses
+AdminDashboardCourseAdapter for course display and MPAndroidChart for
+analytics.</li>
+</ul>
+<h3 id="viewmodels-1">6.4 ViewModels</h3>
+<ul>
+<li><strong>LoginViewModel</strong>: Exposes <code>loginState</code> as
+a StateFlow. On login, calls AuthService, which makes a Retrofit API
+call. Handles loading, success, and error states. On success, updates
+SessionManager and notifies the UI.</li>
+<li><strong>SignUpViewModel</strong>: Similar to LoginViewModel but for
+registration. Handles both email/password and Google sign-up flows.
+Manages multi-step registration state.</li>
+<li><strong>AdminDashboardViewModel</strong>: Fetches admin dashboard
+data (courses, analytics) from HomeService. Exposes data as StateFlow
+for the fragment to observe.</li>
+<li><strong>AttendanceViewModel</strong>: Fetches attendance history and
+exposes it for AttendanceFragment. Handles API errors and loading
+states.</li>
+<li><strong>DashboardViewModel</strong>: Fetches student dashboard
+analytics and exposes them for DashboardFragment.</li>
+<li><strong>MarkAttendanceViewModel</strong>: Handles logic for marking
+attendance, including fetching students and submitting attendance
+data.</li>
+</ul>
+<h3 id="services-1">6.5 Services</h3>
+<ul>
+<li><strong>AuthService</strong>: Contains all authentication logic. For
+login/signup, builds request objects, calls RetrofitInstance.api, and
+parses the response. Handles error cases (e.g., invalid credentials,
+user not found) and returns results to ViewModel.</li>
+<li><strong>HomeService</strong>: Handles all home/dashboard-related API
+calls. Fetches courses, attendance, analytics, and enrollments. Parses
+responses and returns data to ViewModels.</li>
+</ul>
+<h3 id="retrofit-networking-1">6.6 Retrofit &amp; Networking</h3>
+<ul>
+<li><strong>RetrofitInstance</strong>: Configures Retrofit with base
+URL, Gson converter, and OkHttp client. Provides a singleton
+<code>api</code> property for accessing ApiService.</li>
+<li><strong>ApiService</strong>: Interface with all API endpoints.
+Annotated with Retrofit annotations (e.g., <span class="citation"
+data-cites="GET">@GET</span>, <span class="citation"
+data-cites="POST">@POST</span>). Methods return
+<code>Response&lt;apiResponse&lt;T&gt;&gt;</code>, which are parsed by
+the services.</li>
+</ul>
+<h3 id="models-1">6.7 Models</h3>
+<ul>
+<li><strong>Request/Response Models</strong>: Used to
+serialize/deserialize data sent to/received from the backend. For
+example, <code>LoginRequest</code> is sent to the login API, and
+<code>LoginResponse</code> is received.</li>
+<li><strong>apiResponse</strong>: Generic wrapper for all API responses.
+Contains status code, message, error, and data. Used for consistent
+error handling.</li>
+<li><strong>UiState</strong>: Sealed class representing UI state (Idle,
+Loading, Success, Error, GoogleUserNotFound). Used by ViewModels to
+communicate state to the UI.</li>
+<li><strong>ServiceResult</strong>: Wrapper for service results, used
+for clean error handling and passing messages/data up the stack.</li>
+</ul>
+<h3 id="utilities-helpers-1">6.8 Utilities &amp; Helpers</h3>
+<ul>
+<li><strong>SessionManager</strong>: Uses SharedPreferences to
+store/retrieve user tokens and info. Called after successful
+login/signup to persist session. Used on app start to check if user is
+logged in.</li>
+<li><strong>MessageService</strong>: Shows messages/toasts using
+MotionToast. Called by ViewModels or Activities to display feedback
+(success, error, info).</li>
+<li><strong>LoaderManager</strong>: Manages visibility of loading
+indicators. Called by Activities/Fragments to show/hide loaders during
+API calls.</li>
+</ul>
+<h3 id="libraries-used-1">6.9 Libraries Used</h3>
+<ul>
+<li><strong>Retrofit2</strong>: Handles all HTTP networking. Converts
+API interfaces into network calls.</li>
+<li><strong>Gson</strong>: Serializes/deserializes JSON data for API
+requests/responses.</li>
+<li><strong>OkHttp</strong>: Underlying HTTP client for Retrofit.
+Handles connection, logging, and interceptors.</li>
+<li><strong>Kotlin Coroutines</strong>: Used for all background/async
+operations (API calls, database, etc.). ViewModels launch coroutines for
+non-blocking UI.</li>
+<li><strong>MPAndroidChart</strong>: Renders charts for analytics in
+dashboard fragments.</li>
+<li><strong>Glide</strong>: Loads images from URLs into ImageViews
+efficiently.</li>
+<li><strong>Google Identity API</strong>: Handles Google sign-in, token
+retrieval, and integration with backend.</li>
+<li><strong>AndroidX Lifecycle/ViewModel</strong>: Implements MVVM,
+manages UI-related data in a lifecycle-conscious way.</li>
+<li><strong>MotionToast</strong>: Shows animated toasts for user
+feedback.</li>
+<li><strong>Material Components</strong>: Provides modern UI widgets
+(buttons, text fields, etc.).</li>
+<li><strong>RecyclerView</strong>: Displays lists of data efficiently,
+supports view recycling and animations.</li>
+</ul>
+<h3 id="resources-1">6.10 Resources</h3>
+<ul>
+<li><strong>Layouts</strong>: XML files define UI for activities,
+fragments, and list items. Used by setContentView and RecyclerView
+adapters to inflate views.</li>
+<li><strong>Drawables</strong>: PNG, XML, and vector images used for
+icons, backgrounds, and branding.</li>
+<li><strong>Strings/Colors/Themes</strong>: Centralized XML resources
+for localization, color schemes, and app-wide theming.</li>
+<li><strong>Menus</strong>: XML files define navigation and profile
+menus, used by Activities/Fragments for navigation and actions.</li>
+</ul>
+<hr />
+</body>
+</html>

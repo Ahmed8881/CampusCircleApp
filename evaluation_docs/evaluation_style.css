@@ -1,0 +1,54 @@
+/* Beautiful clean style for evaluation HTML */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f9f9fb;
+  color: #222;
+  margin: 0;
+  padding: 0 0 40px 0;
+}
+h1, h2, h3, h4 {
+  color: #2a4d8f;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+h1 {
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.3em;
+}
+pre, code {
+  background: #f4f4f4;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 1em;
+}
+pre {
+  padding: 12px;
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #d0d0d0;
+  padding: 8px 12px;
+}
+th {
+  background: #f0f4fa;
+}
+ul, ol {
+  margin-left: 2em;
+}
+blockquote {
+  border-left: 4px solid #b0c4de;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  background: #f6f8fa;
+  color: #555;
+}
+img {
+  max-width: 100%;
+  display: block;
+  margin: 1em auto;
+}
