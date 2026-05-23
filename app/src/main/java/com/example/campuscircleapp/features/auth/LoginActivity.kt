@@ -22,6 +22,7 @@ import com.example.campuscircleapp.AdminActivity
 import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.BaseActivity
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.TeacherActivity
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.features.auth.models.GoogleAuthRequest
 import com.example.campuscircleapp.features.auth.models.LoginRequest
@@ -214,6 +215,8 @@ class LoginActivity : BaseActivity() {
                         when (role) {
                             "admin", "superadmin" ->
                                     Intent(this@LoginActivity, AdminActivity::class.java)
+                            "teacher", "instructor" ->
+                                    Intent(this@LoginActivity, TeacherActivity::class.java)
                             else -> Intent(this@LoginActivity, AttendenceActivity::class.java)
                         }
                 startActivity(intent)

@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.campuscircleapp.AdminActivity
 import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.TeacherActivity
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.features.auth.models.GoogleAuthRequest
 import com.example.campuscircleapp.features.auth.models.SignUpRequest
@@ -234,7 +235,7 @@ class SignupActivity : AppCompatActivity() {
                                         www.sanju.motiontoast.R.font.helvetica_regular
                                 )
                         )
-                        startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
+                        startActivity(Intent(this@SignupActivity, EmailVerificationActivity::class.java))
                         finish()
                     }
                     is UiState.Error -> {
@@ -284,6 +285,8 @@ class SignupActivity : AppCompatActivity() {
                         when (role) {
                             "admin", "superadmin" ->
                                     Intent(this@SignupActivity, AdminActivity::class.java)
+                            "teacher", "instructor" ->
+                                    Intent(this@SignupActivity, TeacherActivity::class.java)
                             else -> Intent(this@SignupActivity, AttendenceActivity::class.java)
                         }
                 startActivity(intent)

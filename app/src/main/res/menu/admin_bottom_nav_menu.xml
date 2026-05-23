@@ -2,11 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_admin_dashboard"
-        android:icon="@android:drawable/ic_menu_gallery"
+        android:icon="@drawable/ic_nav_home"
         android:title="Dashboard" />
 
     <item
         android:id="@+id/nav_mark_attendance"
-        android:icon="@android:drawable/ic_menu_my_calendar"
-        android:title="Mark Attendance" />
+        android:icon="@drawable/ic_nav_attendance"
+        android:title="Attendance" />
+
+    <item
+        android:id="@+id/nav_admin_announcements"
+        android:icon="@drawable/ic_nav_bell"
+        android:title="Announce" />
+
+    <item
+        android:id="@+id/nav_review_enrollment"
+        android:icon="@drawable/ic_nav_enrollments"
+        android:title="Enrollments" />
+
+    <item
+        android:id="@+id/nav_manage"
+        android:icon="@drawable/ic_nav_manage"
+        android:title="Manage" />
 </menu>
