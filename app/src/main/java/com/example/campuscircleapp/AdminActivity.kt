@@ -10,9 +10,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.example.campuscircleapp.features.auth.LoginActivity
+import com.example.campuscircleapp.features.admin.fragments.AdminAnnouncementsFragment
 import com.example.campuscircleapp.features.admin.fragments.AdminDashboardFragment
+import com.example.campuscircleapp.features.admin.fragments.AdminManagementFragment
 import com.example.campuscircleapp.features.admin.fragments.MarkAttendanceFragment
+import com.example.campuscircleapp.features.admin.fragments.ReviewEnrollmentFragment
+import com.example.campuscircleapp.features.auth.LoginActivity
+import com.example.campuscircleapp.features.home.fragments.SettingsFragment
 import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.shared.services.SessionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -51,6 +55,9 @@ class AdminActivity : AppCompatActivity() {
             val fragment = when (item.itemId) {
                 R.id.nav_admin_dashboard -> AdminDashboardFragment()
                 R.id.nav_mark_attendance -> MarkAttendanceFragment()
+                R.id.nav_admin_announcements -> AdminAnnouncementsFragment()
+                R.id.nav_review_enrollment -> ReviewEnrollmentFragment()
+                R.id.nav_manage -> AdminManagementFragment()
                 else -> null
             }
 
@@ -64,21 +71,15 @@ class AdminActivity : AppCompatActivity() {
     }
 
     private fun setupProfileHeader(profileImage: ShapeableImageView) {
-        profileImage.setOnClickListener {
-            showProfileMenu(profileImage)
-        }
+        profileImage.setOnClickListener { showProfileMenu(profileImage) }
 
         val token = SessionManager.getToken(this)
-        if (token.isNullOrBlank()) {
-            navigateToLogin()
-            return
-        }
+        if (token.isNullOrBlank()) { navigateToLogin(); return }
 
         lifecycleScope.launch {
             try {
                 val userData = homeService.getUserData(token).data
                 findViewById<TextView>(R.id.adminHeaderUserName).text = userData.name
-
                 Glide.with(this@AdminActivity)
                     .load(userData.image)
                     .placeholder(R.drawable.logo_2)
@@ -95,6 +96,13 @@ class AdminActivity : AppCompatActivity() {
         popup.menuInflater.inflate(R.menu.profile_menu, popup.menu)
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.menu_announcements -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.adminFragmentContainer, AdminAnnouncementsFragment())
+                        .addToBackStack(null)
+                        .commit()
+                    true
+                }
                 R.id.menu_logout -> {
                     SessionManager.clearToken(this)
                     navigateToLogin()

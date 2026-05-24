@@ -20,6 +20,12 @@
             android:name=".AttendenceActivity"
             android:exported="false" />
         <activity
+            android:name=".TeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".features.auth.EmailVerificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.auth.ForgetPassword"
             android:exported="false" />
         <activity

@@ -11,15 +11,17 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.campuscircleapp.features.auth.LoginActivity
-import com.example.campuscircleapp.features.home.fragments.AttendanceFragment
-import com.example.campuscircleapp.features.home.fragments.CoursesFragment
+import com.example.campuscircleapp.features.home.fragments.AnnouncementsFragment
 import com.example.campuscircleapp.features.home.fragments.DashboardFragment
+import com.example.campuscircleapp.features.home.fragments.EnrolledCoursesFragment
+import com.example.campuscircleapp.features.home.fragments.EventsFragment
+import com.example.campuscircleapp.features.home.fragments.SettingsFragment
+import com.example.campuscircleapp.features.home.fragments.TimetableFragment
 import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.shared.services.SessionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.coroutines.launch
-
 
 class AttendenceActivity : AppCompatActivity() {
     private val homeService = HomeService()
@@ -51,8 +53,10 @@ class AttendenceActivity : AppCompatActivity() {
         bottomNavigation.setOnItemSelectedListener { item ->
             val fragment = when (item.itemId) {
                 R.id.nav_dashboard -> DashboardFragment()
-                R.id.nav_courses -> CoursesFragment()
-                R.id.nav_attendance -> AttendanceFragment()
+                R.id.nav_enrolled -> EnrolledCoursesFragment()
+                R.id.nav_timetable -> TimetableFragment()
+                R.id.nav_events -> EventsFragment()
+                R.id.nav_settings -> SettingsFragment()
                 else -> null
             }
 
@@ -66,21 +70,15 @@ class AttendenceActivity : AppCompatActivity() {
     }
 
     private fun setupProfileHeader(profileImage: ShapeableImageView) {
-        profileImage.setOnClickListener {
-            showProfileMenu(profileImage)
-        }
+        profileImage.setOnClickListener { showProfileMenu(profileImage) }
 
         val token = SessionManager.getToken(this)
-        if (token.isNullOrBlank()) {
-            navigateToLogin()
-            return
-        }
+        if (token.isNullOrBlank()) { navigateToLogin(); return }
 
         lifecycleScope.launch {
             try {
                 val userData = homeService.getUserData(token).data
                 findViewById<TextView>(R.id.headerUserName).text = userData.name
-
                 Glide.with(this@AttendenceActivity)
                     .load(userData.image)
                     .placeholder(R.drawable.logo_2)
@@ -97,6 +95,13 @@ class AttendenceActivity : AppCompatActivity() {
         popup.menuInflater.inflate(R.menu.profile_menu, popup.menu)
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.menu_announcements -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, AnnouncementsFragment())
+                        .addToBackStack(null)
+                        .commit()
+                    true
+                }
                 R.id.menu_logout -> {
                     SessionManager.clearToken(this)
                     navigateToLogin()

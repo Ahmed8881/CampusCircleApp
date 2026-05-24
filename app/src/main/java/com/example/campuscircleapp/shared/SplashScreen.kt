@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.campuscircleapp.AdminActivity
 import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.TeacherActivity
 import com.example.campuscircleapp.features.auth.LoginActivity
 import com.example.campuscircleapp.shared.services.SessionManager
 
@@ -28,6 +29,7 @@ class SplashScreen : AppCompatActivity() {
             } else {
                 when (role) {
                     "admin", "superadmin" -> Intent(this, AdminActivity::class.java)
+                    "teacher", "instructor" -> Intent(this, TeacherActivity::class.java)
                     else -> Intent(this, AttendenceActivity::class.java)
                 }
             }
