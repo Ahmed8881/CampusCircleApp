@@ -16,7 +16,6 @@ import com.example.campuscircleapp.features.admin.fragments.AdminManagementFragm
 import com.example.campuscircleapp.features.admin.fragments.MarkAttendanceFragment
 import com.example.campuscircleapp.features.admin.fragments.ReviewEnrollmentFragment
 import com.example.campuscircleapp.features.auth.LoginActivity
-import com.example.campuscircleapp.features.home.fragments.SettingsFragment
 import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.shared.services.SessionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView

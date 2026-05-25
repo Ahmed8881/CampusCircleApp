@@ -1,0 +1,81 @@
+package com.example.campuscircleapp.core.services
+
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.os.Build
+import android.util.Log
+import androidx.core.app.NotificationCompat
+import com.example.campuscircleapp.MainActivity
+import com.example.campuscircleapp.R
+import com.example.campuscircleapp.core.utils.DeviceRegistrationHelper
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
+
+class MyFirebaseMessagingService : FirebaseMessagingService() {
+
+    private val TAG = "FCM_Service"
+
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        Log.d(TAG, "onNewToken: Received new FCM Token: $token")
+        DeviceRegistrationHelper.enqueueRegistration(applicationContext)
+    }
+
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        super.onMessageReceived(remoteMessage)
+        Log.d(TAG, "onMessageReceived: Message from ${remoteMessage.from}")
+        
+        // Data payload handling (Best for production as it allows custom routing)
+        val data = remoteMessage.data
+        val title = data["title"] ?: remoteMessage.notification?.title ?: "Campus Circle"
+        val body = data["body"] ?: remoteMessage.notification?.body ?: ""
+
+        if (data.isNotEmpty()) {
+            Log.d(TAG, "Message data payload: $data")
+        }
+
+        showNotification(title, body, data)
+    }
+
+    private fun showNotification(title: String, message: String, data: Map<String, String>) {
+        // Must match backend: guruportal_notifications
+        val channelId = "guruportal_notifications"
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                channelId,
+                "Campus Circle Alerts",
+                NotificationManager.IMPORTANCE_HIGH
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val intent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            // Put all data payload into intent extras for MainActivity to handle
+            data.forEach { (key, value) ->
+                putExtra(key, value)
+            }
+        }
+        
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.logo)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setDefaults(NotificationCompat.DEFAULT_ALL)
+            .setContentIntent(pendingIntent)
+
+        notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
+    }
+}

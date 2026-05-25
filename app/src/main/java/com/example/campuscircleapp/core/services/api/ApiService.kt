@@ -8,6 +8,7 @@ import com.example.campuscircleapp.features.auth.models.SignUpRequest
 import com.example.campuscircleapp.features.auth.models.SignUpResponse
 import com.example.campuscircleapp.features.auth.models.UserDataResponse
 import com.example.campuscircleapp.features.auth.models.UpdateUserRequest
+import com.example.campuscircleapp.features.auth.models.UserDeviceTokenDTO
 import com.example.campuscircleapp.features.home.models.AttendanceHistoryItem
 import com.example.campuscircleapp.features.home.models.AdminCourseResponse
 import com.example.campuscircleapp.features.home.models.AdminDashboardResponse
@@ -28,6 +29,7 @@ import com.example.campuscircleapp.features.admin.models.CreateInstructorRequest
 import com.example.campuscircleapp.features.admin.models.InstructorResponse
 import com.example.campuscircleapp.features.admin.models.AssignmentResponse
 import com.example.campuscircleapp.features.admin.models.CreateTimetableEntryRequest
+import com.example.campuscircleapp.features.notifications.models.NotificationModel
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -48,6 +50,12 @@ interface ApiService {
     
     @POST("User/CreateUser")
     suspend fun signup(@Body signupRequest: SignUpRequest): Response<apiResponse<SignUpResponse>>
+
+    @POST("User/RegisterDevice")
+    suspend fun registerDevice(
+        @Header("Authorization") token: String,
+        @Body deviceTokenDto: UserDeviceTokenDTO
+    ): Response<apiResponse<Any>>
 
     @GET("Attendance/GetStudentDashboardAnalytics")
     suspend fun getStudentDashboardAnalytics(
@@ -193,5 +201,23 @@ interface ApiService {
     suspend fun createTimetableEntry(
         @Header("Authorization") token: String,
         @Body request: CreateTimetableEntryRequest
+    ): Response<apiResponse<Any>>
+
+    // Notification Endpoints
+    @GET("Notification/my")
+    suspend fun getMyNotifications(
+        @Header("Authorization") token: String
+    ): Response<List<NotificationModel>>
+
+    @POST("Notification/read")
+    suspend fun markAsRead(
+        @Header("Authorization") token: String,
+        @Query("id") id: Long
+    ): Response<Unit>
+
+    @POST("Notification/clear")
+    suspend fun clearNotifications(
+        @Header("Authorization") token: String,
+        @Body ids: List<Long>
     ): Response<apiResponse<Any>>
 }

@@ -9,6 +9,10 @@ material = "1.13.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
 benchmarkCommon = "1.4.1"
+googleServices = "4.4.2"
+firebaseBom = "33.9.0"
+workManager = "2.9.0"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -20,7 +24,11 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-benchmark-common = { group = "androidx.benchmark", name = "benchmark-common", version.ref = "benchmarkCommon" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workManager" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }

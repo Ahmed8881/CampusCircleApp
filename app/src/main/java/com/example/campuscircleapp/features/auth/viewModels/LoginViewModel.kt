@@ -7,6 +7,7 @@ import com.example.campuscircleapp.features.auth.models.GoogleAuthRequest
 import com.example.campuscircleapp.features.auth.models.LoginRequest
 import com.example.campuscircleapp.features.auth.models.LoginResponse
 import com.example.campuscircleapp.features.auth.models.UpdateUserRequest
+import com.example.campuscircleapp.features.auth.models.UserDeviceTokenDTO
 import com.example.campuscircleapp.features.auth.services.AuthService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -56,6 +57,17 @@ class LoginViewModel() : ViewModel() {
                 _loginState.value = UiState.Success(response.data, response.message)
             } catch (e: Exception) {
                 _loginState.value = UiState.Error(e.message ?: "Failed to complete Google Signup")
+            }
+        }
+    }
+
+    fun registerDevice(token: String, deviceTokenDto: UserDeviceTokenDTO) {
+        viewModelScope.launch {
+            try {
+                authService.registerDevice(token, deviceTokenDto)
+            } catch (e: Exception) {
+                // Silently fail or log for device registration
+                e.printStackTrace()
             }
         }
     }

@@ -8,6 +8,7 @@ import com.example.campuscircleapp.features.auth.models.LoginResponse
 import com.example.campuscircleapp.features.auth.models.SignUpRequest
 import com.example.campuscircleapp.features.auth.models.SignUpResponse
 import com.example.campuscircleapp.features.auth.models.UpdateUserRequest
+import com.example.campuscircleapp.features.auth.models.UserDeviceTokenDTO
 import com.google.gson.Gson
 
 class AuthService {
@@ -114,6 +115,29 @@ class AuthService {
         val response = RetrofitInstance.api.updateGoogleUser(request)
         val body = response.body()
 
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) {
+                return ServiceResult(body.data, body.responseMessage)
+            } else {
+                throw Exception(body.errorMessage ?: body.responseMessage)
+            }
+        } else {
+            val errorJson = response.errorBody()?.string()
+            val errorMessage =
+                    try {
+                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                        errorObj["errorMessage"]?.toString()
+                                ?: errorObj["responseMessage"]?.toString()
+                    } catch (e: Exception) {
+                        null
+                    }
+            throw Exception(errorMessage ?: "Server Error: ${response.code()}")
+        }
+    }
+
+    suspend fun registerDevice(token: String, deviceTokenDto: UserDeviceTokenDTO): ServiceResult<Any> {
+        val response = RetrofitInstance.api.registerDevice("Bearer $token", deviceTokenDto)
+        val body = response.body()
         if (response.isSuccessful && body != null) {
             if (body.responseCode == 200 && body.data != null) {
                 return ServiceResult(body.data, body.responseMessage)

@@ -1,14 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.services)
 }
 
 android {
     namespace = "com.example.campuscircleapp"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.campuscircleapp"
@@ -33,6 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -41,12 +42,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     
     // Lifecycle and ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    // WorkManager
+    implementation(libs.androidx.work.runtime.ktx)
 
     // Retrofit & Networking
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -64,6 +69,10 @@ dependencies {
     
     // Motion Toast
     implementation("com.github.Spikeysanju:MotionToast:1.4")
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.messaging)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
