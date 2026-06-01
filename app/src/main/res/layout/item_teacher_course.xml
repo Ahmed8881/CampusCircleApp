@@ -1,64 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/color_card"
     app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#E2E8F0"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/color_border"
     app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical">
 
+        <!-- Gradient top accent -->
         <View
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:background="@drawable/circle_indicator"
-            android:layout_marginEnd="14dp" />
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@drawable/bg_gradient_teal" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-            <TextView
-                android:id="@+id/teacherCourseName"
-                android:layout_width="match_parent"
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/bg_timetable_dot" />
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Course Name"
-                android:textColor="#0F172A"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/teacherCourseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Course Name"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/teacherCourseCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:alpha="0.6"
+                    android:text="CS101"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/teacherCourseCode"
+                android:id="@+id/teacherCourseCredits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="CS101"
-                android:textColor="#475569"
-                android:textSize="13sp" />
+                android:background="@drawable/bg_pill_primary"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="3 Credits"
+                android:textColor="@color/color_primary_light"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/teacherCourseCredits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3 Credits"
-            android:textColor="#2563EB"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:background="#EFF6FF"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="4dp" />
     </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/color_card"
     app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#E2E8F0"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/color_border"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -21,37 +22,39 @@
             android:id="@+id/enrollmentStudentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Student Name"
-            android:textColor="#0F172A"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="@color/color_text_primary"
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="6dp">
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/enrollmentCourseName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:alpha="0.7"
                 android:text="Course Name"
-                android:textColor="#475569"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/enrollmentCourseCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_primary"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
                 android:text="CS101"
-                android:textColor="#2563EB"
+                android:textColor="@color/color_primary_light"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                android:background="#EFF6FF"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="2dp" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView
@@ -59,37 +62,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:alpha="0.5"
             android:text="Requested: 2024-01-01"
-            android:textColor="#94A3B8"
+            android:textColor="@color/color_text_muted"
             android:textSize="11sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/enrollmentApproveBtn"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="40dp"
                 android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_gradient_success"
                 android:text="Approve"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="13sp"
-                app:backgroundTint="#059669"
-                app:cornerRadius="8dp" />
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:insetBottom="0dp"
+                app:insetTop="0dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/enrollmentRejectBtn"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="40dp"
                 android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_gradient_error"
                 android:text="Reject"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="13sp"
-                app:backgroundTint="#DC2626"
-                app:cornerRadius="8dp" />
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:insetBottom="0dp"
+                app:insetTop="0dp" />
         </LinearLayout>
     </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/color_bg"
     android:fillViewport="true"
     android:overScrollMode="never">
 
@@ -11,34 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="48dp">
 
+        <!-- Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Announcements"
-            android:textColor="#0F172A"
-            android:textSize="32sp"
             android:fontFamily="sans-serif-black"
-            android:letterSpacing="-0.02" />
+            android:letterSpacing="-0.02"
+            android:text="Announcements"
+            android:textColor="@color/color_text_primary"
+            android:textSize="32sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Send announcements to students"
-            android:textColor="#475569"
-            android:textSize="14sp"
-            android:alpha="0.7" />
+            android:alpha="0.6"
+            android:text="Broadcast messages to your students"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="14sp" />
 
+        <!-- Compose card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#E2E8F0"
+            android:layout_marginTop="28dp"
+            app:cardBackgroundColor="@color/color_card"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/color_border"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -47,19 +52,22 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <!-- Section label -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Target"
-                    android:textColor="#0F172A"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:text="TARGET AUDIENCE"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_text_muted"
+                    android:textSize="11sp" />
 
                 <RadioGroup
                     android:id="@+id/targetRadioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -67,9 +75,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="All Spaces"
                         android:checked="true"
-                        android:textColor="#475569"
+                        android:text="All Spaces"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -78,60 +86,71 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Specific Space"
-                        android:textColor="#475569"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="14sp" />
                 </RadioGroup>
 
-                <android.widget.Spinner
+                <Spinner
                     android:id="@+id/spaceSpinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/spinner_background"
-                    android:padding="12dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
                     android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:alpha="0.4"
+                    android:background="@color/color_border" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Message"
-                    android:textColor="#0F172A"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:text="MESSAGE"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_text_muted"
+                    android:textSize="11sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:boxBackgroundColor="#F8FAFC"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
-                    app:boxStrokeColor="#CBD5E1">
+                    android:layout_marginTop="10dp"
+                    android:hint="Type your announcement…">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/messageInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Type your announcement..."
                         android:inputType="textMultiLine"
-                        android:minLines="3"
                         android:maxLines="6"
-                        android:textColor="#0F172A"
+                        android:minLines="3"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/sendAnnouncementBtn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_gradient_primary"
                     android:text="Send Announcement"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
                     android:textSize="15sp"
-                    app:backgroundTint="#1E293B"
-                    app:cornerRadius="12dp" />
+                    android:textStyle="bold"
+                    app:backgroundTint="@null"
+                    app:cornerRadius="16dp"
+                    app:insetBottom="0dp"
+                    app:insetTop="0dp" />
 
                 <TextView
                     android:id="@+id/announceSuccessText"
@@ -139,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:textColor="#059669"
+                    android:textColor="@color/color_success"
                     android:textSize="13sp"
                     android:visibility="gone" />
 
@@ -149,10 +168,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:textColor="#DC2626"
+                    android:textColor="@color/color_error"
                     android:textSize="13sp"
                     android:visibility="gone" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

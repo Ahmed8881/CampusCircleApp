@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/timetableContent"
@@ -21,61 +22,83 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingBottom="32dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Timetable"
-                android:textColor="#0F172A"
-                android:textSize="32sp"
-                android:fontFamily="sans-serif-black"
-                android:letterSpacing="-0.02" />
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="28dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Weekly class schedule"
-                android:textColor="#475569"
-                android:textSize="14sp"
-                android:alpha="0.7" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="-0.02"
+                    android:text="Timetable"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="34sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:alpha="0.6"
+                    android:text="Weekly class schedule"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Today card (gradient) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/todayCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#1E293B"
-                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@null"
+                app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#334155"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_gradient_primary"
                     android:orientation="vertical"
-                    android:padding="18dp">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:alpha="0.75"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.12"
                         android:text="TODAY'S CLASSES"
-                        android:textColor="#94A3B8"
-                        android:textSize="11sp"
                         android:textAllCaps="true"
-                        android:letterSpacing="0.1" />
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/todayDayName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-black"
+                        android:letterSpacing="-0.01"
                         android:text="Monday"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textSize="26sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:alpha="0.25"
+                        android:background="@color/white" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/todayClassesRecycler"
@@ -88,27 +111,45 @@
                         android:id="@+id/noClassesToday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="No classes today"
-                        android:textColor="#94A3B8"
+                        android:layout_marginTop="12dp"
+                        android:alpha="0.65"
+                        android:gravity="center"
+                        android:text="No classes scheduled today"
+                        android:textColor="@color/white"
                         android:textSize="13sp"
                         android:visibility="gone" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Full week section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Full Week Schedule"
-                android:textColor="#0F172A"
-                android:textSize="18sp"
-                android:fontFamily="sans-serif-medium" />
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="28dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/bg_gradient_primary"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Full Week Schedule"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="17sp" />
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/weekTimetableRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="12dp"
                 android:nestedScrollingEnabled="false" />
 
@@ -116,38 +157,43 @@
                 android:id="@+id/noTimetableText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="40dp"
                 android:gravity="center"
+                android:alpha="0.4"
                 android:text="No timetable found"
-                android:textColor="#94A3B8"
-                android:textSize="14sp"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="15sp"
                 android:visibility="gone" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Loading -->
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/timetableLoading"
+        style="@style/Widget.App.ProgressIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:indicatorColor="#1E293B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Error -->
     <TextView
         android:id="@+id/timetableError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#DC2626"
-        android:textSize="14sp"
         android:gravity="center"
         android:padding="24dp"
+        android:textColor="@color/color_error"
+        android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
