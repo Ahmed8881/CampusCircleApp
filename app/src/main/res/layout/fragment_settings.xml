@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -19,34 +20,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="40dp">
 
+            <!-- Header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:letterSpacing="-0.02"
                 android:text="Settings"
-                android:textColor="#0F172A"
-                android:textSize="32sp" />
+                android:textColor="@color/color_text_primary"
+                android:textSize="34sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:alpha="0.7"
+                android:alpha="0.6"
                 android:text="Manage your account preferences"
-                android:textColor="#475569"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="14sp" />
 
+            <!-- Section label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.10"
+                android:text="SECURITY"
+                android:textAllCaps="true"
+                android:textColor="@color/color_text_muted"
+                android:textSize="11sp" />
+
+            <!-- Change Password card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                app:cardBackgroundColor="#FFFFFF"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/color_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#E2E8F0"
+                app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -58,65 +75,69 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Change Password"
-                        android:textColor="#0F172A"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="17sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Update your account password"
-                        android:textColor="#94A3B8"
+                        android:alpha="0.6"
+                        android:text="Update your account password securely"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="13sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:hint="Current Password"
+                        android:layout_marginTop="24dp"
+                        android:hint="Current password"
+                        style="@style/Widget.App.TextInput"
                         app:passwordToggleEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        app:passwordToggleTint="@color/color_text_muted">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/settingsOldPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword" />
-
+                            android:inputType="textPassword"
+                            android:textColor="@color/color_text_primary" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:hint="New Password"
+                        android:hint="New password"
+                        style="@style/Widget.App.TextInput"
                         app:passwordToggleEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        app:passwordToggleTint="@color/color_text_muted">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/settingsNewPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword" />
-
+                            android:inputType="textPassword"
+                            android:textColor="@color/color_text_primary" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:hint="Confirm New Password"
+                        android:hint="Confirm new password"
+                        style="@style/Widget.App.TextInput"
                         app:passwordToggleEnabled="true"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        app:passwordToggleTint="@color/color_text_muted">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/settingsConfirmPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword" />
-
+                            android:inputType="textPassword"
+                            android:textColor="@color/color_text_primary" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -124,16 +145,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginTop="24dp"
+                        android:background="@drawable/bg_gradient_primary"
                         android:text="Update Password"
-                        android:textSize="15sp"
-                        app:cornerRadius="14dp" />
-
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:cornerRadius="16dp"
+                        app:insetBottom="0dp"
+                        app:insetTop="0dp" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

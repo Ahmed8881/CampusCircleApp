@@ -1,54 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/attendanceTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-black"
         android:letterSpacing="-0.02"
         android:text="Attendance History"
-        android:textColor="#0F172A"
-        android:textSize="28sp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Subtitle -->
     <TextView
         android:id="@+id/attendanceSubtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:alpha="0.7"
-        android:text="Select your course to view day-by-day attendance"
-        android:textColor="#475569"
+        android:alpha="0.6"
+        android:text="Select a course to view your day-by-day records"
+        android:textColor="@color/color_text_secondary"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/attendanceTitle"
         app:layout_constraintTop_toBottomOf="@id/attendanceTitle" />
 
+    <!-- Course selector -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/spinnerContainer"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="12dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/color_card"
+        app:cardCornerRadius="14dp"
         app:cardElevation="0dp"
+        app:strokeColor="@color/color_border"
+        app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/attendanceSubtitle"
-        app:strokeColor="#E2E8F0"
-        app:strokeWidth="1dp">
+        app:layout_constraintTop_toBottomOf="@id/attendanceSubtitle">
 
         <Spinner
             android:id="@+id/courseSpinner"
@@ -56,21 +59,22 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:overlapAnchor="false"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:spinnerMode="dropdown" />
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Summary banner (gradient) -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/summaryCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        app:cardBackgroundColor="#1E293B"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="14dp"
+        app:cardBackgroundColor="@null"
         app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerContainer">
@@ -78,6 +82,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_teal"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="16dp">
@@ -85,7 +90,8 @@
             <View
                 android:layout_width="4dp"
                 android:layout_height="24dp"
-                android:background="#38BDF8" />
+                android:alpha="0.6"
+                android:background="@color/white" />
 
             <TextView
                 android:id="@+id/attendanceSummary"
@@ -94,11 +100,12 @@
                 android:layout_marginStart="12dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Select a course"
-                android:textColor="#F8FAFC"
-                android:textSize="15sp" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- History list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/attendanceHistoryRecyclerView"
         android:layout_width="0dp"
@@ -106,28 +113,29 @@
         android:layout_marginTop="8dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingHorizontal="16dp"
         android:paddingBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/summaryCard" />
 
+    <!-- Loading -->
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/attendanceLoading"
+        style="@style/Widget.App.ProgressIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:indicatorColor="#1E293B"
         app:indicatorSize="40dp"
+        app:trackThickness="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:trackThickness="4dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Error -->
     <TextView
         android:id="@+id/attendanceError"
         android:layout_width="0dp"
@@ -135,24 +143,25 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="#DC2626"
+        android:textColor="@color/color_error"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/summaryCard" />
 
+    <!-- Empty state -->
     <TextView
         android:id="@+id/emptyHistoryText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="40dp"
+        android:alpha="0.4"
         android:gravity="center"
-        android:lineSpacingExtra="4dp"
+        android:lineSpacingExtra="6dp"
         android:text="No attendance records found\nfor this course"
-        android:textColor="#64748B"
+        android:textColor="@color/color_text_secondary"
         android:textSize="15sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/color_bg"
     android:fillViewport="true"
     android:overScrollMode="never">
 
@@ -11,34 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="48dp">
 
+        <!-- Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Announce Assessment"
-            android:textColor="#0F172A"
-            android:textSize="28sp"
             android:fontFamily="sans-serif-black"
-            android:letterSpacing="-0.02" />
+            android:letterSpacing="-0.02"
+            android:text="Announce Assessment"
+            android:textColor="@color/color_text_primary"
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:alpha="0.6"
             android:text="Create an assignment, quiz, or exam"
-            android:textColor="#475569"
-            android:textSize="14sp"
-            android:alpha="0.7" />
+            android:textColor="@color/color_text_secondary"
+            android:textSize="14sp" />
 
+        <!-- Form card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="2dp"
-            app:strokeColor="#E2E8F0"
+            android:layout_marginTop="28dp"
+            app:cardBackgroundColor="@color/color_card"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/color_border"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -50,10 +55,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Assessment Type"
-                    android:textColor="#0F172A"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:text="ASSESSMENT TYPE"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_text_muted"
+                    android:textSize="11sp" />
 
                 <RadioGroup
                     android:id="@+id/assessmentTypeGroup"
@@ -67,9 +74,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Assignment"
                         android:checked="true"
-                        android:textColor="#475569"
+                        android:text="Assignment"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="13sp" />
 
                     <RadioButton
@@ -78,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Quiz"
-                        android:textColor="#475569"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="13sp" />
 
                     <RadioButton
@@ -87,42 +94,40 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Exam"
-                        android:textColor="#475569"
+                        android:textColor="@color/color_text_secondary"
                         android:textSize="13sp" />
                 </RadioGroup>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:alpha="0.4"
+                    android:background="@color/color_border" />
+
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:hint="Title *"
-                    app:boxBackgroundColor="#F8FAFC"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
-                    app:boxStrokeColor="#CBD5E1">
+                    android:layout_marginTop="12dp"
+                    android:hint="Title *">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/assessmentTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:textColor="#0F172A"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Description (optional)"
-                    app:boxBackgroundColor="#F8FAFC"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
-                    app:boxStrokeColor="#CBD5E1">
+                    android:hint="Description (optional)">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/assessmentDescription"
@@ -130,64 +135,60 @@
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:minLines="2"
-                        android:textColor="#0F172A"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:hint="Due Date * (YYYY-MM-DD)"
-                    app:boxBackgroundColor="#F8FAFC"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
-                    app:boxStrokeColor="#CBD5E1"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@android:drawable/ic_menu_my_calendar">
+                    app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
+                    app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/assessmentDueDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
                         android:clickable="true"
-                        android:textColor="#0F172A"
+                        android:focusable="false"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Total Marks *"
-                    app:boxBackgroundColor="#F8FAFC"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
-                    app:boxStrokeColor="#CBD5E1">
+                    android:hint="Total Marks *">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/assessmentTotalMarks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:textColor="#0F172A"
+                        android:textColor="@color/color_text_primary"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/publishAssessmentBtn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_gradient_primary"
                     android:text="Publish Assessment"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
                     android:textSize="15sp"
-                    app:backgroundTint="#1E293B"
-                    app:cornerRadius="12dp" />
+                    android:textStyle="bold"
+                    app:backgroundTint="@null"
+                    app:cornerRadius="16dp"
+                    app:insetBottom="0dp"
+                    app:insetTop="0dp" />
 
                 <TextView
                     android:id="@+id/assessmentSuccessText"
@@ -195,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:textColor="#059669"
+                    android:textColor="@color/color_success"
                     android:textSize="13sp"
                     android:visibility="gone" />
 
@@ -205,10 +206,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:gravity="center"
-                    android:textColor="#DC2626"
+                    android:textColor="@color/color_error"
                     android:textSize="13sp"
                     android:visibility="gone" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

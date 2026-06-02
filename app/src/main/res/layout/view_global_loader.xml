@@ -1,9 +1,10 @@
 <!-- res/layout/view_global_loader.xml -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80000000"
+    android:background="@color/color_scrim"
     android:clickable="true"
     android:focusable="true"
     android:visibility="gone">
@@ -11,30 +12,32 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
+        android:background="@drawable/bg_card_surface"
+        android:elevation="24dp"
         android:gravity="center"
-        android:elevation="8dp">
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="28dp">
 
-        <!-- Loader -->
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/color_primary"
             app:indicatorSize="48dp"
-            android:backgroundTint="@android:color/transparent"
-            android:progressTint="@color/white"
-            android:progressBackgroundTint="@color/white"
-            android:foregroundTint="@color/white"
-            app:trackThickness="4dp"
-            app:indicatorColor="@android:color/white" />
+            app:trackColor="@color/color_border"
+            app:trackThickness="4dp" />
 
-        <!-- Optional Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please wait..."
-            android:textSize="14sp"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="14dp"
+            android:alpha="0.75"
+            android:fontFamily="sans-serif-medium"
+            android:text="Please wait…"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="14sp" />
     </LinearLayout>
+
 </FrameLayout>

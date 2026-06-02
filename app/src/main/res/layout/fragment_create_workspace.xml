@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -19,60 +20,65 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="48dp">
 
+            <!-- Header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
+                android:letterSpacing="-0.02"
                 android:text="Create Workspace"
-                android:textColor="#0F172A"
-                android:textSize="28sp" />
+                android:textColor="@color/color_text_primary"
+                android:textSize="32sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:alpha="0.6"
                 android:text="Add a new campus workspace"
-                android:textColor="#94A3B8"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="14sp" />
 
+            <!-- Form card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardBackgroundColor="#FFFFFF"
+                android:layout_marginTop="28dp"
+                app:cardBackgroundColor="@color/color_card"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#E2E8F0"
+                app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="20dp">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Workspace Name"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        android:hint="Workspace Name">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/workspaceNameInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textCapWords" />
-
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:hint="Description (optional)"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        android:layout_marginTop="12dp"
+                        android:hint="Description (optional)">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/workspaceDescInput"
@@ -80,7 +86,6 @@
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
                             android:minLines="3" />
-
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -88,31 +93,51 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginTop="20dp"
+                        android:background="@drawable/bg_gradient_primary"
                         android:text="Create Workspace"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
                         android:textSize="15sp"
-                        app:cornerRadius="14dp" />
-
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:cornerRadius="16dp"
+                        app:insetBottom="0dp"
+                        app:insetTop="0dp" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Existing Workspaces section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:text="Existing Workspaces"
-                android:textColor="#0F172A"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_gradient_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Existing Workspaces"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="17sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/workspacesEmptyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
+                android:alpha="0.45"
                 android:gravity="center"
                 android:text="No workspaces yet"
-                android:textColor="#94A3B8"
+                android:textColor="@color/color_text_muted"
                 android:textSize="14sp"
                 android:visibility="gone" />
 
@@ -124,7 +149,6 @@
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -19,54 +20,84 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingBottom="32dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:letterSpacing="-0.02"
-                android:text="My Courses"
-                android:textColor="#0F172A"
-                android:textSize="32sp" />
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="28dp"
+                android:paddingBottom="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:alpha="0.7"
-                android:text="Your enrolled courses &amp; attendance"
-                android:textColor="#475569"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="-0.02"
+                    android:text="My Courses"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="34sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:alpha="0.6"
+                    android:text="Enrolled courses &amp; attendance"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Loading bar -->
             <View
                 android:id="@+id/enrolledLoadingView"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_marginTop="24dp"
-                android:background="#3B82F6"
+                android:layout_height="3dp"
+                android:background="@drawable/bg_gradient_primary"
                 android:visibility="gone" />
 
-            <TextView
+            <!-- Empty state -->
+            <LinearLayout
                 android:id="@+id/enrolledEmptyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
                 android:gravity="center"
-                android:text="No enrolled courses found"
-                android:textColor="#94A3B8"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:orientation="vertical"
+                android:paddingTop="64dp"
+                android:paddingHorizontal="32dp"
+                android:visibility="gone">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.4"
+                    android:gravity="center"
+                    android:text="No enrolled courses"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:alpha="0.3"
+                    android:gravity="center"
+                    android:text="Browse available courses and enroll to get started"
+                    android:textColor="@color/color_text_muted"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Courses list -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/enrolledRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

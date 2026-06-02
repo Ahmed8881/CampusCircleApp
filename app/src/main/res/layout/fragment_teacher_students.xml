@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
     <LinearLayout
         android:id="@+id/teacherStudentsHeader"
@@ -11,8 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="12dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,34 +21,44 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Students"
-            android:textColor="#0F172A"
-            android:textSize="32sp"
             android:fontFamily="sans-serif-black"
-            android:letterSpacing="-0.02" />
+            android:letterSpacing="-0.02"
+            android:text="My Students"
+            android:textColor="@color/color_text_primary"
+            android:textSize="32sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:alpha="0.6"
             android:text="Students enrolled in your courses"
-            android:textColor="#475569"
-            android:textSize="14sp"
-            android:alpha="0.7" />
+            android:textColor="@color/color_text_secondary"
+            android:textSize="14sp" />
 
-        <android.widget.Spinner
+        <!-- Course filter spinner -->
+        <Spinner
             android:id="@+id/teacherStudentCourseSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/spinner_background"
-            android:padding="12dp" />
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0.4"
+            android:background="@color/color_border" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/teacherStudentsRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:clipToPadding="false"
         android:paddingTop="8dp"
         android:paddingBottom="16dp"
         android:visibility="gone"
@@ -58,11 +69,11 @@
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/teacherStudentsLoading"
+        style="@style/Widget.App.ProgressIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:indicatorColor="#1E293B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,29 +81,47 @@
 
     <TextView
         android:id="@+id/teacherStudentsError"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="#DC2626"
-        android:textSize="14sp"
+        android:layout_marginHorizontal="24dp"
         android:gravity="center"
         android:padding="24dp"
+        android:textColor="@color/color_error"
+        android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/teacherStudentsHeader" />
 
-    <TextView
+    <LinearLayout
         android:id="@+id/teacherStudentsEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No students enrolled"
-        android:textColor="#94A3B8"
-        android:textSize="14sp"
         android:gravity="center"
+        android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/teacherStudentsHeader" />
+        app:layout_constraintTop_toBottomOf="@id/teacherStudentsHeader">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.35"
+            android:text="No students enrolled"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:alpha="0.25"
+            android:text="Students will appear once they enroll"
+            android:textColor="@color/color_text_muted"
+            android:textSize="13sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

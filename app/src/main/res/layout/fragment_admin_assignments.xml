@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC">
+    android:background="@color/color_bg">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -19,42 +20,65 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="32dp">
 
+            <!-- Header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
+                android:letterSpacing="-0.02"
                 android:text="Assignments"
-                android:textColor="#0F172A"
-                android:textSize="28sp" />
+                android:textColor="@color/color_text_primary"
+                android:textSize="32sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:alpha="0.6"
                 android:text="All assessments and assignments"
-                android:textColor="#94A3B8"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="14sp" />
 
+            <!-- Loading bar -->
             <View
                 android:id="@+id/assignmentsLoadingView"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="3dp"
                 android:layout_marginTop="20dp"
-                android:background="#3B82F6"
+                android:background="@drawable/bg_gradient_primary"
                 android:visibility="gone" />
 
-            <TextView
+            <!-- Empty state -->
+            <LinearLayout
                 android:id="@+id/assignmentsEmptyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="64dp"
                 android:gravity="center"
-                android:text="No assignments found"
-                android:textColor="#94A3B8"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.35"
+                    android:text="No assignments found"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:alpha="0.25"
+                    android:text="Assignments will appear here once created"
+                    android:textColor="@color/color_text_muted"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/assignmentsRecyclerView"
@@ -64,7 +88,6 @@
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

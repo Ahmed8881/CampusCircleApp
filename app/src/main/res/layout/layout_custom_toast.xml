@@ -5,60 +5,57 @@
     android:id="@+id/toast_card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="16dp"
     android:minWidth="280dp"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="4dp"
-    app:strokeWidth="0dp">
+    app:cardBackgroundColor="@color/color_card_elevated"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="12dp"
+    app:strokeColor="@color/color_border"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:id="@+id/toast_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp">
 
+        <ImageView
+            android:id="@+id/toast_icon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@android:drawable/ic_dialog_info"
+            android:tint="@color/color_primary_light" />
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/toast_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@android:drawable/ic_dialog_info"
-                android:tint="@color/black" />
-
-        </FrameLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/toast_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
                 android:text="Success"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/color_text_primary"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/toast_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="You have successfully completed the trip"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:alpha="0.9" />
+                android:alpha="0.7"
+                android:text="Operation completed successfully"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="13sp" />
         </LinearLayout>
 
     </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

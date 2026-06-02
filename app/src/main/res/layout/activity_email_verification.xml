@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8FAFC"
+    android:background="@color/color_bg"
     tools:context=".features.auth.EmailVerificationActivity">
+
+    <!-- Top ambient glow -->
+    <View
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:alpha="0.35"
+        android:background="@drawable/bg_splash_glow"
+        android:translationX="60dp"
+        android:translationY="-60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,46 +32,55 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="32dp"
-            android:gravity="center_horizontal">
+            android:paddingHorizontal="28dp"
+            android:paddingTop="64dp"
+            android:paddingBottom="48dp">
 
+            <!-- Logo -->
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginTop="48dp"
-                android:src="@drawable/logo_2"
                 android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent" />
+                android:src="@drawable/logo_2"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
+                app:strokeColor="@color/color_primary"
+                app:strokeWidth="2dp" />
 
+            <!-- Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Verify Your Email"
-                android:textColor="#0F172A"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="We've sent a verification email to your address. Please check your inbox and click the link to activate your account."
-                android:textColor="#475569"
-                android:textSize="14sp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp" />
+                android:letterSpacing="-0.02"
+                android:text="Verify your email"
+                android:textColor="@color/color_text_primary"
+                android:textSize="30sp" />
 
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:alpha="0.65"
+                android:gravity="center"
+                android:lineSpacingExtra="5dp"
+                android:text="We've sent a verification link to your email address. Check your inbox and click the link to activate your account."
+                android:textColor="@color/color_text_secondary"
+                android:textSize="15sp" />
+
+            <!-- Info card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                app:cardBackgroundColor="#EFF6FF"
-                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/color_primary_container"
+                app:cardCornerRadius="18dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#BFDBFE"
+                app:strokeColor="@color/color_primary_dark"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -70,52 +92,67 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Didn't receive the email?"
-                        android:textColor="#1E40AF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/color_on_primary_container"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Check your spam folder or click below to resend."
-                        android:textColor="#3B82F6"
+                        android:alpha="0.75"
+                        android:text="Check your spam folder, or click below to resend."
+                        android:textColor="@color/color_on_primary_container"
                         android:textSize="13sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Resend button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/resendEmailBtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/bg_gradient_primary"
                 android:text="Resend Email"
-                android:textSize="15sp"
-                app:backgroundTint="#1E293B"
-                app:cornerRadius="14dp" />
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="16dp"
+                app:insetBottom="0dp"
+                app:insetTop="0dp" />
 
+            <!-- Back to login -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/backToLoginBtn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_marginTop="12dp"
                 android:text="Back to Login"
+                android:textAllCaps="false"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="15sp"
-                android:textColor="#475569"
-                app:cornerRadius="14dp"
-                app:strokeColor="#CBD5E1"
+                app:backgroundTint="@color/color_surface_variant"
+                app:cornerRadius="16dp"
+                app:insetBottom="0dp"
+                app:insetTop="0dp"
+                app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp" />
 
             <TextView
                 android:id="@+id/emailVerificationStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:gravity="center"
                 android:textSize="13sp"
                 android:visibility="gone" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

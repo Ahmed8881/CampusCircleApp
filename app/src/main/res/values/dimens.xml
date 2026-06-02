@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 8-Point Grid System -->
+    <dimen name="space_1">4dp</dimen>
+    <dimen name="space_2">8dp</dimen>
+    <dimen name="space_3">12dp</dimen>
+    <dimen name="space_4">16dp</dimen>
+    <dimen name="space_5">20dp</dimen>
+    <dimen name="space_6">24dp</dimen>
+    <dimen name="space_7">28dp</dimen>
+    <dimen name="space_8">32dp</dimen>
+    <dimen name="space_10">40dp</dimen>
+    <dimen name="space_12">48dp</dimen>
+    <dimen name="space_14">56dp</dimen>
+    <dimen name="space_16">64dp</dimen>
+
+    <!-- Radius Scale -->
+    <dimen name="radius_xs">6dp</dimen>
+    <dimen name="radius_sm">8dp</dimen>
+    <dimen name="radius_md">12dp</dimen>
+    <dimen name="radius_lg">16dp</dimen>
+    <dimen name="radius_xl">20dp</dimen>
+    <dimen name="radius_2xl">24dp</dimen>
+    <dimen name="radius_3xl">28dp</dimen>
+    <dimen name="radius_full">100dp</dimen>
+
+    <!-- Type Scale -->
+    <dimen name="text_xs">11sp</dimen>
+    <dimen name="text_sm">13sp</dimen>
+    <dimen name="text_base">15sp</dimen>
+    <dimen name="text_md">16sp</dimen>
+    <dimen name="text_lg">18sp</dimen>
+    <dimen name="text_xl">20sp</dimen>
+    <dimen name="text_2xl">24sp</dimen>
+    <dimen name="text_3xl">28sp</dimen>
+    <dimen name="text_4xl">32sp</dimen>
+    <dimen name="text_5xl">40sp</dimen>
+
+    <!-- Component Sizes -->
+    <dimen name="btn_height_sm">44dp</dimen>
+    <dimen name="btn_height_md">52dp</dimen>
+    <dimen name="btn_height_lg">60dp</dimen>
+    <dimen name="input_height">56dp</dimen>
+    <dimen name="icon_sm">16dp</dimen>
+    <dimen name="icon_md">20dp</dimen>
+    <dimen name="icon_lg">24dp</dimen>
+    <dimen name="icon_xl">32dp</dimen>
+    <dimen name="icon_2xl">48dp</dimen>
+    <dimen name="icon_3xl">64dp</dimen>
+
+    <!-- Page Layout -->
+    <dimen name="page_padding">24dp</dimen>
+    <dimen name="page_padding_sm">16dp</dimen>
+    <dimen name="card_padding">20dp</dimen>
+    <dimen name="bottom_nav_height">80dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elev_card">4dp</dimen>
+    <dimen name="elev_bottom_nav">16dp</dimen>
+    <dimen name="elev_dialog">24dp</dimen>
+</resources>

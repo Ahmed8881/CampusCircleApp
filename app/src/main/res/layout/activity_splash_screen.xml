@@ -5,59 +5,115 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A192F">
+    android:background="@color/color_bg">
 
+    <!-- Ambient glow behind logo -->
+    <View
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:alpha="0.60"
+        android:background="@drawable/bg_splash_glow"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <!-- Outer pulse ring -->
+    <View
+        android:id="@+id/ringOuter"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:alpha="0.07"
+        android:background="@drawable/bg_pulse_ring"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <!-- Mid pulse ring -->
+    <View
+        android:id="@+id/ringMid"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:alpha="0.12"
+        android:background="@drawable/bg_pulse_ring"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <!-- Inner pulse ring -->
+    <View
+        android:id="@+id/ringInner"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:alpha="0.20"
+        android:background="@drawable/bg_pulse_ring"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <!-- Logo -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:src="@drawable/logo_2"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/appName"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.44" />
 
+    <!-- App name -->
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="CampusCircle"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.05"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
-        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:letterSpacing="-0.02"
+        android:text="CampusCircle"
+        android:textColor="@color/color_text_primary"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/tagline"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
+    <!-- Tagline -->
     <TextView
         android:id="@+id/tagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="CONNECT • LEARN • GROW"
-        android:textColor="#8892B0"
-        android:textSize="12sp"
-        android:letterSpacing="0.2"
+        android:layout_marginTop="10dp"
+        android:alpha="0.5"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.22"
+        android:text="CONNECT  ·  LEARN  ·  GROW"
         android:textAllCaps="true"
-        app:layout_constraintTop_toBottomOf="@id/appName"
+        android:textColor="@color/color_primary_light"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/appName" />
 
+    <!-- Institution label at bottom -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="36dp"
+        android:alpha="0.25"
+        android:letterSpacing="0.15"
         android:text="UET LAHORE"
-        android:textColor="#444D5E"
-        android:textSize="12sp"
+        android:textAllCaps="true"
+        android:textColor="@color/color_text_secondary"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

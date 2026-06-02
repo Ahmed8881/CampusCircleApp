@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\User\\\\Desktop\\\\CampusCircleApp\" -Force)",
+      "Bash(Select-Object Name, FullName)"
+    ]
+  }
+}
