@@ -25,6 +25,7 @@ import com.example.campuscircleapp.R
 import com.example.campuscircleapp.TeacherActivity
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.core.utils.DeviceRegistrationHelper
+import com.example.campuscircleapp.core.services.signalr.SignalRManager
 import com.example.campuscircleapp.features.auth.models.GoogleAuthRequest
 import com.example.campuscircleapp.features.auth.models.LoginRequest
 import com.example.campuscircleapp.features.auth.viewModels.LoginViewModel
@@ -202,6 +203,9 @@ class LoginActivity : BaseActivity() {
                 // Register Device for Notifications
                 // Force registration upon login to ensure sync
                 DeviceRegistrationHelper.enqueueRegistration(this@LoginActivity, force = true)
+
+                // Initialize SignalR after successful login
+                SignalRManager.init(this@LoginActivity)
 
                 val userResponse = homeService.getUserData(token)
                 val role = userResponse.data.role.trim().lowercase()

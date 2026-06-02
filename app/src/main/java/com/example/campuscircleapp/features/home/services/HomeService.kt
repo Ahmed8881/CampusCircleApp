@@ -5,7 +5,6 @@ import com.example.campuscircleapp.core.utils.RetrofitInstance
 import com.example.campuscircleapp.features.auth.models.UserDataResponse
 import com.example.campuscircleapp.features.home.models.AdminCourseResponse
 import com.example.campuscircleapp.features.home.models.AdminDashboardResponse
-import com.example.campuscircleapp.features.home.models.AnnouncementItem
 import com.example.campuscircleapp.features.home.models.AttendanceHistoryItem
 import com.example.campuscircleapp.features.home.models.DashboardAnalyticsResponse
 import com.example.campuscircleapp.features.home.models.EnrollmentByCourseResponse
@@ -141,20 +140,6 @@ class HomeService {
 
     suspend fun getTimetable(token: String, spaceId: Long = 1): ServiceResult<List<TimetableEntry>> {
         val response = RetrofitInstance.api.getTimetable("Bearer $token", spaceId)
-        val body = response.body()
-
-        if (response.isSuccessful && body != null) {
-            if (body.responseCode == 200 && body.data != null) {
-                return ServiceResult(body.data, body.responseMessage)
-            }
-            throw Exception(body.errorMessage ?: body.responseMessage)
-        }
-
-        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
-    }
-
-    suspend fun getAnnouncements(token: String): ServiceResult<List<AnnouncementItem>> {
-        val response = RetrofitInstance.api.getAnnouncements("Bearer $token")
         val body = response.body()
 
         if (response.isSuccessful && body != null) {

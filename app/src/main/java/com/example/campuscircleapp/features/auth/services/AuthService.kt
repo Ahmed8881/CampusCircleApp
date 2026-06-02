@@ -20,24 +20,21 @@ class AuthService {
             if (body.responseCode == 200 && body.data != null) {
                 return ServiceResult(body.data, body.responseMessage)
             } else {
-                throw Exception(body.errorMessage ?: body.responseMessage)
+                val msg = if (!body.errorMessage.isNullOrBlank()) body.errorMessage else body.responseMessage
+                throw Exception(msg ?: "Login failed")
             }
         } else {
-            // READ THE ACTUAL ERROR FROM SERVER
             val errorJson = response.errorBody()?.string()
-            val errorMessage =
-                    try {
-                        // Try to parse the server's error response structure
-                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
-                        errorObj["errorMessage"]?.toString()
-                                ?: errorObj["responseMessage"]?.toString()
-                    } catch (e: Exception) {
-                        null
-                    }
-
+            val errorMessage = try {
+                val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                errorObj["errorMessage"]?.toString() ?: errorObj["responseMessage"]?.toString()
+            } catch (e: Exception) {
+                null
+            }
             throw Exception(errorMessage ?: "Server Error: ${response.code()}")
         }
     }
+
     suspend fun signUp(request: SignUpRequest): ServiceResult<SignUpResponse> {
         val response = RetrofitInstance.api.signup(request)
         val body = response.body()
@@ -45,24 +42,21 @@ class AuthService {
             if (body.responseCode == 200 && body.data != null) {
                 return ServiceResult(body.data, body.responseMessage)
             } else {
-                throw Exception(body.errorMessage ?: body.responseMessage)
+                val msg = if (!body.errorMessage.isNullOrBlank()) body.errorMessage else body.responseMessage
+                throw Exception(msg ?: "Signup failed")
             }
         } else {
-
             val errorJson = response.errorBody()?.string()
-            val errorMessage =
-                    try {
-                        // Try to parse the server's error response structure
-                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
-                        errorObj["errorMessage"]?.toString()
-                                ?: errorObj["responseMessage"]?.toString()
-                    } catch (e: Exception) {
-                        null
-                    }
-
+            val errorMessage = try {
+                val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                errorObj["errorMessage"]?.toString() ?: errorObj["responseMessage"]?.toString()
+            } catch (e: Exception) {
+                null
+            }
             throw Exception(errorMessage ?: "Server Error: ${response.code()}")
         }
     }
+
     suspend fun googleSignup(request: GoogleAuthRequest): ServiceResult<Any> {
         val response = RetrofitInstance.api.googleSignup(request)
         val body = response.body()
@@ -71,18 +65,17 @@ class AuthService {
             if (body.responseCode == 200 && body.data != null) {
                 return ServiceResult(body.data, body.responseMessage)
             } else {
-                throw Exception(body.errorMessage ?: body.responseMessage)
+                val msg = if (!body.errorMessage.isNullOrBlank()) body.errorMessage else body.responseMessage
+                throw Exception(msg ?: "Google signup failed")
             }
         } else {
             val errorJson = response.errorBody()?.string()
-            val errorMessage =
-                    try {
-                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
-                        errorObj["errorMessage"]?.toString()
-                                ?: errorObj["responseMessage"]?.toString()
-                    } catch (e: Exception) {
-                        null
-                    }
+            val errorMessage = try {
+                val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                errorObj["errorMessage"]?.toString() ?: errorObj["responseMessage"]?.toString()
+            } catch (e: Exception) {
+                null
+            }
             throw Exception(errorMessage ?: "Server Error: ${response.code()}")
         }
     }
@@ -95,18 +88,17 @@ class AuthService {
             if (body.responseCode == 200 && body.data != null) {
                 return ServiceResult(body.data, body.responseMessage)
             } else {
-                throw Exception(body.errorMessage ?: body.responseMessage)
+                val msg = if (!body.errorMessage.isNullOrBlank()) body.errorMessage else body.responseMessage
+                throw Exception(msg ?: "Google signin failed")
             }
         } else {
             val errorJson = response.errorBody()?.string()
-            val errorMessage =
-                    try {
-                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
-                        errorObj["errorMessage"]?.toString()
-                                ?: errorObj["responseMessage"]?.toString()
-                    } catch (e: Exception) {
-                        null
-                    }
+            val errorMessage = try {
+                val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                errorObj["errorMessage"]?.toString() ?: errorObj["responseMessage"]?.toString()
+            } catch (e: Exception) {
+                null
+            }
             throw Exception(errorMessage ?: "Server Error: ${response.code()}")
         }
     }
@@ -119,41 +111,40 @@ class AuthService {
             if (body.responseCode == 200 && body.data != null) {
                 return ServiceResult(body.data, body.responseMessage)
             } else {
-                throw Exception(body.errorMessage ?: body.responseMessage)
+                val msg = if (!body.errorMessage.isNullOrBlank()) body.errorMessage else body.responseMessage
+                throw Exception(msg ?: "Update failed")
             }
         } else {
             val errorJson = response.errorBody()?.string()
-            val errorMessage =
-                    try {
-                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
-                        errorObj["errorMessage"]?.toString()
-                                ?: errorObj["responseMessage"]?.toString()
-                    } catch (e: Exception) {
-                        null
-                    }
+            val errorMessage = try {
+                val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                errorObj["errorMessage"]?.toString() ?: errorObj["responseMessage"]?.toString()
+            } catch (e: Exception) {
+                null
+            }
             throw Exception(errorMessage ?: "Server Error: ${response.code()}")
         }
     }
 
-    suspend fun registerDevice(token: String, deviceTokenDto: UserDeviceTokenDTO): ServiceResult<Any> {
+    suspend fun registerDevice(token: String, deviceTokenDto: UserDeviceTokenDTO): ServiceResult<Any?> {
         val response = RetrofitInstance.api.registerDevice("Bearer $token", deviceTokenDto)
         val body = response.body()
         if (response.isSuccessful && body != null) {
-            if (body.responseCode == 200 && body.data != null) {
+            if (body.responseCode == 200) {
+                // Device registration often returns null data on success
                 return ServiceResult(body.data, body.responseMessage)
             } else {
-                throw Exception(body.errorMessage ?: body.responseMessage)
+                val msg = if (!body.errorMessage.isNullOrBlank()) body.errorMessage else body.responseMessage
+                throw Exception(msg ?: "Device registration failed")
             }
         } else {
             val errorJson = response.errorBody()?.string()
-            val errorMessage =
-                    try {
-                        val errorObj = Gson().fromJson(errorJson, Map::class.java)
-                        errorObj["errorMessage"]?.toString()
-                                ?: errorObj["responseMessage"]?.toString()
-                    } catch (e: Exception) {
-                        null
-                    }
+            val errorMessage = try {
+                val errorObj = Gson().fromJson(errorJson, Map::class.java)
+                errorObj["errorMessage"]?.toString() ?: errorObj["responseMessage"]?.toString()
+            } catch (e: Exception) {
+                null
+            }
             throw Exception(errorMessage ?: "Server Error: ${response.code()}")
         }
     }

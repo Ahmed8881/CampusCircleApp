@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +17,10 @@ import com.example.campuscircleapp.adapters.AnnouncementAdapter
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.features.home.viewModels.AnnouncementsViewModel
 import com.example.campuscircleapp.shared.services.SessionManager
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.CircularProgressIndicator
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 class AnnouncementsFragment : Fragment() {
 
@@ -28,6 +32,7 @@ class AnnouncementsFragment : Fragment() {
     private lateinit var errorView: TextView
     private lateinit var emptyView: TextView
     private lateinit var recyclerView: RecyclerView
+    private lateinit var btnClearAll: MaterialButton
     private lateinit var adapter: AnnouncementAdapter
 
     override fun onCreateView(
@@ -45,15 +50,27 @@ class AnnouncementsFragment : Fragment() {
         errorView = view.findViewById(R.id.announcementsError)
         emptyView = view.findViewById(R.id.announcementsEmpty)
         recyclerView = view.findViewById(R.id.announcementsRecycler)
+        btnClearAll = view.findViewById(R.id.btnClearAll)
 
-        adapter = AnnouncementAdapter(emptyList())
+        val token = SessionManager.getToken(requireContext()) ?: ""
+
+        adapter = AnnouncementAdapter(emptyList()) { notification ->
+            if (token.isNotEmpty()) {
+                viewModel.markAsRead(token, notification.id)
+            }
+        }
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
+        btnClearAll.setOnClickListener {
+            if (token.isNotEmpty()) {
+                viewModel.clearAll(token)
+            }
+        }
+
         observeState()
 
-        val token = SessionManager.getToken(requireContext())
-        if (token.isNullOrBlank()) {
+        if (token.isBlank()) {
             showError("Session expired. Please sign in again.")
             return
         }
@@ -70,6 +87,7 @@ class AnnouncementsFragment : Fragment() {
                     errorView.isVisible = false
                     recyclerView.isVisible = false
                     emptyView.isVisible = false
+                    btnClearAll.isVisible = false
                 }
                 is UiState.Success -> {
                     loadingView.isVisible = false
@@ -77,13 +95,45 @@ class AnnouncementsFragment : Fragment() {
                     if (state.data.isEmpty()) {
                         emptyView.isVisible = true
                         recyclerView.isVisible = false
+                        btnClearAll.isVisible = false
                     } else {
                         emptyView.isVisible = false
                         recyclerView.isVisible = true
+                        btnClearAll.isVisible = true
                         adapter.updateData(state.data)
                     }
                 }
                 is UiState.Error -> showError(state.message)
+                else -> {}
+            }
+        }
+
+        viewModel.actionState.asLiveData().observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    MotionToast.createColorToast(
+                        requireActivity(),
+                        "Success",
+                        state.message ?: "Action completed",
+                        MotionToastStyle.SUCCESS,
+                        MotionToast.GRAVITY_BOTTOM,
+                        MotionToast.SHORT_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular)
+                    )
+                    viewModel.resetActionState()
+                }
+                is UiState.Error -> {
+                    MotionToast.createColorToast(
+                        requireActivity(),
+                        "Error",
+                        state.message,
+                        MotionToastStyle.ERROR,
+                        MotionToast.GRAVITY_BOTTOM,
+                        MotionToast.SHORT_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular)
+                    )
+                    viewModel.resetActionState()
+                }
                 else -> {}
             }
         }
@@ -95,5 +145,6 @@ class AnnouncementsFragment : Fragment() {
         emptyView.isVisible = false
         errorView.isVisible = true
         errorView.text = message
+        btnClearAll.isVisible = false
     }
 }

@@ -39,12 +39,11 @@ interface ApiService {
 
     @Headers("No-Loader: true")
     @POST("User/GoogleSignup")
-    suspend fun googleSignup(@Body request: GoogleAuthRequest): Response<apiResponse<Any>> // We use Any for now until we define GoogleSignupResponseDTO
+    suspend fun googleSignup(@Body request: GoogleAuthRequest): Response<apiResponse<Any>>
 
     @POST("User/GoogleSignin")
     suspend fun googleSignin(@Body request: GoogleAuthRequest): Response<apiResponse<LoginResponse>>
 
-    
     @POST("User/UpdateGoogleUser")
     suspend fun updateGoogleUser(@Body request: UpdateUserRequest): Response<apiResponse<LoginResponse>>
     
@@ -104,11 +103,6 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("spaceId") spaceId: Long = 1
     ): Response<apiResponse<List<TimetableEntry>>>
-
-    @GET("Space/GetAnnouncements")
-    suspend fun getAnnouncements(
-        @Header("Authorization") token: String
-    ): Response<apiResponse<List<AnnouncementItem>>>
 
     @GET("Space/GetSpaces")
     suspend fun getSpaces(

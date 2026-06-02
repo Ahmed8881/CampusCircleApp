@@ -41,6 +41,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.swiperefreshlayout)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
@@ -61,6 +63,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.androidx.benchmark.common)
+
+    // SignalR
+    implementation(libs.signalr)
+    implementation("io.reactivex.rxjava3:rxjava:3.1.8")
 
     // google Sign-In
     implementation("androidx.credentials:credentials:1.2.2")

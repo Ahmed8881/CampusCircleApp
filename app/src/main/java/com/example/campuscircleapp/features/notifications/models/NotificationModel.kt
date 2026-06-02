@@ -6,7 +6,7 @@ data class NotificationModel(
     @SerializedName("id") val id: Long,
     @SerializedName("userId") val userId: Long?,
     @SerializedName("title") val title: String?,
-    @SerializedName("body") val body: String?,
+    @SerializedName("message") val body: String?, // Mapped from 'message' in JSON
     @SerializedName("type") val type: String?,
     @SerializedName("isRead") var isRead: Boolean,
     @SerializedName("createdAt") val createdAt: String?,

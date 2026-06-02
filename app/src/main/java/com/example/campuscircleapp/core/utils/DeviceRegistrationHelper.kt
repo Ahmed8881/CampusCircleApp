@@ -19,42 +19,73 @@ object DeviceRegistrationHelper {
     private const val WORK_NAME = "fcm_registration_work"
 
     /**
-     * Entry point to ensure the device is registered with the backend.
-     * It checks if registration is needed and schedules a background worker.
+     * Enqueues a worker to register the current FCM token with the backend.
+     * @param force If true, it will bypass the local cache check and always attempt to register.
      */
     fun enqueueRegistration(context: Context, force: Boolean = false) {
-        val authToken = SessionManager.getToken(context)
+        val appContext = context.applicationContext
+        val authToken = SessionManager.getToken(appContext)
+        
         if (authToken.isNullOrBlank()) {
-            Log.d(TAG, "User not logged in, skipping registration")
+            Log.d(TAG, "Registration skipped: User not logged in.")
             return
         }
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val currentToken = task.result
-                val lastRegistered = SessionManager.getLastRegisteredFcmToken(context)
+                val lastRegistered = SessionManager.getLastRegisteredFcmToken(appContext)
+                
+                Log.d(TAG, "Current FCM Token: ${currentToken?.take(10)}... Last Registered: ${lastRegistered?.take(10)}...")
 
-                // 1. Save locally for reference
+                if (currentToken.isNullOrBlank()) {
+                    Log.w(TAG, "FCM Token is null or empty. Skipping registration.")
+                    return@addOnCompleteListener
+                }
+
+                // Update local device info cache for the worker to use
                 SessionManager.saveDeviceInfo(
-                    context,
+                    appContext,
                     fcmToken = currentToken,
                     deviceToken = android.provider.Settings.Secure.getString(
-                        context.contentResolver,
+                        appContext.contentResolver,
                         android.provider.Settings.Secure.ANDROID_ID
                     ),
                     deviceName = android.os.Build.MODEL,
                     platform = "Android"
                 )
 
-                // 2. Decide if we need to call the API
-                if (force || currentToken != lastRegistered) {
-                    Log.d(TAG, "Scheduling registration work. Token changed or forced.")
-                    scheduleWorker(context)
+                // Sync if forced, token changed, or never registered
+                if (force || currentToken != lastRegistered || lastRegistered.isNullOrBlank()) {
+                    Log.i(TAG, "Scheduling FCM registration worker (force=$force)")
+                    scheduleWorker(appContext)
                 } else {
-                    Log.d(TAG, "Registration skipped. Token matches last registered.")
+                    Log.d(TAG, "FCM registration up to date locally.")
                 }
             } else {
-                Log.e(TAG, "Failed to get FCM token: ${task.exception?.message}")
+                Log.e(TAG, "FCM Token fetch failed: ${task.exception?.message}")
+            }
+        }
+    }
+
+    /**
+     * Clears local FCM state and requests a fresh token from Firebase.
+     * Use this if the backend indicates the current token is "Unregistered" or invalid.
+     */
+    fun resetAndRegistration(context: Context) {
+        val appContext = context.applicationContext
+        Log.w(TAG, "Resetting FCM token and re-registering...")
+
+        FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.i(TAG, "FCM token deleted successfully. Requesting new token...")
+                // Clear the local record of the last successful registration
+                SessionManager.setLastRegisteredFcmToken(appContext, null)
+                // Trigger a fresh registration
+                enqueueRegistration(appContext, force = true)
+            } else {
+                Log.e(TAG, "Failed to delete FCM token: ${task.exception?.message}. Attempting re-registration anyway.")
+                enqueueRegistration(appContext, force = true)
             }
         }
     }
@@ -75,7 +106,7 @@ object DeviceRegistrationHelper {
 
         WorkManager.getInstance(context).enqueueUniqueWork(
             WORK_NAME,
-            ExistingWorkPolicy.REPLACE, // Start a fresh attempt
+            ExistingWorkPolicy.REPLACE, // REPLACE ensures it runs now if forced
             registrationRequest
         )
     }

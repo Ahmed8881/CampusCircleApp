@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.campuscircleapp.core.services.signalr.SignalRManager
 import com.example.campuscircleapp.features.admin.fragments.AdminAnnouncementsFragment
 import com.example.campuscircleapp.features.admin.fragments.AdminDashboardFragment
 import com.example.campuscircleapp.features.admin.fragments.AdminManagementFragment
@@ -30,6 +31,9 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_admin)
+
+        // Initialize SignalR connection
+        SignalRManager.init(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.adminRoot)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -103,6 +107,7 @@ class AdminActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_logout -> {
+                    SignalRManager.stop()
                     SessionManager.clearToken(this)
                     navigateToLogin()
                     true

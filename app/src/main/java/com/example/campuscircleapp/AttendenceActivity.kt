@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.campuscircleapp.core.services.signalr.SignalRManager
 import com.example.campuscircleapp.features.auth.LoginActivity
 import com.example.campuscircleapp.features.home.fragments.AnnouncementsFragment
 import com.example.campuscircleapp.features.home.fragments.DashboardFragment
@@ -23,7 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.coroutines.launch
 
-class AttendenceActivity : AppCompatActivity() {
+class AttendenceActivity : BaseActivity() {
     private val homeService = HomeService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,6 +103,7 @@ class AttendenceActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_logout -> {
+                    SignalRManager.stop()
                     SessionManager.clearToken(this)
                     navigateToLogin()
                     true
