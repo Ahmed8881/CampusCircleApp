@@ -1,18 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.CampusCircleApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary -->
+    <style name="Base.Theme.CampusCircleApp" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary — Deep Olive -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorOnPrimary">@color/color_on_primary</item>
         <item name="colorPrimaryContainer">@color/color_primary_container</item>
         <item name="colorOnPrimaryContainer">@color/color_on_primary_container</item>
 
-        <!-- Secondary -->
+        <!-- Secondary — Sage -->
         <item name="colorSecondary">@color/color_secondary</item>
         <item name="colorOnSecondary">@color/color_on_secondary</item>
         <item name="colorSecondaryContainer">@color/color_secondary_container</item>
         <item name="colorOnSecondaryContainer">@color/color_on_secondary_container</item>
 
-        <!-- Tertiary — Amber accents -->
+        <!-- Tertiary — Amber -->
         <item name="colorTertiary">@color/color_warning</item>
         <item name="colorOnTertiary">@color/color_text_inverse</item>
 
@@ -20,7 +20,7 @@
         <item name="colorError">@color/color_error</item>
         <item name="colorOnError">@color/color_text_inverse</item>
 
-        <!-- Backgrounds and surfaces -->
+        <!-- Backgrounds and surfaces — light -->
         <item name="android:colorBackground">@color/color_bg</item>
         <item name="colorSurface">@color/color_surface</item>
         <item name="colorOnSurface">@color/color_text_primary</item>
@@ -31,14 +31,14 @@
         <item name="colorOutline">@color/color_border</item>
         <item name="colorOutlineVariant">@color/color_border_subtle</item>
 
-        <!-- Status bars (dark) -->
+        <!-- Status bars — light mode icons -->
         <item name="android:statusBarColor">@color/color_bg</item>
         <item name="android:navigationBarColor">@color/color_surface</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
 
         <!-- Ripple & controls -->
-        <item name="colorControlHighlight">@color/color_overlay_medium</item>
+        <item name="colorControlHighlight">@color/color_overlay_light</item>
         <item name="colorControlActivated">@color/color_primary</item>
         <item name="colorControlNormal">@color/color_text_muted</item>
 

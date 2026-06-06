@@ -6,25 +6,23 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="#FCFDFB"
     tools:context=".AttendenceActivity">
 
-    <!-- Header bar -->
+    <!-- Top Premium Header Bar -->
     <LinearLayout
         android:id="@+id/headerContainer"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_header_bar"
+        android:layout_height="72dp"
+        android:background="#FFFFFF"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="12dp"
+        android:paddingHorizontal="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Branding & Dynamic Contextual Welcome Header -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -34,57 +32,101 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="sans-serif-medium"
                 android:letterSpacing="-0.02"
                 android:text="CampusCircle"
-                android:textColor="@color/color_text_primary"
-                android:textSize="18sp" />
+                android:textColor="#191F11"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/headerUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:alpha="0.6"
+                android:layout_marginTop="2dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.02"
                 android:text="Welcome"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="#5C6453"
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/profileImage"
+        <!-- Premium Modern Rounded Profile Frame -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:contentDescription="Profile"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo_2"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.Circle"
-            app:strokeColor="@color/color_primary"
-            app:strokeWidth="2dp" />
+            app:cardBackgroundColor="#F1F4EE"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E3E6DF"
+            app:strokeWidth="1dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Profile"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo_2"
+                app:tint="#3B4D24" />
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 
-    <!-- Fragment container -->
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
+    <!-- Sleek Minimalist Border Line beneath the header -->
+    <View
+        android:id="@+id/headerDivider"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        android:layout_height="1dp"
+        android:background="#E3E6DF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerContainer" />
 
-    <!-- Bottom navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+    <!-- Fragment Canvas Workspace Area -->
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_bottom_nav"
-        app:itemIconTint="@color/bottom_nav_item_color"
-        app:itemTextColor="@color/bottom_nav_item_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:background="#FCFDFB"
+        app:layout_constraintBottom_toTopOf="@id/navCardContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintTop_toBottomOf="@id/headerDivider" />
+
+    <!-- Premium Floating Bento-Style Bottom Navigation Container Wrapper -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/navCardContainer"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="20dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:cardMaxElevation="8dp"
+        app:strokeColor="#E3E6DF"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Embedded User BottomNavigationView -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:elevation="0dp"
+            app:itemIconSize="22dp"
+            app:itemIconTint="@color/bottom_nav_item_color"
+            app:itemTextColor="@color/bottom_nav_item_color"
+            app:itemRippleColor="#0D3B4D24"
+            app:itemActiveIndicatorStyle="@style/Widget.Custom.BottomNavActiveIndicator"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav_menu" /> <!-- Pulls your student/user menu asset cleanly -->
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
