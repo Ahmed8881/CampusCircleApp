@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
+    android:layout_marginBottom="8dp"
     app:cardBackgroundColor="@color/color_card"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
@@ -16,8 +16,30 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp">
 
+        <!-- Avatar circle with initials -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="14dp"
+            app:cardBackgroundColor="@color/color_primary_container"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="S"
+                android:textColor="@color/color_primary"
+                android:textSize="16sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Name + roll number -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -31,20 +53,21 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Student Name"
                 android:textColor="@color/color_text_primary"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/markStudentRollNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:alpha="0.6"
+                android:alpha="0.55"
+                android:fontFamily="sans-serif"
                 android:text="2023-CS-01"
                 android:textColor="@color/color_text_secondary"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
-        <!-- P / A / L toggle buttons -->
+        <!-- P / A / L status buttons -->
         <LinearLayout
             android:id="@+id/statusButtonsContainer"
             android:layout_width="wrap_content"
@@ -54,10 +77,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPresent"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:insetBottom="0dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:padding="0dp"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="P"
@@ -66,15 +92,18 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/color_success"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="10dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAbsent"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:insetBottom="0dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
                 android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:padding="0dp"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="A"
@@ -83,15 +112,18 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/color_error"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="10dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLeave"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:insetBottom="0dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
                 android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:padding="0dp"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="L"
@@ -100,7 +132,7 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/color_warning"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="10dp" />
         </LinearLayout>
     </LinearLayout>
 

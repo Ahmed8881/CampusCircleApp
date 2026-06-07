@@ -15,7 +15,6 @@ import com.example.campuscircleapp.features.admin.fragments.AdminAnnouncementsFr
 import com.example.campuscircleapp.features.admin.fragments.AdminDashboardFragment
 import com.example.campuscircleapp.features.admin.fragments.AdminManagementFragment
 import com.example.campuscircleapp.features.admin.fragments.MarkAttendanceFragment
-import com.example.campuscircleapp.features.admin.fragments.ReviewEnrollmentFragment
 import com.example.campuscircleapp.features.auth.LoginActivity
 import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.shared.services.SessionManager
@@ -36,10 +35,8 @@ class AdminActivity : AppCompatActivity() {
         SignalRManager.init(this)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.adminRoot)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
-            findViewById<BottomNavigationView>(R.id.adminBottomNavigation)
-                .setPadding(0, 0, 0, systemBars.bottom)
+            val statusBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            v.setPadding(statusBars.left, statusBars.top, statusBars.right, 0)
             insets
         }
 
@@ -59,7 +56,6 @@ class AdminActivity : AppCompatActivity() {
                 R.id.nav_admin_dashboard -> AdminDashboardFragment()
                 R.id.nav_mark_attendance -> MarkAttendanceFragment()
                 R.id.nav_admin_announcements -> AdminAnnouncementsFragment()
-                R.id.nav_review_enrollment -> ReviewEnrollmentFragment()
                 R.id.nav_manage -> AdminManagementFragment()
                 else -> null
             }

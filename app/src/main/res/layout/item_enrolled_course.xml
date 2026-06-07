@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
     app:cardBackgroundColor="@color/color_card"
     app:cardCornerRadius="20dp"
@@ -17,19 +16,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Gradient top accent -->
+        <!-- Olive accent top bar -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="4dp"
+            android:layout_height="3dp"
             android:background="@drawable/bg_gradient_primary" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="18dp">
 
-            <!-- Course name + status chip row -->
+            <!-- Course name + status row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,14 +47,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:textColor="@color/color_text_primary"
-                        android:textSize="16sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/enrolledSemesterName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:alpha="0.65"
+                        android:layout_marginTop="3dp"
+                        android:alpha="0.6"
                         android:textColor="@color/color_text_secondary"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -72,17 +71,17 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Attendance text -->
+            <!-- Attendance summary text -->
             <TextView
                 android:id="@+id/enrolledAttendanceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:alpha="0.75"
+                android:alpha="0.7"
                 android:textColor="@color/color_text_secondary"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
-            <!-- Progress bar -->
+            <!-- Progress track -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="6dp"

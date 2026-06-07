@@ -30,7 +30,7 @@ class AnnouncementsFragment : Fragment() {
 
     private lateinit var loadingView: CircularProgressIndicator
     private lateinit var errorView: TextView
-    private lateinit var emptyView: TextView
+    private lateinit var emptyView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnClearAll: MaterialButton
     private lateinit var adapter: AnnouncementAdapter

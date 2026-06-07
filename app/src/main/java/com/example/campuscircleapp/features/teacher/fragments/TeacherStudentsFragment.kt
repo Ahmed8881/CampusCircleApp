@@ -30,7 +30,7 @@ class TeacherStudentsFragment : Fragment() {
 
     private lateinit var loadingView: CircularProgressIndicator
     private lateinit var errorView: TextView
-    private lateinit var emptyView: TextView
+    private lateinit var emptyView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var courseSpinner: Spinner
     private lateinit var adapter: TeacherStudentAdapter

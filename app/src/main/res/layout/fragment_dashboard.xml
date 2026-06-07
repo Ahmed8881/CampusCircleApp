@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="32dp">
+            android:paddingBottom="48dp">
 
             <!-- Header -->
             <LinearLayout
@@ -30,18 +30,30 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
-                android:paddingTop="28dp"
+                android:paddingTop="32dp"
                 android:paddingBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.55"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:text="OVERVIEW"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/dashboardTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:fontFamily="sans-serif-black"
-                    android:letterSpacing="-0.02"
+                    android:letterSpacing="-0.03"
                     android:text="Dashboard"
                     android:textColor="@color/color_text_primary"
-                    android:textSize="34sp" />
+                    android:textSize="36sp" />
 
                 <TextView
                     android:id="@+id/dashboardSubtitle"
@@ -54,80 +66,96 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Average Attendance — Hero card with gradient -->
+            <!-- Average Attendance Hero Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@null"
-                app:cardCornerRadius="24dp"
+                app:cardBackgroundColor="#517404"
+                app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_gradient_primary"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="24dp">
+                    android:padding="28dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.1"
+                        android:layout_weight="1.2"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:alpha="0.75"
+                            android:alpha="0.8"
                             android:fontFamily="sans-serif-medium"
-                            android:letterSpacing="0.10"
-                            android:text="AVERAGE ATTENDANCE"
+                            android:letterSpacing="0.12"
+                            android:text="AVG. ATTENDANCE"
                             android:textAllCaps="true"
-                            android:textColor="@color/white"
+                            android:textColor="#E3EDD3"
                             android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/averageAttendanceValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="sans-serif-black"
-                            android:letterSpacing="-0.03"
+                            android:letterSpacing="-0.04"
                             android:text="—"
-                            android:textColor="@color/white"
-                            android:textSize="52sp" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="60sp" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="1dp"
-                        android:layout_height="56dp"
-                        android:alpha="0.3"
-                        android:background="@color/white" />
+                        android:layout_height="60dp"
+                        android:alpha="0.2"
+                        android:background="#FFFFFF" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="24dp"
                         android:layout_weight="1"
-                        android:alpha="0.85"
-                        android:lineSpacingExtra="4dp"
-                        android:text="Keep it up! Stay above 75% to meet the threshold."
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:alpha="0.9"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="75% minimum"
+                            android:textColor="#F4F8EE"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.7"
+                            android:fontFamily="sans-serif"
+                            android:lineSpacingExtra="4dp"
+                            android:text="Stay above threshold to meet attendance requirements"
+                            android:textColor="#E3EDD3"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Stat grid: Present · Absent · Leaves · Total -->
+            <!-- Stats Grid 2×2 -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
-                android:alignmentMode="alignMargins"
                 android:columnCount="2"
                 android:columnOrderPreserved="false">
 
@@ -136,37 +164,46 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@null"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
+                    app:strokeColor="@color/color_border"
+                    app:strokeWidth="1dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_success"
                         android:orientation="vertical"
-                        android:padding="20dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:fontFamily="sans-serif-medium"
-                            android:letterSpacing="0.10"
-                            android:text="PRESENT"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
+                        android:padding="18dp">
+
+                        <View
+                            android:layout_width="28dp"
+                            android:layout_height="4dp"
+                            android:background="#517404"
+                            android:layout_marginBottom="12dp" />
+
                         <TextView
                             android:id="@+id/totalPresentValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-black"
                             android:text="—"
-                            android:textColor="@color/white"
-                            android:textSize="32sp" />
+                            android:textColor="#517404"
+                            android:textSize="34sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:alpha="0.6"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.06"
+                            android:text="PRESENT"
+                            android:textAllCaps="true"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -175,37 +212,46 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@null"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
+                    app:strokeColor="@color/color_border"
+                    app:strokeWidth="1dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_error"
                         android:orientation="vertical"
-                        android:padding="20dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:fontFamily="sans-serif-medium"
-                            android:letterSpacing="0.10"
-                            android:text="ABSENT"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
+                        android:padding="18dp">
+
+                        <View
+                            android:layout_width="28dp"
+                            android:layout_height="4dp"
+                            android:background="#D93025"
+                            android:layout_marginBottom="12dp" />
+
                         <TextView
                             android:id="@+id/totalAbsentValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-black"
                             android:text="—"
-                            android:textColor="@color/white"
-                            android:textSize="32sp" />
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="34sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:alpha="0.6"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.06"
+                            android:text="ABSENT"
+                            android:textAllCaps="true"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -214,99 +260,127 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="@null"
+                    android:layout_marginEnd="6dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
+                    app:strokeColor="@color/color_border"
+                    app:strokeWidth="1dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_warning"
                         android:orientation="vertical"
-                        android:padding="20dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:fontFamily="sans-serif-medium"
-                            android:letterSpacing="0.10"
-                            android:text="LEAVES"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
+                        android:padding="18dp">
+
+                        <View
+                            android:layout_width="28dp"
+                            android:layout_height="4dp"
+                            android:background="#F59E0B"
+                            android:layout_marginBottom="12dp" />
+
                         <TextView
                             android:id="@+id/totalLeavesValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-black"
                             android:text="—"
-                            android:textColor="@color/white"
-                            android:textSize="32sp" />
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="34sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:alpha="0.6"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.06"
+                            android:text="LEAVES"
+                            android:textAllCaps="true"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Total -->
+                <!-- Total Classes -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@null"
+                    android:layout_marginStart="6dp"
+                    app:cardBackgroundColor="#EEF3E6"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_teal"
                         android:orientation="vertical"
-                        android:padding="20dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:fontFamily="sans-serif-medium"
-                            android:letterSpacing="0.10"
-                            android:text="TOTAL CLASSES"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
+                        android:padding="18dp">
+
+                        <View
+                            android:layout_width="28dp"
+                            android:layout_height="4dp"
+                            android:background="#517404"
+                            android:layout_marginBottom="12dp" />
+
                         <TextView
                             android:id="@+id/totalClassesValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-black"
                             android:text="—"
-                            android:textColor="@color/white"
-                            android:textSize="32sp" />
+                            android:textColor="#517404"
+                            android:textSize="34sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:alpha="0.7"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.06"
+                            android:text="TOTAL"
+                            android:textAllCaps="true"
+                            android:textColor="#517404"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </GridLayout>
 
-            <!-- Section label -->
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Analytics Section Label -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:letterSpacing="0.08"
-                android:text="ANALYTICS"
-                android:textAllCaps="true"
-                android:textColor="@color/color_text_muted"
-                android:textSize="11sp" />
+                android:layout_marginTop="28dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <!-- Attendance Trend chart card -->
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="16dp"
+                    android:background="#517404"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Analytics"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <!-- Attendance Trend Chart Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/color_card"
-                app:cardCornerRadius="24dp"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
@@ -315,7 +389,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -329,7 +403,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:alpha="0.6"
+                        android:alpha="0.5"
                         android:text="Weekly overview"
                         android:textColor="@color/color_text_secondary"
                         android:textSize="12sp" />
@@ -338,19 +412,19 @@
                         android:id="@+id/attendanceTrendChart"
                         android:layout_width="match_parent"
                         android:layout_height="220dp"
-                        android:layout_marginTop="16dp" />
+                        android:layout_marginTop="20dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Course Performance chart card -->
+            <!-- Course Performance Chart Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                app:cardBackgroundColor="@color/color_card"
-                app:cardCornerRadius="24dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
@@ -359,7 +433,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="24dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -373,7 +447,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:alpha="0.6"
+                        android:alpha="0.5"
                         android:text="Attendance per course"
                         android:textColor="@color/color_text_secondary"
                         android:textSize="12sp" />
@@ -382,31 +456,33 @@
                         android:id="@+id/courseAttendanceChart"
                         android:layout_width="match_parent"
                         android:layout_height="280dp"
-                        android:layout_marginTop="16dp" />
+                        android:layout_marginTop="20dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Loading indicator -->
+    <!-- Loading Indicator -->
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/dashboardLoading"
-        style="@style/Widget.App.ProgressIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
+        app:indicatorColor="#517404"
+        app:trackColor="#DDE8C4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Error text -->
+    <!-- Error State -->
     <TextView
         android:id="@+id/dashboardError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:padding="24dp"
         android:textColor="@color/color_error"
