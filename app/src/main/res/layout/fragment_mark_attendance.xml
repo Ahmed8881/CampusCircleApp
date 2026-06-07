@@ -120,7 +120,7 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/pickDateTimeBtn"
-                            style="@style/Widget.MaterialComponents.Button.TonalButton"
+                            style="@style/Widget.Material3.Button.TonalButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Set Time"
@@ -176,9 +176,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:backgroundTint="@null"
-                app:cornerRadius="16dp"
-                app:insetBottom="0dp"
-                app:insetTop="0dp" />
+                app:cornerRadius="16dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

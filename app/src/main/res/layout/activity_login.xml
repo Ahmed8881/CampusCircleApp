@@ -200,9 +200,7 @@
                         android:textStyle="bold"
                         app:backgroundTint="#4A5D2F"
                         app:cornerRadius="14dp"
-                        app:elevation="2dp"
-                        app:insetBottom="0dp"
-                        app:insetTop="0dp" />
+                        app:elevation="2dp" />
 
                     <LinearLayout
                         android:id="@+id/divider"
@@ -247,10 +245,7 @@
                         app:icon="@drawable/google"
                         app:iconGravity="textStart"
                         app:iconPadding="12dp"
-                        app:iconTint="@null"
-                        app:insetBottom="0dp"
-                        app:insetTop="0dp"
-                        app:strokeColor="#D1D7CB"
+                        app:iconTint="@null"                        app:strokeColor="#D1D7CB"
                         app:strokeWidth="1dp" />
 
                     <TextView

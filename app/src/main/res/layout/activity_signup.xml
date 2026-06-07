@@ -311,10 +311,7 @@
                         android:visibility="invisible"
                         app:backgroundTint="#00000000"
                         app:cornerRadius="12dp"
-                        app:elevation="0dp"
-                        app:insetBottom="0dp"
-                        app:insetTop="0dp"
-                        app:strokeColor="#D2D7CD"
+                        app:elevation="0dp"                        app:strokeColor="#D2D7CD"
                         app:strokeWidth="1dp" />
 
                     <!-- Gap spacer explicitly defined inside layout structure -->
@@ -335,9 +332,7 @@
                         android:textStyle="bold"
                         app:backgroundTint="#3B4D24"
                         app:cornerRadius="12dp"
-                        app:elevation="0dp"
-                        app:insetBottom="0dp"
-                        app:insetTop="0dp" />
+                        app:elevation="0dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -386,10 +381,7 @@
                 app:icon="@drawable/google"
                 app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="@null"
-                app:insetBottom="0dp"
-                app:insetTop="0dp"
-                app:strokeColor="#D2D7CD"
+                app:iconTint="@null"                app:strokeColor="#D2D7CD"
                 app:strokeWidth="1dp" />
 
             <!-- Login link -->

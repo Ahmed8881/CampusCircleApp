@@ -121,9 +121,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:backgroundTint="@null"
-                app:cornerRadius="16dp"
-                app:insetBottom="0dp"
-                app:insetTop="0dp" />
+                app:cornerRadius="16dp" />
 
             <!-- Back to login -->
             <com.google.android.material.button.MaterialButton
@@ -137,10 +135,7 @@
                 android:textColor="@color/color_text_secondary"
                 android:textSize="15sp"
                 app:backgroundTint="@color/color_surface_variant"
-                app:cornerRadius="16dp"
-                app:insetBottom="0dp"
-                app:insetTop="0dp"
-                app:strokeColor="@color/color_border"
+                app:cornerRadius="16dp"                app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp" />
 
             <TextView

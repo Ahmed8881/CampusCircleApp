@@ -36,6 +36,18 @@
             android:text="Latest updates from your spaces"
             android:textColor="@color/color_text_secondary"
             android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearAll"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Clear all"
+            android:textAllCaps="false"
+            android:textColor="@color/color_error"
+            android:textSize="13sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <!-- Separator -->
