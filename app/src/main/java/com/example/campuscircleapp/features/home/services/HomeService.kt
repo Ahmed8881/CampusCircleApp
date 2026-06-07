@@ -205,6 +205,11 @@ class HomeService {
             throw Exception(body.errorMessage ?: body.responseMessage)
         }
 
+        // 404 means no pending enrollments exist — treat as empty list
+        if (response.code() == 404) {
+            return ServiceResult(emptyList(), "No pending enrollments")
+        }
+
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
 
