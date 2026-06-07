@@ -3,6 +3,8 @@
 
     <!-- ══════════════ Text Appearances ══════════════ -->
 
+    <style name="TextAppearance.App" parent="TextAppearance.Material3.BodyMedium" />
+
     <style name="TextAppearance.App.Display">
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textSize">40sp</item>
@@ -133,6 +135,8 @@
     </style>
 
     <!-- ══════════════ Shape Appearances ══════════════ -->
+
+    <style name="ShapeAppearance.App" parent="ShapeAppearance.Material3.MediumComponent" />
 
     <style name="ShapeAppearance.App.Circle">
         <item name="cornerFamily">rounded</item>
