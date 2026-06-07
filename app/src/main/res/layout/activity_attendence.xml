@@ -90,43 +90,37 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FCFDFB"
-        app:layout_constraintBottom_toTopOf="@id/navCardContainer"
+        app:layout_constraintBottom_toTopOf="@id/navigationDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerDivider" />
 
-    <!-- Premium Floating Bento-Style Bottom Navigation Container Wrapper -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/navCardContainer"
+    <!-- Border line above navigation bar -->
+    <View
+        android:id="@+id/navigationDivider"
         android:layout_width="0dp"
-        android:layout_height="68dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="20dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="6dp"
-        app:cardMaxElevation="8dp"
-        app:strokeColor="#E3E6DF"
-        app:strokeWidth="1dp"
+        android:layout_height="1dp"
+        android:background="#E3E6DF"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:elevation="0dp"
+        app:itemActiveIndicatorStyle="@style/Widget.Custom.BottomNavActiveIndicator"
+        app:itemIconSize="22dp"
+        app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextColor="@color/bottom_nav_item_color"
+        app:itemRippleColor="#0D3B4D24"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <!-- Embedded User BottomNavigationView -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            app:elevation="0dp"
-            app:itemIconSize="22dp"
-            app:itemIconTint="@color/bottom_nav_item_color"
-            app:itemTextColor="@color/bottom_nav_item_color"
-            app:itemRippleColor="#0D3B4D24"
-            app:itemActiveIndicatorStyle="@style/Widget.Custom.BottomNavActiveIndicator"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_nav_menu" /> <!-- Pulls your student/user menu asset cleanly -->
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
