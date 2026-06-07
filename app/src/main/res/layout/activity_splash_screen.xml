@@ -5,113 +5,119 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="#FCFDFB"> <!-- Cohesive premium off-white canvas -->
 
-    <!-- Ambient glow behind logo -->
+    <!-- Ambient soft olive glow behind the logo -->
     <View
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:alpha="0.60"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:alpha="0.15"
         android:background="@drawable/bg_splash_glow"
+        android:backgroundTint="#3B4D24"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="@+id/logo"
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <!-- Outer pulse ring -->
+    <!-- Outer sleek pulse ring -->
     <View
         android:id="@+id/ringOuter"
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:alpha="0.07"
+        android:alpha="0.25"
         android:background="@drawable/bg_pulse_ring"
+        android:backgroundTint="#F1F4EE"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="@+id/logo"
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <!-- Mid pulse ring -->
+    <!-- Mid sleek pulse ring -->
     <View
         android:id="@+id/ringMid"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:alpha="0.12"
+        android:alpha="0.45"
         android:background="@drawable/bg_pulse_ring"
+        android:backgroundTint="#F1F4EE"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="@+id/logo"
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <!-- Inner pulse ring -->
+    <!-- Inner sleek pulse ring -->
     <View
         android:id="@+id/ringInner"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:alpha="0.20"
+        android:alpha="0.75"
         android:background="@drawable/bg_pulse_ring"
+        android:backgroundTint="#E3E6DF"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="@+id/logo"
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <!-- Logo -->
+    <!-- Brand Logo tinted to Professional Deep Olive -->
     <ImageView
         android:id="@+id/logo"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:src="@drawable/logo_2"
+        android:tint="#3B4D24"
         app:layout_constraintBottom_toTopOf="@+id/appName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.44"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <!-- App name -->
+    <!-- App Name (Dark Forest charcoal for premium editorial contrast) -->
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-black"
-        android:letterSpacing="-0.02"
+        android:letterSpacing="-0.03"
         android:text="CampusCircle"
-        android:textColor="@color/color_text_primary"
-        android:textSize="34sp"
+        android:textColor="#191F11"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tagline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <!-- Tagline -->
+    <!-- Premium Muted Accent Tagline -->
     <TextView
         android:id="@+id/tagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:alpha="0.5"
+        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.22"
+        android:letterSpacing="0.25"
         android:text="CONNECT  ·  LEARN  ·  GROW"
         android:textAllCaps="true"
-        android:textColor="@color/color_primary_light"
+        android:textColor="#5C6453"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appName" />
 
-    <!-- Institution label at bottom -->
+    <!-- Subtle, Minimalist Institutional Signature at bottom -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:alpha="0.25"
-        android:letterSpacing="0.15"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.2"
         android:text="UET LAHORE"
         android:textAllCaps="true"
-        android:textColor="@color/color_text_secondary"
+        android:textColor="#A3AB9A"
         android:textSize="11sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

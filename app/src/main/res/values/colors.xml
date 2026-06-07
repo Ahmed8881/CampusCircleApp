@@ -5,91 +5,91 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_grey">#616161</color>
 
-    <!-- Brand Primary — Indigo -->
-    <color name="color_primary">#6366F1</color>
-    <color name="color_primary_dark">#4F46E5</color>
-    <color name="color_primary_light">#818CF8</color>
-    <color name="color_primary_container">#1E1B4B</color>
+    <!-- Brand Primary — Deep Olive -->
+    <color name="color_primary">#3B4D24</color>
+    <color name="color_primary_dark">#2D3A1B</color>
+    <color name="color_primary_light">#4A6230</color>
+    <color name="color_primary_container">#E8EDE2</color>
     <color name="color_on_primary">#FFFFFF</color>
-    <color name="color_on_primary_container">#C7D2FE</color>
+    <color name="color_on_primary_container">#3B4D24</color>
 
-    <!-- Brand Secondary — Cyan -->
-    <color name="color_secondary">#22D3EE</color>
-    <color name="color_secondary_dark">#06B6D4</color>
-    <color name="color_secondary_container">#083344</color>
-    <color name="color_on_secondary">#083344</color>
-    <color name="color_on_secondary_container">#A5F3FC</color>
+    <!-- Brand Secondary — Sage -->
+    <color name="color_secondary">#5C7A3C</color>
+    <color name="color_secondary_dark">#3B4D24</color>
+    <color name="color_secondary_container">#F1F4EE</color>
+    <color name="color_on_secondary">#FFFFFF</color>
+    <color name="color_on_secondary_container">#3B4D24</color>
 
-    <!-- Backgrounds -->
-    <color name="color_bg">#09090F</color>
-    <color name="color_surface">#0F1117</color>
-    <color name="color_surface_variant">#161622</color>
-    <color name="color_card">#161622</color>
-    <color name="color_card_elevated">#1E1F30</color>
+    <!-- Backgrounds — light premium off-white -->
+    <color name="color_bg">#FCFDFB</color>
+    <color name="color_surface">#FFFFFF</color>
+    <color name="color_surface_variant">#F4F6F2</color>
+    <color name="color_card">#FFFFFF</color>
+    <color name="color_card_elevated">#FFFFFF</color>
 
-    <!-- Text -->
-    <color name="color_text_primary">#F1F5F9</color>
-    <color name="color_text_secondary">#94A3B8</color>
-    <color name="color_text_muted">#475569</color>
-    <color name="color_text_disabled">#2D3748</color>
-    <color name="color_text_inverse">#09090F</color>
+    <!-- Text — olive-tinted darks -->
+    <color name="color_text_primary">#191F11</color>
+    <color name="color_text_secondary">#5C6453</color>
+    <color name="color_text_muted">#8A9382</color>
+    <color name="color_text_disabled">#C5C9BE</color>
+    <color name="color_text_inverse">#FFFFFF</color>
 
-    <!-- Status — Success (Emerald) -->
-    <color name="color_success">#34D399</color>
-    <color name="color_success_dim">#022C22</color>
-    <color name="on_color_success">#ECFDF5</color>
+    <!-- Status — Success (Forest Green) -->
+    <color name="color_success">#2D6A30</color>
+    <color name="color_success_dim">#E8F2E9</color>
+    <color name="on_color_success">#E8F2E9</color>
 
-    <!-- Status — Error (Rose) -->
-    <color name="color_error">#F87171</color>
-    <color name="color_error_dim">#2D0A0A</color>
-    <color name="on_color_error">#FEF2F2</color>
+    <!-- Status — Error (Muted Red) -->
+    <color name="color_error">#C0392B</color>
+    <color name="color_error_dim">#FDECEA</color>
+    <color name="on_color_error">#FDECEA</color>
 
-    <!-- Status — Warning (Amber) -->
-    <color name="color_warning">#FBBF24</color>
-    <color name="color_warning_dim">#2D1A00</color>
-    <color name="on_color_warning">#FFFBEB</color>
+    <!-- Status — Warning (Dark Amber) -->
+    <color name="color_warning">#B45309</color>
+    <color name="color_warning_dim">#FEF3C7</color>
+    <color name="on_color_warning">#FEF3C7</color>
 
-    <!-- Status — Info (Sky) -->
-    <color name="color_info">#38BDF8</color>
-    <color name="color_info_dim">#071E2E</color>
+    <!-- Status — Info (Deep Blue) -->
+    <color name="color_info">#1E5B99</color>
+    <color name="color_info_dim">#EBF3FB</color>
 
     <!-- Borders & Dividers -->
-    <color name="color_border">#1E293B</color>
-    <color name="color_border_subtle">#0F172A</color>
-    <color name="color_divider">#1A2235</color>
+    <color name="color_border">#E3E6DF</color>
+    <color name="color_border_subtle">#F0F2EE</color>
+    <color name="color_divider">#EAEEE7</color>
 
-    <!-- Gradient pairs for drawables -->
-    <color name="grad_primary_start">#6366F1</color>
-    <color name="grad_primary_end">#8B5CF6</color>
-    <color name="grad_teal_start">#06B6D4</color>
-    <color name="grad_teal_end">#3B82F6</color>
-    <color name="grad_success_start">#10B981</color>
-    <color name="grad_success_end">#059669</color>
-    <color name="grad_error_start">#F43F5E</color>
-    <color name="grad_error_end">#DC2626</color>
-    <color name="grad_warning_start">#F59E0B</color>
+    <!-- Gradient pairs for drawables — olive-based palette -->
+    <color name="grad_primary_start">#3B4D24</color>
+    <color name="grad_primary_end">#56692E</color>
+    <color name="grad_teal_start">#2D6A4A</color>
+    <color name="grad_teal_end">#3D8B6A</color>
+    <color name="grad_success_start">#2D6A30</color>
+    <color name="grad_success_end">#388E3C</color>
+    <color name="grad_error_start">#C0392B</color>
+    <color name="grad_error_end">#D32F2F</color>
+    <color name="grad_warning_start">#B45309</color>
     <color name="grad_warning_end">#D97706</color>
-    <color name="grad_info_start">#38BDF8</color>
-    <color name="grad_info_end">#6366F1</color>
+    <color name="grad_info_start">#1565C0</color>
+    <color name="grad_info_end">#1976D2</color>
 
-    <!-- Course banner gradients — 4 unique palettes -->
-    <color name="grad_course_a_start">#7C3AED</color>
-    <color name="grad_course_a_end">#4F46E5</color>
-    <color name="grad_course_b_start">#0891B2</color>
-    <color name="grad_course_b_end">#0369A1</color>
-    <color name="grad_course_c_start">#DB2777</color>
-    <color name="grad_course_c_end">#9D174D</color>
-    <color name="grad_course_d_start">#D97706</color>
-    <color name="grad_course_d_end">#92400E</color>
+    <!-- Course banner gradients — kept colorful for visual variety -->
+    <color name="grad_course_a_start">#5B21B6</color>
+    <color name="grad_course_a_end">#4338CA</color>
+    <color name="grad_course_b_start">#0369A1</color>
+    <color name="grad_course_b_end">#0284C7</color>
+    <color name="grad_course_c_start">#9D174D</color>
+    <color name="grad_course_c_end">#BE185D</color>
+    <color name="grad_course_d_start">#92400E</color>
+    <color name="grad_course_d_end">#B45309</color>
 
-    <!-- Overlay tints -->
-    <color name="color_overlay_light">#0AFFFFFF</color>
-    <color name="color_overlay_medium">#14FFFFFF</color>
-    <color name="color_overlay_heavy">#26FFFFFF</color>
+    <!-- Overlay tints — olive-based -->
+    <color name="color_overlay_light">#0A3B4D24</color>
+    <color name="color_overlay_medium">#143B4D24</color>
+    <color name="color_overlay_heavy">#263B4D24</color>
     <color name="color_scrim">#80000000</color>
 
     <!-- Bottom Navigation -->
-    <color name="nav_selected">#6366F1</color>
-    <color name="nav_unselected">#475569</color>
-    <color name="nav_indicator">#1E1B4B</color>
+    <color name="nav_selected">#3B4D24</color>
+    <color name="nav_unselected">#8A9382</color>
+    <color name="nav_indicator">#E8EDE2</color>
 </resources>
