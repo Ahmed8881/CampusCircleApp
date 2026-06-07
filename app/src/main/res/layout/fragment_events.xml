@@ -7,28 +7,45 @@
     android:background="@color/color_bg">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        android:overScrollMode="never">
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="40dp">
+            android:paddingBottom="48dp">
 
+            <!-- Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="32dp"
-                android:paddingBottom="16dp">
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alpha="0.55"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.08"
+                    android:text="CAMPUS"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:fontFamily="sans-serif-black"
                     android:letterSpacing="-0.02"
                     android:text="Events"
@@ -39,19 +56,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:alpha="0.6"
                     android:text="Birthdays &amp; upcoming schedules"
                     android:textColor="@color/color_text_secondary"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
+            <!-- Calendar Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/color_card"
                 app:cardCornerRadius="28dp"
-                app:cardElevation="4dp"
+                app:cardElevation="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
 
@@ -59,8 +78,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="20dp">
 
+                    <!-- Month navigation row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -69,13 +89,13 @@
 
                         <TextView
                             android:id="@+id/eventsPrevMonth"
-                            android:layout_width="44dp"
-                            android:layout_height="44dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/bg_pill_muted"
                             android:gravity="center"
                             android:text="‹"
                             android:textColor="@color/color_primary_light"
-                            android:textSize="24sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -85,80 +105,113 @@
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center"
+                            android:letterSpacing="0.01"
                             android:textColor="@color/color_text_primary"
-                            android:textSize="18sp"
-                            android:letterSpacing="0.01" />
+                            android:textSize="17sp" />
 
                         <TextView
                             android:id="@+id/eventsNextMonth"
-                            android:layout_width="44dp"
-                            android:layout_height="44dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/bg_pill_muted"
                             android:gravity="center"
                             android:text="›"
                             android:textColor="@color/color_primary_light"
-                            android:textSize="24sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
+                    <!-- Weekday labels row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="W" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="F" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                    </LinearLayout>
+
+                    <!-- Calendar days grid -->
                     <GridLayout
                         android:id="@+id/eventsCalendarGrid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="8dp"
                         android:columnCount="7" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Birthdays Section Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="32dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="4dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/bg_gradient_primary"
-                    android:layout_marginEnd="12dp" />
+                    android:layout_width="3dp"
+                    android:layout_height="18dp"
+                    android:background="#517404"
+                    android:layout_marginEnd="10dp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="sans-serif-medium"
                     android:text="Birthdays This Month"
                     android:textColor="@color/color_text_primary"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
             </LinearLayout>
 
+            <!-- Loading -->
             <ProgressBar
                 android:id="@+id/eventsLoadingView"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="32dp"
-                android:indeterminateTint="@color/color_primary_light"
+                android:layout_marginTop="28dp"
+                android:indeterminateTint="#517404"
                 android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/eventsEmptyView"
+            <!-- Empty State -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:text="No birthdays this month"
-                android:textColor="@color/color_text_secondary"
-                android:textSize="15sp"
-                android:visibility="gone" />
+                android:orientation="vertical"
+                android:paddingTop="28dp"
+                android:paddingBottom="16dp">
 
+                <TextView
+                    android:id="@+id/eventsEmptyView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.45"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="No birthdays this month"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- Birthdays RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventsBirthdayList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="14dp"
                 android:clipToPadding="false"
                 android:nestedScrollingEnabled="false" />
 

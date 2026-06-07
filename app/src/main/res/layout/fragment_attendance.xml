@@ -7,35 +7,52 @@
     android:layout_height="match_parent"
     android:background="@color/color_bg">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/attendanceTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="sans-serif-black"
-        android:letterSpacing="-0.02"
-        android:text="Attendance History"
-        android:textColor="@color/color_text_primary"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/attendanceSubtitle"
+    <!-- Header section -->
+    <LinearLayout
+        android:id="@+id/attendanceHeaderSection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="24dp"
-        android:alpha="0.6"
-        android:text="Select a course to view your day-by-day records"
-        android:textColor="@color/color_text_secondary"
-        android:textSize="14sp"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/attendanceTitle"
-        app:layout_constraintTop_toBottomOf="@id/attendanceTitle" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.55"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.08"
+            android:text="RECORDS"
+            android:textAllCaps="true"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/attendanceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.02"
+            android:text="Attendance History"
+            android:textColor="@color/color_text_primary"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/attendanceSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:alpha="0.6"
+            android:text="Select a course to view your day-by-day records"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
     <!-- Course selector -->
     <com.google.android.material.card.MaterialCardView
@@ -43,34 +60,48 @@
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="4dp"
         app:cardBackgroundColor="@color/color_card"
-        app:cardCornerRadius="14dp"
+        app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
         app:strokeColor="@color/color_border"
         app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/attendanceSubtitle">
+        app:layout_constraintTop_toBottomOf="@id/attendanceHeaderSection">
 
-        <Spinner
-            android:id="@+id/courseSpinner"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:overlapAnchor="false"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:spinnerMode="dropdown" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="20dp"
+                android:background="#517404"
+                android:layout_marginEnd="12dp" />
+
+            <Spinner
+                android:id="@+id/courseSpinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:overlapAnchor="false"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Summary banner (gradient) -->
+    <!-- Summary banner -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/summaryCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="12dp"
         app:cardBackgroundColor="@null"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
@@ -82,7 +113,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_gradient_teal"
+            android:background="@drawable/bg_gradient_primary"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="16dp">
@@ -90,22 +121,22 @@
             <View
                 android:layout_width="4dp"
                 android:layout_height="24dp"
-                android:alpha="0.6"
+                android:alpha="0.5"
                 android:background="@color/white" />
 
             <TextView
                 android:id="@+id/attendanceSummary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="14dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Select a course"
+                android:text="Select a course above"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- History list -->
+    <!-- History RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/attendanceHistoryRecyclerView"
         android:layout_width="0dp"
@@ -150,7 +181,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/summaryCard" />
 
-    <!-- Empty state -->
+    <!-- Empty State -->
     <TextView
         android:id="@+id/emptyHistoryText"
         android:layout_width="0dp"
@@ -160,7 +191,7 @@
         android:alpha="0.4"
         android:gravity="center"
         android:lineSpacingExtra="6dp"
-        android:text="No attendance records found\nfor this course"
+        android:text="No attendance records found&#10;for this course"
         android:textColor="@color/color_text_secondary"
         android:textSize="15sp"
         android:visibility="gone"
