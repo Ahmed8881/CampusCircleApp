@@ -1,80 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="@color/color_card"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
-    app:strokeColor="@color/color_border"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="#E2E8F0"
     app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Gradient accent bar -->
-        <View
-            android:layout_width="4dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_announcement_accent_primary" />
+
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <!-- Space + date row -->
+            <View
+                android:id="@+id/unreadIndicator"
+                android:layout_width="4dp"
+                android:layout_height="40dp"
+                android:background="#2563EB"
+                android:layout_marginEnd="12dp" />
+
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/announcementSpace"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_pill_primary"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="4dp"
+
+
+
+
                     android:text="All Spaces"
-                    android:textColor="@color/color_primary_light"
+                    android:textColor="#2563EB"
                     android:textSize="11sp"
                     android:textStyle="bold"
-                    android:letterSpacing="0.04"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:layout_marginEnd="12dp" />
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05" />
+
+
 
                 <TextView
                     android:id="@+id/announcementDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.55"
-                    android:text="Jan 1, 2024"
-                    android:textColor="@color/color_text_secondary"
+                    android:layout_marginTop="2dp"
+                    android:text="2024-01-01"
+                    android:textColor="#94A3B8"
                     android:textSize="11sp" />
             </LinearLayout>
 
-            <!-- Message body -->
-            <TextView
-                android:id="@+id/announcementMessage"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMarkRead"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:lineSpacingExtra="4dp"
-                android:text="Announcement message here"
-                android:textColor="@color/color_text_primary"
-                android:textSize="14sp" />
-
+                android:text="Read"
+                android:textSize="11sp"
+                android:textColor="#2563EB"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="4dp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/announcementMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Announcement message here"
+            android:textColor="#1E293B"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp" />
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

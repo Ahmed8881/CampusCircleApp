@@ -86,8 +86,8 @@
                 android:textSize="13sp"
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp"
-                app:insetBottom="0dp"
-                app:insetTop="0dp" />
+                android:insetBottom="0dp"
+                android:insetTop="0dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/enrollmentRejectBtn"
@@ -102,8 +102,8 @@
                 android:textSize="13sp"
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp"
-                app:insetBottom="0dp"
-                app:insetTop="0dp" />
+                android:insetBottom="0dp"
+                android:insetTop="0dp" />
         </LinearLayout>
     </LinearLayout>
 

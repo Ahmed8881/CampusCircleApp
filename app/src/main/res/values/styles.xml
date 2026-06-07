@@ -3,41 +3,43 @@
 
     <!-- ══════════════ Text Appearances ══════════════ -->
 
-    <style name="TextAppearance.App.Display">
+    <style name="TextAppearance.App" parent="TextAppearance.Material3.BodyMedium" />
+
+    <style name="TextAppearance.App.Display" parent="TextAppearance.App">
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textSize">40sp</item>
         <item name="android:letterSpacing">-0.03</item>
         <item name="android:textColor">@color/color_text_primary</item>
     </style>
 
-    <style name="TextAppearance.App.Headline">
+    <style name="TextAppearance.App.Headline" parent="TextAppearance.App">
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textSize">32sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:textColor">@color/color_text_primary</item>
     </style>
 
-    <style name="TextAppearance.App.Title">
+    <style name="TextAppearance.App.Title" parent="TextAppearance.App">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/color_text_primary</item>
     </style>
 
-    <style name="TextAppearance.App.Body">
+    <style name="TextAppearance.App.Body" parent="TextAppearance.App">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/color_text_secondary</item>
         <item name="android:lineSpacingMultiplier">1.5</item>
     </style>
 
-    <style name="TextAppearance.App.Caption">
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.App">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/color_text_muted</item>
         <item name="android:letterSpacing">0.04</item>
     </style>
 
-    <style name="TextAppearance.App.Label">
+    <style name="TextAppearance.App.Label" parent="TextAppearance.App">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">11sp</item>
         <item name="android:textAllCaps">true</item>
@@ -128,12 +130,14 @@
 
     <!-- ══════════════ Shape Appearances ══════════════ -->
 
-    <style name="ShapeAppearance.App.Circle">
+    <style name="ShapeAppearance.App" parent="ShapeAppearance.Material3.MediumComponent" />
+
+    <style name="ShapeAppearance.App.Circle" parent="ShapeAppearance.App">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="ShapeAppearance.App.ExtraLarge">
+    <style name="ShapeAppearance.App.ExtraLarge" parent="ShapeAppearance.App">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">28dp</item>
     </style>

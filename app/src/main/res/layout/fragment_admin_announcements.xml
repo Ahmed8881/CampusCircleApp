@@ -149,8 +149,8 @@
                     android:textStyle="bold"
                     app:backgroundTint="@null"
                     app:cornerRadius="16dp"
-                    app:insetBottom="0dp"
-                    app:insetTop="0dp" />
+                    android:insetBottom="0dp"
+                    android:insetTop="0dp" />
 
                 <TextView
                     android:id="@+id/announceSuccessText"
@@ -159,8 +159,7 @@
                     android:layout_marginTop="12dp"
                     android:gravity="center"
                     android:textColor="@color/color_success"
-                    android:textSize="13sp"
-                    android:visibility="gone" />
+                    android:textSize="13sp" android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/announceErrorText"

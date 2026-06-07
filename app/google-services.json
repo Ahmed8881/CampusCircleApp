@@ -12,7 +12,20 @@
           "package_name": "com.example.campuscircleapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1028096331814-9buttu1grjji9oatim2c9qgs2rrkeq6b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campuscircleapp",
+            "certificate_hash": "c0100fb656c189578ace16c84cdd00186128709e"
+          }
+        },
+        {
+          "client_id": "1028096331814-q0kpbc794kovvi3sc34jo7j3kl8tlb8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAfRx_bfhxpjO9ulmOboU1JwH3vMPnjrfo"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028096331814-q0kpbc794kovvi3sc34jo7j3kl8tlb8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

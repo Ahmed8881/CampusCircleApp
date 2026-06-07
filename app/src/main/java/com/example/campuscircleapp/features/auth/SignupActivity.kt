@@ -2,6 +2,7 @@ package com.example.campuscircleapp.features.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -35,6 +36,10 @@ import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
 class SignupActivity : AppCompatActivity() {
+
+    private companion object {
+        const val TAG = "SignupActivity"
+    }
 
     private val viewmodel: SignUpViewModel by viewModels()
     private val homeService = HomeService()
@@ -423,8 +428,12 @@ class SignupActivity : AppCompatActivity() {
                 viewmodel.performGoogleSigninCheck(authRequest)
             }
         } catch (e: GetCredentialException) {
-            e.printStackTrace()
-            Toast.makeText(this, "Google Sign-In Cancelled", Toast.LENGTH_SHORT).show()
+            Log.e(TAG, "Google Sign-In failed", e)
+            Toast.makeText(
+                    this,
+                    e.message ?: e.javaClass.simpleName,
+                    Toast.LENGTH_LONG
+            ).show()
         }
     }
 }

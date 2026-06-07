@@ -213,7 +213,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/prevBtn"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
                         android:layout_width="0dp"
                         android:layout_height="52dp"
                         android:layout_weight="1"
@@ -223,8 +223,6 @@
                         android:visibility="invisible"
                         app:backgroundTint="@color/color_surface_variant"
                         app:cornerRadius="14dp"
-                        app:insetBottom="0dp"
-                        app:insetTop="0dp"
                         app:strokeColor="@color/color_border" />
 
                     <View
@@ -243,9 +241,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:backgroundTint="@null"
-                        app:cornerRadius="14dp"
-                        app:insetBottom="0dp"
-                        app:insetTop="0dp" />
+                        app:cornerRadius="14dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -284,7 +280,7 @@
             <!-- Google Sign Up -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/googleSignInBtn"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="20dp"
@@ -298,8 +294,6 @@
                 app:iconGravity="textStart"
                 app:iconPadding="12dp"
                 app:iconTint="@null"
-                app:insetBottom="0dp"
-                app:insetTop="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp" />
 

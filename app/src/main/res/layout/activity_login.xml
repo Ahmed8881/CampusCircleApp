@@ -151,8 +151,8 @@
                 android:textStyle="bold"
                 app:backgroundTint="@null"
                 app:cornerRadius="16dp"
-                app:insetBottom="0dp"
-                app:insetTop="0dp" />
+                android:insetBottom="0dp"
+                android:insetTop="0dp" />
 
             <!-- OR divider -->
             <LinearLayout
@@ -203,8 +203,8 @@
                 app:iconGravity="textStart"
                 app:iconPadding="12dp"
                 app:iconTint="@null"
-                app:insetBottom="0dp"
-                app:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:insetTop="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp" />
 
