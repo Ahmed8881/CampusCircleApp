@@ -129,8 +129,7 @@
                         android:textStyle="bold"
                         app:backgroundTint="@null"
                         app:cornerRadius="16dp"
-                        android:insetBottom="0dp"
-                        android:insetTop="0dp" />
+                        />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

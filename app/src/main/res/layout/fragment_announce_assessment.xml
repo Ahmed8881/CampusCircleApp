@@ -187,8 +187,7 @@
                     android:textStyle="bold"
                     app:backgroundTint="@null"
                     app:cornerRadius="16dp"
-                    android:insetBottom="0dp"
-                    android:insetTop="0dp" />
+                    />
 
                 <TextView
                     android:id="@+id/assessmentSuccessText"
