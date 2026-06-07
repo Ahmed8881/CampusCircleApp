@@ -52,33 +52,19 @@
                 android:background="@drawable/bg_gradient_primary"
                 android:visibility="gone" />
 
-            <!-- Empty state -->
-            <LinearLayout
+            <!-- Empty / error state -->
+            <TextView
                 android:id="@+id/assignmentsEmptyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
+                android:alpha="0.5"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.35"
-                    android:text="No assignments found"
-                    android:textColor="@color/color_text_secondary"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:alpha="0.25"
-                    android:text="Assignments will appear here once created"
-                    android:textColor="@color/color_text_muted"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                android:paddingHorizontal="32dp"
+                android:text="No assignments found"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/assignmentsRecyclerView"
