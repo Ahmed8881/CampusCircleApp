@@ -2,64 +2,94 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://tools.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/adminRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCFDFB"
+    android:background="@color/color_bg"
     tools:context=".AdminActivity">
 
-    <!-- Top Premium Header Bar -->
+    <!-- Premium Header Bar -->
     <LinearLayout
         android:id="@+id/adminHeaderContainer"
         android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:background="#FFFFFF"
+        android:layout_height="68dp"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="24dp"
+        android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Title Section -->
+        <!-- Logo + Title -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
+            <!-- Logo mark -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="@color/color_primary"
+                app:cardCornerRadius="9dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Logo"
+                    android:padding="6dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/logo_2"
+                    app:tint="@color/white" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Wordmark -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:letterSpacing="-0.02"
-                android:text="CampusCircle"
-                android:textColor="#191F11"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/adminHeaderUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="sans-serif"
-                android:letterSpacing="0.06"
-                android:text="ADMIN PORTAL"
-                android:textColor="#3B4D24"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="-0.01"
+                    android:text="CampusCircle"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/adminHeaderUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/bg_pill_primary"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:text="ADMIN PORTAL"
+                    android:textColor="@color/color_primary"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06" />
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- Premium Modern Rounded Profile Frame -->
+        <!-- Profile button -->
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:cardBackgroundColor="#F1F4EE"
-            app:cardCornerRadius="10dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:cardBackgroundColor="@color/color_primary_container"
+            app:cardCornerRadius="11dp"
             app:cardElevation="0dp"
-            app:strokeColor="#E3E6DF"
+            app:strokeColor="@color/color_border"
             app:strokeWidth="1dp">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -70,48 +100,48 @@
                 android:padding="8dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/logo_2"
-                app:tint="#3B4D24" />
+                app:tint="@color/color_primary" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 
-    <!-- Sleek Minimalist Border Line beneath the header -->
+    <!-- Subtle header divider -->
     <View
         android:id="@+id/headerDivider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="#E3E6DF"
+        android:background="@color/color_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/adminHeaderContainer" />
 
-    <!-- Fragment Canvas Area -->
+    <!-- Fragment container -->
     <FrameLayout
         android:id="@+id/adminFragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FCFDFB"
+        android:background="@color/color_bg"
         app:layout_constraintBottom_toTopOf="@id/navigationDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerDivider" />
 
-    <!-- Sleek Minimalist Border Line above navigation bar -->
+    <!-- Nav divider -->
     <View
         android:id="@+id/navigationDivider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="#E3E6DF"
+        android:background="@color/color_border"
         app:layout_constraintBottom_toTopOf="@id/adminBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Premium Clean Bottom Navigation Menu -->
+    <!-- Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/adminBottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         app:elevation="0dp"
         app:itemActiveIndicatorStyle="@style/Widget.Custom.BottomNavActiveIndicator"
         app:itemIconSize="22dp"

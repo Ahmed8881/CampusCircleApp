@@ -23,12 +23,12 @@
             android:orientation="vertical"
             android:paddingBottom="32dp">
 
-            <!-- Hero card -->
+            <!-- Hero KPI Banner -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@null"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
@@ -41,231 +41,262 @@
                     android:orientation="vertical"
                     android:padding="22dp">
 
-                    <TextView
-                        android:id="@+id/adminTitle"
-                        android:layout_width="wrap_content"
+                    <!-- Title + attendance badge row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-black"
-                        android:letterSpacing="-0.02"
-                        android:text="Admin Dashboard"
-                        android:textColor="@color/white"
-                        android:textSize="28sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:alpha="0.75"
-                        android:text="Analytics overview of courses, instructors &amp; students"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
+                            <TextView
+                                android:id="@+id/adminTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:letterSpacing="-0.02"
+                                android:text="Admin Dashboard"
+                                android:textColor="@color/white"
+                                android:textSize="26sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:alpha="0.70"
+                                android:text="Campus analytics overview"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Avg Attendance badge -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#1AFFFFFF"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="18dp"
+                            android:paddingVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:alpha="0.70"
+                                android:letterSpacing="0.08"
+                                android:text="AVG ATTENDANCE"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/averageAttendanceValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="sans-serif-black"
+                                android:letterSpacing="-0.03"
+                                android:text="0%"
+                                android:textColor="@color/white"
+                                android:textSize="34sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Subtle divider -->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="18dp"
-                        android:alpha="0.25"
+                        android:alpha="0.20"
                         android:background="@color/white" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- 4-column KPI strip -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:alpha="0.75"
-                        android:fontFamily="sans-serif-medium"
-                        android:letterSpacing="0.10"
-                        android:text="AVERAGE ATTENDANCE"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/averageAttendanceValue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="sans-serif-black"
-                        android:letterSpacing="-0.03"
-                        android:text="0%"
-                        android:textColor="@color/white"
-                        android:textSize="48sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/activeCoursesValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.65"
+                                android:letterSpacing="0.06"
+                                android:text="COURSES"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="9sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="36dp"
+                            android:alpha="0.20"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/totalStudentsValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.65"
+                                android:letterSpacing="0.06"
+                                android:text="STUDENTS"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="9sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="36dp"
+                            android:alpha="0.20"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/activeInstructorsValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.65"
+                                android:letterSpacing="0.06"
+                                android:text="FACULTY"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="9sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="36dp"
+                            android:alpha="0.20"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/adminBlueIndexValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:text="100"
+                                android:textColor="@color/white"
+                                android:textSize="22sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.65"
+                                android:letterSpacing="0.06"
+                                android:text="BLUE IDX"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="9sp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Stat grid row 1 -->
+            <!-- Analytics section header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!-- Active Courses -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="@null"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_teal"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:letterSpacing="0.10"
-                            android:text="COURSES"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-                        <TextView
-                            android:id="@+id/activeCoursesValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:fontFamily="sans-serif-black"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="28sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_gradient_primary"
+                    android:layout_marginEnd="10dp" />
 
-                <!-- Total Students -->
-                <com.google.android.material.card.MaterialCardView
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@null"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_success"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:letterSpacing="0.10"
-                            android:text="STUDENTS"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-                        <TextView
-                            android:id="@+id/totalStudentsValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:fontFamily="sans-serif-black"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="28sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Analytics"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.50"
+                    android:text="This Semester"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="12sp" />
             </LinearLayout>
 
-            <!-- Stat grid row 2 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
-
-                <!-- Instructors -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="@null"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_warning"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:letterSpacing="0.10"
-                            android:text="INSTRUCTORS"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-                        <TextView
-                            android:id="@+id/activeInstructorsValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:fontFamily="sans-serif-black"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="28sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Blue Index -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="@null"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_gradient_info"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:alpha="0.80"
-                            android:letterSpacing="0.10"
-                            android:text="BLUE INDEX"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="10sp" />
-                        <TextView
-                            android:id="@+id/adminBlueIndexValue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:fontFamily="sans-serif-black"
-                            android:text="100"
-                            android:textColor="@color/white"
-                            android:textSize="28sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- Attendance health pie chart -->
+            <!-- Attendance health pie chart card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="14dp"
                 app:cardBackgroundColor="@color/color_card"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
@@ -276,39 +307,63 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Attendance Health"
-                        android:textColor="@color/color_text_primary"
-                        android:textSize="16sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:alpha="0.6"
-                        android:text="Distribution of attendance percentages"
-                        android:textColor="@color/color_text_secondary"
-                        android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Attendance Health"
+                                android:textColor="@color/color_text_primary"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.55"
+                                android:text="Distribution across all courses"
+                                android:textColor="@color/color_text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_pill_primary"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="Live"
+                            android:textColor="@color/color_primary"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/adminAttendancePieChart"
                         android:layout_width="match_parent"
                         android:layout_height="220dp"
-                        android:layout_marginTop="12dp" />
+                        android:layout_marginTop="16dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Top course bar chart -->
+            <!-- Top course bar chart card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="20dp"
                 app:cardBackgroundColor="@color/color_card"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/color_border"
                 app:strokeWidth="1dp">
@@ -319,43 +374,69 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Top Course Attendance"
-                        android:textColor="@color/color_text_primary"
-                        android:textSize="16sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:alpha="0.6"
-                        android:text="Highest-attendance courses in your space"
-                        android:textColor="@color/color_text_secondary"
-                        android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Top Course Attendance"
+                                android:textColor="@color/color_text_primary"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.55"
+                                android:text="Highest-performing courses"
+                                android:textColor="@color/color_text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_pill_success"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="Top 5"
+                            android:textColor="@color/color_success"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
                     <com.github.mikephil.charting.charts.HorizontalBarChart
                         android:id="@+id/adminCourseBarChart"
                         android:layout_width="match_parent"
                         android:layout_height="260dp"
-                        android:layout_marginTop="12dp" />
+                        android:layout_marginTop="16dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Section label -->
+            <!-- Course Performance section header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="4dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="3dp"
-                    android:layout_height="18dp"
+                    android:layout_width="4dp"
+                    android:layout_height="20dp"
                     android:background="@drawable/bg_gradient_primary"
                     android:layout_marginEnd="10dp" />
 
@@ -363,9 +444,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Course Performance List"
+                    android:text="Course Performance"
                     android:textColor="@color/color_text_primary"
-                    android:textSize="17sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -379,7 +460,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Loading -->
+    <!-- Loading overlay -->
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/adminDashboardLoading"
         style="@style/Widget.App.ProgressIndicator"
@@ -392,7 +473,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Error -->
+    <!-- Error overlay -->
     <TextView
         android:id="@+id/adminDashboardError"
         android:layout_width="0dp"

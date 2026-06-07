@@ -20,11 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="28dp"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp"
             android:paddingBottom="48dp">
 
-            <!-- Header -->
+            <!-- Page header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,34 +32,54 @@
                 android:letterSpacing="-0.02"
                 android:text="Management"
                 android:textColor="@color/color_text_primary"
-                android:textSize="32sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:alpha="0.6"
-                android:text="Manage campus resources"
+                android:alpha="0.55"
+                android:text="Campus administration tools"
                 android:textColor="@color/color_text_secondary"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
-            <!-- Action grid -->
-            <GridLayout
+            <!-- Quick Actions label -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2"
-                android:columnOrderPreserved="false">
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <!-- Create Workspace -->
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/bg_gradient_primary"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Quick Actions"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Row 1: Create Workspace + Create Semester -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardCreateWorkspace"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="@null"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
@@ -67,16 +87,16 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:background="@drawable/bg_gradient_primary"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="18dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:alpha="0.9"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:alpha="0.90"
                             android:src="@drawable/ic_workspace"
                             android:tint="@color/white" />
 
@@ -86,20 +106,28 @@
                             android:layout_marginTop="12dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="Create&#10;Workspace"
+                            android:text="Create\nWorkspace"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.65"
+                            android:gravity="center"
+                            android:text="New course space"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Create Semester -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardCreateSemester"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="@null"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
@@ -107,16 +135,16 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:background="@drawable/bg_gradient_teal"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="18dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:alpha="0.9"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:alpha="0.90"
                             android:src="@drawable/ic_semester"
                             android:tint="@color/white" />
 
@@ -126,20 +154,36 @@
                             android:layout_marginTop="12dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="Create&#10;Semester"
+                            android:text="Create\nSemester"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.65"
+                            android:gravity="center"
+                            android:text="Academic term"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-                <!-- Add Instructor -->
+            <!-- Row 2: Add Instructor + Timetable -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardCreateInstructor"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="@null"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
@@ -147,16 +191,16 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:background="@drawable/bg_gradient_success"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="18dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:alpha="0.9"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:alpha="0.90"
                             android:src="@drawable/ic_instructor"
                             android:tint="@color/white" />
 
@@ -166,20 +210,28 @@
                             android:layout_marginTop="12dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="Add&#10;Instructor"
+                            android:text="Add\nInstructor"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.65"
+                            android:gravity="center"
+                            android:text="Faculty accounts"
+                            android:textColor="@color/white"
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Timetable Management -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardTimetable"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
                     app:cardBackgroundColor="@null"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
@@ -187,16 +239,16 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="140dp"
+                        android:layout_height="150dp"
                         android:background="@drawable/bg_gradient_warning"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="18dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:alpha="0.9"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:alpha="0.90"
                             android:src="@drawable/ic_timetable_crud"
                             android:tint="@color/white" />
 
@@ -206,52 +258,81 @@
                             android:layout_marginTop="12dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center"
-                            android:text="Timetable&#10;Management"
+                            android:text="Timetable\nManagement"
                             android:textColor="@color/white"
                             android:textSize="14sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Assignments -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardAssignments"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="@null"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/bg_gradient_info"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:alpha="0.9"
-                            android:src="@drawable/ic_assignment"
-                            android:tint="@color/white" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:layout_marginTop="4dp"
+                            android:alpha="0.65"
                             android:gravity="center"
-                            android:text="Assignments&#10;&amp; Assessments"
+                            android:text="Class schedules"
                             android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            </GridLayout>
+            <!-- Row 3: Assignments full-width -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAssignments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@null"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_gradient_info"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:alpha="0.90"
+                        android:src="@drawable/ic_assignment"
+                        android:tint="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Assignments &amp; Assessments"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:alpha="0.70"
+                            android:text="View and manage all course assignments"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:alpha="0.70"
+                        android:src="@drawable/ic_nav_courses"
+                        android:tint="@color/white" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -20,11 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="28dp"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp"
             android:paddingBottom="32dp">
 
-            <!-- Header -->
+            <!-- Page header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,16 +32,16 @@
                 android:letterSpacing="-0.02"
                 android:text="Assignments"
                 android:textColor="@color/color_text_primary"
-                android:textSize="32sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:alpha="0.6"
+                android:alpha="0.55"
                 android:text="All assessments and assignments"
                 android:textColor="@color/color_text_secondary"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
             <!-- Loading bar -->
             <View
@@ -52,25 +52,80 @@
                 android:background="@drawable/bg_gradient_primary"
                 android:visibility="gone" />
 
-            <!-- Empty / error state -->
-            <TextView
-                android:id="@+id/assignmentsEmptyView"
+            <!-- Section header -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:alpha="0.5"
-                android:gravity="center"
-                android:paddingHorizontal="32dp"
-                android:text="No assignments found"
-                android:textColor="@color/color_text_secondary"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/bg_gradient_primary"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="All Assignments"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Empty state card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/assignmentsEmptyCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/color_card"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/color_border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="48dp">
+
+                    <TextView
+                        android:id="@+id/assignmentsEmptyView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.50"
+                        android:gravity="center"
+                        android:text="No assignments found"
+                        android:textColor="@color/color_text_secondary"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:alpha="0.35"
+                        android:gravity="center"
+                        android:text="Assignments will appear here once created"
+                        android:textColor="@color/color_text_muted"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/assignmentsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>

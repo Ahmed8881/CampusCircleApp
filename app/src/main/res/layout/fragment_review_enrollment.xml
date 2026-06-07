@@ -6,41 +6,91 @@
     android:layout_height="match_parent"
     android:background="@color/color_bg">
 
+    <!-- Header -->
     <LinearLayout
         android:id="@+id/reviewEnrollmentHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="28dp"
-        android:paddingBottom="16dp"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:letterSpacing="-0.02"
-            android:text="Enrollment Requests"
-            android:textColor="@color/color_text_primary"
-            android:textSize="32sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="-0.02"
+                    android:text="Enrollments"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:alpha="0.55"
+                    android:text="Review pending enrollment requests"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_warning"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="Pending"
+                android:textColor="@color/color_warning"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Section header -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:alpha="0.6"
-            android:text="Review pending enrollment requests"
-            android:textColor="@color/color_text_secondary"
-            android:textSize="14sp" />
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="18dp"
+                android:background="@drawable/bg_gradient_primary"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Pending Requests"
+                android:textColor="@color/color_text_primary"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:alpha="0.4"
+            android:layout_marginTop="12dp"
+            android:alpha="0.35"
             android:background="@color/color_border" />
     </LinearLayout>
 
@@ -50,7 +100,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="24dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,8 +124,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
+        android:background="@color/color_error_dim"
         android:gravity="center"
-        android:padding="24dp"
+        android:padding="16dp"
         android:textColor="@color/color_error"
         android:textSize="14sp"
         android:visibility="gone"
@@ -84,12 +135,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/reviewEnrollmentHeader" />
 
+    <!-- Empty state -->
     <LinearLayout
         android:id="@+id/enrollmentEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
+        android:paddingHorizontal="40dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +152,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha="0.35"
+            android:background="@drawable/bg_pill_success"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="All Clear"
+            android:textColor="@color/color_success"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:alpha="0.50"
+            android:gravity="center"
             android:text="No pending requests"
             android:textColor="@color/color_text_secondary"
             android:textSize="16sp" />
@@ -108,8 +174,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:alpha="0.25"
-            android:text="All enrollment requests are reviewed"
+            android:alpha="0.35"
+            android:gravity="center"
+            android:text="All enrollment requests have been reviewed"
             android:textColor="@color/color_text_muted"
             android:textSize="13sp" />
     </LinearLayout>
