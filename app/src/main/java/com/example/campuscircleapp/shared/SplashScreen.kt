@@ -15,8 +15,10 @@ import com.example.campuscircleapp.AdminActivity
 import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.TeacherActivity
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.core.utils.DeviceRegistrationHelper
 import com.example.campuscircleapp.features.auth.LoginActivity
+import com.example.campuscircleapp.features.onboarding.OnboardingActivity
 import com.example.campuscircleapp.shared.services.SessionManager
 
 class SplashScreen : AppCompatActivity() {
@@ -33,6 +35,7 @@ class SplashScreen : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash_screen)
@@ -74,7 +77,11 @@ class SplashScreen : AppCompatActivity() {
         val role = SessionManager.getRole(this)?.lowercase()
 
         val destination = if (token.isNullOrBlank()) {
-            Intent(this, LoginActivity::class.java)
+            if (!ThemeManager.isOnboardingCompleted(this)) {
+                Intent(this, OnboardingActivity::class.java)
+            } else {
+                Intent(this, LoginActivity::class.java)
+            }
         } else {
             when (role) {
                 "admin", "superadmin" -> Intent(this, AdminActivity::class.java)

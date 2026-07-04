@@ -6,7 +6,7 @@
     android:id="@+id/adminRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="?attr/android:colorBackground"
     tools:context=".AdminActivity">
 
     <!-- ── Premium Top Bar ── -->
@@ -14,7 +14,7 @@
         android:id="@+id/adminHeaderContainer"
         android:layout_width="0dp"
         android:layout_height="68dp"
-        android:background="@color/color_surface"
+        android:background="?attr/colorSurface"
         android:elevation="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -35,7 +35,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                app:cardBackgroundColor="@color/color_primary"
+                app:cardBackgroundColor="?attr/colorPrimary"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -46,7 +46,7 @@
                     android:padding="7dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/logo_2"
-                    app:tint="@color/white" />
+                    app:tint="?attr/colorOnPrimary" />
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Title stack -->
@@ -66,10 +66,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:letterSpacing="-0.01"
                         android:text="CampusCircle"
-                        android:textColor="@color/color_text_primary"
+                        android:textColor="?attr/colorTextHeading"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -81,7 +81,7 @@
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="2dp"
                         android:text="ADMIN"
-                        android:textColor="@color/color_primary"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="9sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.06" />
@@ -94,9 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:alpha="0.55"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/inter_regular"
                     android:text="Welcome"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
@@ -106,7 +106,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginEnd="10dp"
-            app:cardBackgroundColor="@color/color_surface_variant"
+            app:cardBackgroundColor="?attr/colorSurfaceVariant"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
@@ -119,17 +119,17 @@
                 android:padding="8dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_bell"
-                app:tint="@color/color_text_secondary" />
+                app:tint="?attr/colorTextBody" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Profile avatar -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="38dp"
             android:layout_height="38dp"
-            app:cardBackgroundColor="@color/color_primary_container"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
             app:cardCornerRadius="11dp"
             app:cardElevation="0dp"
-            app:strokeColor="@color/color_border"
+            app:strokeColor="?attr/colorOutline"
             app:strokeWidth="1dp">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -139,7 +139,7 @@
                 android:contentDescription="Admin Profile"
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo_2"
-                app:tint="@color/color_primary" />
+                app:tint="?attr/colorPrimary" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
@@ -149,7 +149,7 @@
         android:id="@+id/headerDivider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/color_border"
+        android:background="?attr/colorOutline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/adminHeaderContainer" />
@@ -159,7 +159,7 @@
         android:id="@+id/adminFragmentContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/color_bg"
+        android:background="?attr/android:colorBackground"
         app:layout_constraintBottom_toTopOf="@id/adminNavCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -172,7 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="@color/color_surface"
+        app:cardBackgroundColor="?attr/colorSurface"
         app:cardCornerRadius="28dp"
         app:cardElevation="16dp"
         app:strokeWidth="0dp"
@@ -189,7 +189,7 @@
             app:itemActiveIndicatorStyle="@style/Widget.Custom.BottomNavActiveIndicator"
             app:itemIconSize="22dp"
             app:itemIconTint="@color/bottom_nav_item_color"
-            app:itemRippleColor="#0D3B4D24"
+            app:itemRippleColor="?attr/colorControlHighlight"
             app:itemTextColor="@color/bottom_nav_item_color"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/admin_bottom_nav_menu" />

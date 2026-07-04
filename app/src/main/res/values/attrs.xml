@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Surface tokens -->
+    <attr name="colorSurfaceElevated" format="color" />
+    <attr name="colorSurfaceWarm" format="color" />
+    <attr name="colorSurfaceSidebar" format="color" />
+    <attr name="colorSurfaceOverlay" format="color" />
+
+    <!-- Text tokens -->
+    <attr name="colorTextHeading" format="color" />
+    <attr name="colorTextBody" format="color" />
+    <attr name="colorTextMuted" format="color" />
+    <attr name="colorTextOnPrimary" format="color" />
+
+    <!-- Border tokens -->
+    <attr name="colorBorderDefault" format="color" />
+    <attr name="colorBorderHover" format="color" />
+
+    <!-- Brand tokens -->
+    <attr name="colorBrandPrimary" format="color" />
+    <attr name="colorBrandPrimaryHover" format="color" />
+    <attr name="colorBrandAccent" format="color" />
+    <attr name="colorBrandBright" format="color" />
+
+    <!-- Semantic tokens -->
+    <attr name="colorSuccess" format="color" />
+    <attr name="colorWarning" format="color" />
+    <attr name="colorError" format="color" />
+    <attr name="colorSurfaceSuccess" format="color" />
+    <attr name="colorSurfaceError" format="color" />
+
+    <!-- Chart tokens -->
+    <attr name="colorChartLine" format="color" />
+    <attr name="colorChartGrid" format="color" />
+    <attr name="colorChartFill" format="color" />
+    <attr name="colorChartText" format="color" />
+</resources>

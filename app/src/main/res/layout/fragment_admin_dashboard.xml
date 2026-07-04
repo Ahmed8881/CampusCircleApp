@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -29,7 +29,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@null"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -37,7 +36,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_gradient_primary"
+                    android:background="?attr/colorPrimary"
                     android:orientation="vertical"
                     android:padding="22dp">
 
@@ -58,10 +57,10 @@
                                 android:id="@+id/adminTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:letterSpacing="-0.02"
                                 android:text="Admin Dashboard"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="26sp" />
 
                             <TextView
@@ -70,7 +69,7 @@
                                 android:layout_marginTop="3dp"
                                 android:alpha="0.70"
                                 android:text="Campus analytics overview"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -91,7 +90,7 @@
                                 android:letterSpacing="0.08"
                                 android:text="AVG ATTENDANCE"
                                 android:textAllCaps="true"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="9sp" />
 
                             <TextView
@@ -99,10 +98,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:letterSpacing="-0.03"
                                 android:text="0%"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="34sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -113,7 +112,7 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="18dp"
                         android:alpha="0.20"
-                        android:background="@color/white" />
+                        android:background="?attr/colorOnPrimary" />
 
                     <!-- 4-column KPI strip -->
                     <LinearLayout
@@ -133,9 +132,9 @@
                                 android:id="@+id/activeCoursesValue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:text="0"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="22sp" />
 
                             <TextView
@@ -146,7 +145,7 @@
                                 android:letterSpacing="0.06"
                                 android:text="COURSES"
                                 android:textAllCaps="true"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="9sp" />
                         </LinearLayout>
 
@@ -154,7 +153,7 @@
                             android:layout_width="1dp"
                             android:layout_height="36dp"
                             android:alpha="0.20"
-                            android:background="@color/white" />
+                            android:background="?attr/colorOnPrimary" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -167,9 +166,9 @@
                                 android:id="@+id/totalStudentsValue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:text="0"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="22sp" />
 
                             <TextView
@@ -180,7 +179,7 @@
                                 android:letterSpacing="0.06"
                                 android:text="STUDENTS"
                                 android:textAllCaps="true"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="9sp" />
                         </LinearLayout>
 
@@ -188,7 +187,7 @@
                             android:layout_width="1dp"
                             android:layout_height="36dp"
                             android:alpha="0.20"
-                            android:background="@color/white" />
+                            android:background="?attr/colorOnPrimary" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -201,9 +200,9 @@
                                 android:id="@+id/activeInstructorsValue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:text="0"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="22sp" />
 
                             <TextView
@@ -214,7 +213,7 @@
                                 android:letterSpacing="0.06"
                                 android:text="FACULTY"
                                 android:textAllCaps="true"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="9sp" />
                         </LinearLayout>
 
@@ -222,7 +221,7 @@
                             android:layout_width="1dp"
                             android:layout_height="36dp"
                             android:alpha="0.20"
-                            android:background="@color/white" />
+                            android:background="?attr/colorOnPrimary" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -235,9 +234,9 @@
                                 android:id="@+id/adminBlueIndexValue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:text="100"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="22sp" />
 
                             <TextView
@@ -248,7 +247,7 @@
                                 android:letterSpacing="0.06"
                                 android:text="BLUE IDX"
                                 android:textAllCaps="true"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="9sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -275,9 +274,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Analytics"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="18sp" />
 
                 <TextView
@@ -285,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.50"
                     android:text="This Semester"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -295,10 +294,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="14dp"
-                app:cardBackgroundColor="@color/color_card"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -322,9 +321,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-medium"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Attendance Health"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?attr/colorTextHeading"
                                 android:textSize="15sp" />
 
                             <TextView
@@ -333,7 +332,7 @@
                                 android:layout_marginTop="2dp"
                                 android:alpha="0.55"
                                 android:text="Distribution across all courses"
-                                android:textColor="@color/color_text_secondary"
+                                android:textColor="?attr/colorTextBody"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -344,7 +343,7 @@
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
                             android:text="Live"
-                            android:textColor="@color/color_primary"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="11sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -362,10 +361,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                app:cardBackgroundColor="@color/color_card"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -389,9 +388,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-medium"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Top Course Attendance"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?attr/colorTextHeading"
                                 android:textSize="15sp" />
 
                             <TextView
@@ -400,7 +399,7 @@
                                 android:layout_marginTop="2dp"
                                 android:alpha="0.55"
                                 android:text="Highest-performing courses"
-                                android:textColor="@color/color_text_secondary"
+                                android:textColor="?attr/colorTextBody"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -411,7 +410,7 @@
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
                             android:text="Top 5"
-                            android:textColor="@color/color_success"
+                            android:textColor="?attr/colorSuccess"
                             android:textSize="11sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -443,9 +442,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Course Performance"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -480,7 +479,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

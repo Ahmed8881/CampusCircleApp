@@ -3,6 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingVertical="10dp">
@@ -18,9 +21,9 @@
             android:id="@+id/timetableStartTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/inter_medium"
             android:text="09:00"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="12sp" />
 
         <TextView
@@ -30,7 +33,7 @@
             android:layout_marginTop="2dp"
             android:alpha="0.55"
             android:text="10:00"
-            android:textColor="@color/color_text_muted"
+            android:textColor="?attr/colorTextMuted"
             android:textSize="10sp" />
     </LinearLayout>
 
@@ -52,7 +55,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:alpha="0.25"
-            android:background="@color/color_primary" />
+            android:background="?attr/colorPrimary" />
     </LinearLayout>
 
     <!-- Course info -->
@@ -66,9 +69,9 @@
             android:id="@+id/timetableCourseName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/inter_medium"
             android:text="Mathematics"
-            android:textColor="@color/color_text_primary"
+            android:textColor="?attr/colorTextHeading"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -86,7 +89,7 @@
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="2dp"
                 android:text="MATH101"
-                android:textColor="@color/color_primary_light"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
@@ -96,7 +99,7 @@
                 android:layout_marginHorizontal="6dp"
                 android:alpha="0.40"
                 android:text="·"
-                android:textColor="@color/color_text_muted"
+                android:textColor="?attr/colorTextMuted"
                 android:textSize="13sp" />
 
             <TextView
@@ -105,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.70"
                 android:text="Room A"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

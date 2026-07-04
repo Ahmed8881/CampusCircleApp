@@ -42,6 +42,9 @@
             android:name=".features.auth.SignupActivity"
             android:exported="false" />
         <activity
+            android:name=".features.onboarding.OnboardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.auth.LoginActivity"
             android:exported="false" /> <!-- Splash Screen FIRST -->
         <activity

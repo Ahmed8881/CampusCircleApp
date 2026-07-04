@@ -16,7 +16,9 @@ import com.example.campuscircleapp.features.admin.fragments.AdminDashboardFragme
 import com.example.campuscircleapp.features.admin.fragments.AdminManagementFragment
 import com.example.campuscircleapp.features.admin.fragments.MarkAttendanceFragment
 import com.example.campuscircleapp.features.auth.LoginActivity
+import com.example.campuscircleapp.features.home.fragments.SettingsFragment
 import com.example.campuscircleapp.features.home.services.HomeService
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.shared.services.SessionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
@@ -27,6 +29,7 @@ class AdminActivity : AppCompatActivity() {
     private val homeService = HomeService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_admin)
@@ -95,6 +98,13 @@ class AdminActivity : AppCompatActivity() {
         popup.menuInflater.inflate(R.menu.profile_menu, popup.menu)
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.menu_settings -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.adminFragmentContainer, SettingsFragment())
+                        .addToBackStack(null)
+                        .commit()
+                    true
+                }
                 R.id.menu_announcements -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.adminFragmentContainer, AdminAnnouncementsFragment())

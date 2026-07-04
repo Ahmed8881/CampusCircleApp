@@ -1,10 +1,12 @@
 package com.example.campuscircleapp.features.admin.fragments
 
 import android.app.DatePickerDialog
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.adapters.InstructorAdapter
 import com.example.campuscircleapp.core.models.UiState
+import com.example.campuscircleapp.features.admin.models.InstructorResponse
 import com.example.campuscircleapp.features.admin.viewModels.CreateInstructorsViewModel
 import com.example.campuscircleapp.shared.services.SessionManager
 import com.google.android.material.button.MaterialButton
@@ -83,7 +86,35 @@ class CreateInstructorsFragment : Fragment() {
         viewModel.instructorsState.asLiveData().observe(viewLifecycleOwner) { state ->
             if (state is UiState.Success) {
                 if (state.data.isEmpty()) { emptyView.visibility = View.VISIBLE; recycler.visibility = View.GONE }
-                else { emptyView.visibility = View.GONE; recycler.visibility = View.VISIBLE; recycler.adapter = InstructorAdapter(state.data) }
+                else {
+                    emptyView.visibility = View.GONE; recycler.visibility = View.VISIBLE
+                    recycler.adapter = InstructorAdapter(
+                        state.data,
+                        onEdit = { i -> showEditDialog(i, token) },
+                        onDelete = { i -> showDeleteDialog(i, token) }
+                    )
+                }
+            }
+        }
+
+        viewModel.actionState.asLiveData().observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    MotionToast.createColorToast(requireActivity(), "Success",
+                        state.message ?: "Action completed", MotionToastStyle.SUCCESS,
+                        MotionToast.GRAVITY_TOP, MotionToast.LONG_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
+                    viewModel.loadInstructors(token)
+                    viewModel.resetActionState()
+                }
+                is UiState.Error -> {
+                    MotionToast.createColorToast(requireActivity(), "Error",
+                        state.message, MotionToastStyle.ERROR,
+                        MotionToast.GRAVITY_BOTTOM, MotionToast.LONG_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular))
+                    viewModel.resetActionState()
+                }
+                else -> {}
             }
         }
 
@@ -95,5 +126,39 @@ class CreateInstructorsFragment : Fragment() {
         }
 
         viewModel.loadInstructors(token)
+    }
+
+    private fun showEditDialog(i: InstructorResponse, token: String) {
+        val inflater = LayoutInflater.from(requireContext())
+        val dialogView = inflater.inflate(R.layout.dialog_edit_instructor, null)
+        val nameInput = dialogView.findViewById<EditText>(R.id.dialogInstructorName)
+        val emailInput = dialogView.findViewById<EditText>(R.id.dialogInstructorEmail)
+
+        nameInput.setText(i.name)
+        emailInput.setText(i.email ?: "")
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Edit Instructor")
+            .setView(dialogView)
+            .setPositiveButton("Save") { _, _ ->
+                val newName = nameInput.text.toString().trim()
+                val newEmail = emailInput.text.toString().trim()
+                if (newName.isNotBlank() && newEmail.isNotBlank()) {
+                    viewModel.createInstructor(token, newName, newEmail, i.username ?: "", "", "")
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun showDeleteDialog(i: InstructorResponse, token: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Delete Instructor")
+            .setMessage("Are you sure you want to delete \"${i.name}\"? This action cannot be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                viewModel.deleteInstructor(token, i.id)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 }

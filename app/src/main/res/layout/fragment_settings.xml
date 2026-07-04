@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -29,21 +29,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.55"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_medium"
                 android:letterSpacing="0.08"
                 android:text="ACCOUNT"
                 android:textAllCaps="true"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="11sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/inter_bold"
                 android:letterSpacing="-0.02"
                 android:text="Settings"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="36sp" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:layout_marginTop="4dp"
                 android:alpha="0.6"
                 android:text="Manage your account preferences"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="14sp" />
 
             <!-- Profile Banner Card -->
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                app:cardBackgroundColor="#517404"
+                app:cardBackgroundColor="?attr/colorPrimary"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -78,7 +78,7 @@
                         android:background="@drawable/bg_pill_muted"
                         android:gravity="center"
                         android:text="CC"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -90,11 +90,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/settingsRoleText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="Student Account"
-                            android:textColor="#FFFFFF"
+                            android:fontFamily="@font/inter_medium"
+                            android:text="Account"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="15sp" />
 
                         <TextView
@@ -103,9 +104,114 @@
                             android:layout_marginTop="2dp"
                             android:alpha="0.75"
                             android:text="CampusCircle"
-                            android:textColor="#E3EDD3"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="12sp" />
                     </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Appearance Section Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/inter_medium"
+                android:letterSpacing="0.10"
+                android:text="APPEARANCE"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorTextMuted"
+                android:textSize="11sp" />
+
+            <!-- Theme & Dark Mode Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/appearanceCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutline"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <!-- Dark Mode Toggle -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_medium"
+                                android:text="Dark Mode"
+                                android:textColor="?attr/colorTextHeading"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:alpha="0.6"
+                                android:text="Switch between light and dark appearance"
+                                android:textColor="?attr/colorTextBody"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/darkModeSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:thumbTintMode="src_atop" />
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="?attr/colorOutline" />
+
+                    <!-- Theme Picker Label -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:text="Theme"
+                        android:textColor="?attr/colorTextHeading"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:alpha="0.6"
+                        android:text="Choose your color theme"
+                        android:textColor="?attr/colorTextBody"
+                        android:textSize="12sp" />
+
+                    <!-- Theme Grid -->
+                    <LinearLayout
+                        android:id="@+id/themeGrid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -114,11 +220,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_medium"
                 android:letterSpacing="0.10"
                 android:text="SECURITY"
                 android:textAllCaps="true"
-                android:textColor="@color/color_text_muted"
+                android:textColor="?attr/colorTextMuted"
                 android:textSize="11sp" />
 
             <!-- Change Password Card -->
@@ -126,10 +232,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:cardBackgroundColor="@color/color_card"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -147,7 +253,7 @@
                         <View
                             android:layout_width="3dp"
                             android:layout_height="20dp"
-                            android:background="#517404"
+                            android:background="?attr/colorPrimary"
                             android:layout_marginEnd="12dp" />
 
                         <LinearLayout
@@ -159,9 +265,9 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-medium"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Change Password"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?attr/colorTextHeading"
                                 android:textSize="16sp" />
 
                             <TextView
@@ -170,7 +276,7 @@
                                 android:layout_marginTop="2dp"
                                 android:alpha="0.6"
                                 android:text="Update your account password securely"
-                                android:textColor="@color/color_text_secondary"
+                                android:textColor="?attr/colorTextBody"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -180,7 +286,7 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
-                        android:background="@color/color_border" />
+                        android:background="?attr/colorOutline" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -188,14 +294,14 @@
                         android:hint="Current password"
                         style="@style/Widget.App.TextInput"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/color_text_muted">
+                        app:passwordToggleTint="?attr/colorTextMuted">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/settingsOldPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:textColor="@color/color_text_primary" />
+                            android:textColor="?attr/colorTextHeading" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -205,14 +311,14 @@
                         android:hint="New password"
                         style="@style/Widget.App.TextInput"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/color_text_muted">
+                        app:passwordToggleTint="?attr/colorTextMuted">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/settingsNewPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:textColor="@color/color_text_primary" />
+                            android:textColor="?attr/colorTextHeading" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -222,29 +328,23 @@
                         android:hint="Confirm new password"
                         style="@style/Widget.App.TextInput"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/color_text_muted">
+                        app:passwordToggleTint="?attr/colorTextMuted">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/settingsConfirmPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:textColor="@color/color_text_primary" />
+                            android:textColor="?attr/colorTextHeading" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/settingsSaveBtn"
+                        style="@style/Widget.App.Button.Primary"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
                         android:layout_marginTop="24dp"
-                        android:background="@drawable/bg_gradient_primary"
-                        android:text="Update Password"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        app:backgroundTint="@null"
-                        app:cornerRadius="14dp" />
+                        android:text="Update Password" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

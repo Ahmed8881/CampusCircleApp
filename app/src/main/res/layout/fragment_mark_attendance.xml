@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -29,10 +29,10 @@
                 android:id="@+id/markAttendanceTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/inter_bold"
                 android:letterSpacing="-0.02"
                 android:text="Mark Attendance"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="30sp" />
 
             <TextView
@@ -41,7 +41,7 @@
                 android:layout_marginTop="4dp"
                 android:alpha="0.55"
                 android:text="Select course and session to mark records"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="13sp" />
 
             <!-- Session selector card -->
@@ -49,10 +49,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/color_card"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -75,11 +75,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.08"
                             android:text="SELECT COURSE"
                             android:textAllCaps="true"
-                            android:textColor="@color/color_text_muted"
+                            android:textColor="?attr/colorTextMuted"
                             android:textSize="11sp" />
 
                         <Spinner
@@ -97,24 +97,24 @@
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="20dp"
                             android:alpha="0.35"
-                            android:background="@color/color_border" />
+                            android:background="?attr/colorOutline" />
 
                         <!-- Session date/time -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.08"
                             android:text="SESSION DATE &amp; TIME"
                             android:textAllCaps="true"
-                            android:textColor="@color/color_text_muted"
+                            android:textColor="?attr/colorTextMuted"
                             android:textSize="11sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:background="@color/color_surface_variant"
+                            android:background="?attr/colorSurfaceVariant"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:paddingHorizontal="16dp"
@@ -125,9 +125,9 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="sans-serif-medium"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Not selected"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?attr/colorTextHeading"
                                 android:textSize="14sp" />
 
                             <com.google.android.material.button.MaterialButton
@@ -137,9 +137,9 @@
                                 android:layout_height="40dp"
                                 android:text="Set Time"
                                 android:textAllCaps="false"
-                                android:textColor="@color/color_text_primary"
+                                android:textColor="?attr/colorTextHeading"
                                 android:textSize="13sp"
-                                app:backgroundTint="@color/color_primary_container"
+                                app:backgroundTint="?attr/colorPrimaryContainer"
                                 app:cornerRadius="10dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -165,9 +165,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Student Roster"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="16sp" />
 
                 <TextView
@@ -177,7 +177,7 @@
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="P · A · L"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -191,18 +191,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/markAttendanceBtn"
+                style="@style/Widget.App.Button.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_gradient_primary"
-                android:text="Submit Attendance"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:backgroundTint="@null"
-                app:cornerRadius="16dp" />
+                android:text="Submit Attendance" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -226,10 +220,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:background="@color/color_error_dim"
+        android:background="?attr/colorSurfaceError"
         android:gravity="center"
         android:padding="16dp"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

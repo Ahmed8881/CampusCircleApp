@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -24,14 +24,13 @@
             android:paddingTop="24dp"
             android:paddingBottom="32dp">
 
-            <!-- Page header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/inter_bold"
                 android:letterSpacing="-0.02"
-                android:text="Assignments"
-                android:textColor="@color/color_text_primary"
+                android:text="Manage assignments"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="30sp" />
 
             <TextView
@@ -39,94 +38,225 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:alpha="0.55"
-                android:text="All assessments and assignments"
-                android:textColor="@color/color_text_secondary"
+                android:text="Assign semesters, instructors and CRs"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="13sp" />
 
-            <!-- Loading bar -->
-            <View
-                android:id="@+id/assignmentsLoadingView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_gradient_primary"
-                android:visibility="gone" />
+                android:orientation="horizontal"
+                android:weightSum="3">
 
-            <!-- Section header -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAssignSemester"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text="Assign semester"
+                    android:textSize="12sp"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAssignInstructor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_weight="1"
+                    android:text="Assign instructor"
+                    android:textSize="12sp"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAssignCR"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="Assign CR"
+                    android:textSize="12sp"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Search instructors or students..."
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@android:drawable/ic_menu_search"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/searchInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="4dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <View
                     android:layout_width="4dp"
                     android:layout_height="18dp"
-                    android:background="@drawable/bg_gradient_primary"
-                    android:layout_marginEnd="10dp" />
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_gradient_primary" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="All Assignments"
-                    android:textColor="@color/color_text_primary"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Instructors"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/instructorsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.45"
+                    android:text="0"
+                    android:textColor="?attr/colorTextMuted"
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- Empty state card -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/assignmentsEmptyCard"
+            <TextView
+                android:id="@+id/instructorsEmptyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/color_card"
-                app:cardCornerRadius="18dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
-                app:strokeWidth="1dp">
+                android:alpha="0.50"
+                android:gravity="center"
+                android:text="No instructors found"
+                android:textColor="?attr/colorTextBody"
+                android:textSize="14sp"
+                android:visibility="gone" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="32dp"
-                    android:paddingVertical="48dp">
-
-                    <TextView
-                        android:id="@+id/assignmentsEmptyView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:alpha="0.50"
-                        android:gravity="center"
-                        android:text="No assignments found"
-                        android:textColor="@color/color_text_secondary"
-                        android:textSize="16sp"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:alpha="0.35"
-                        android:gravity="center"
-                        android:text="Assignments will appear here once created"
-                        android:textColor="@color/color_text_muted"
-                        android:textSize="13sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/assignmentsRecyclerView"
+            <LinearLayout
+                android:id="@+id/instructorsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:nestedScrollingEnabled="false" />
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_gradient_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Students"
+                    android:textColor="?attr/colorTextHeading"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/studentsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.45"
+                    android:text="0"
+                    android:textColor="?attr/colorTextMuted"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/studentsEmptyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:alpha="0.50"
+                android:gravity="center"
+                android:text="No students found"
+                android:textColor="?attr/colorTextBody"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/studentsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_gradient_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/inter_medium"
+                    android:text="Spaces overview"
+                    android:textColor="?attr/colorTextHeading"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/spacesCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.45"
+                    android:text="0"
+                    android:textColor="?attr/colorTextMuted"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/spacesEmptyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:alpha="0.50"
+                android:gravity="center"
+                android:text="No spaces found"
+                android:textColor="?attr/colorTextBody"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/spacesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/loadingIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:indeterminate="true" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

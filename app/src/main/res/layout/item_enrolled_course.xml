@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="@color/color_card"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="20dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/color_border"
+    app:strokeColor="?attr/colorOutline"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -45,8 +45,8 @@
                         android:id="@+id/enrolledCourseName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/color_text_primary"
+                        android:fontFamily="@font/inter_medium"
+                        android:textColor="?attr/colorTextHeading"
                         android:textSize="15sp" />
 
                     <TextView
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:alpha="0.6"
-                        android:textColor="@color/color_text_secondary"
+                        android:textColor="?attr/colorTextBody"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -66,7 +66,7 @@
                     android:background="@drawable/bg_pill_success"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="5dp"
-                    android:textColor="@color/color_success"
+                    android:textColor="?attr/colorSuccess"
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:alpha="0.7"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="12sp" />
 
             <!-- Progress track -->

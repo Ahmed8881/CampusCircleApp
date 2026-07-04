@@ -19,6 +19,7 @@ import com.example.campuscircleapp.AttendenceActivity
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.TeacherActivity
 import com.example.campuscircleapp.core.models.UiState
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.features.auth.models.GoogleAuthRequest
 import com.example.campuscircleapp.features.auth.models.SignUpRequest
 import com.example.campuscircleapp.features.auth.models.UpdateUserRequest
@@ -64,6 +65,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var prevBtn: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
         credentialManager = CredentialManager.create(this)

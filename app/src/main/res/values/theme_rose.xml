@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CampusCircleApp.RoseLight" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">#E11D48</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#FFE4E6</item>
+        <item name="colorOnPrimaryContainer">#881337</item>
+        <item name="colorSecondary">#FB7185</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#FECDD3</item>
+        <item name="colorOnSecondaryContainer">#9F1239</item>
+        <item name="colorTertiary">#F43F5E</item>
+        <item name="colorOnTertiary">#881337</item>
+        <item name="colorError">#DC2626</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="android:colorBackground">#FFF1F2</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#9F1239</item>
+        <item name="colorSurfaceVariant">#FFF1F2</item>
+        <item name="colorOnSurfaceVariant">#E11D48</item>
+        <item name="colorOutline">#FECDD3</item>
+        <item name="colorOutlineVariant">#FFE4E6</item>
+        <item name="android:statusBarColor">#FFF1F2</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="colorControlHighlight">#0AE11D48</item>
+        <item name="colorControlActivated">#E11D48</item>
+        <!-- Custom tokens -->
+        <item name="colorSurfaceElevated">#FFFFFF</item>
+        <item name="colorSurfaceWarm">#FFE4E6</item>
+        <item name="colorSurfaceSidebar">#FFF1F2</item>
+        <item name="colorSurfaceOverlay">#26E11D48</item>
+        <item name="colorTextHeading">#881337</item>
+        <item name="colorTextBody">#9F1239</item>
+        <item name="colorTextMuted">#E11D48</item>
+        <item name="colorTextOnPrimary">#FFFFFF</item>
+        <item name="colorBorderDefault">#FECDD3</item>
+        <item name="colorBorderHover">#4DE11D48</item>
+        <item name="colorBrandPrimary">#E11D48</item>
+        <item name="colorBrandPrimaryHover">#FB7185</item>
+        <item name="colorBrandAccent">#F43F5E</item>
+        <item name="colorBrandBright">#FDA4AF</item>
+        <item name="colorSuccess">#059669</item>
+        <item name="colorWarning">#D97706</item>
+        <item name="colorError">#DC2626</item>
+        <item name="colorSurfaceSuccess">#ECFDF5</item>
+        <item name="colorSurfaceError">#FEF2F2</item>
+        <item name="colorChartLine">#E11D48</item>
+        <item name="colorChartGrid">#FECDD3</item>
+        <item name="colorChartFill">#20F43F5E</item>
+        <item name="colorChartText">#E11D48</item>
+    </style>
+
+    <style name="Theme.CampusCircleApp.RoseDark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#FB7185</item>
+        <item name="colorOnPrimary">#1F050A</item>
+        <item name="colorPrimaryContainer">#2D0A12</item>
+        <item name="colorOnPrimaryContainer">#FDA4AF</item>
+        <item name="colorSecondary">#FDA4AF</item>
+        <item name="colorOnSecondary">#1F050A</item>
+        <item name="colorSecondaryContainer">#3B0D18</item>
+        <item name="colorOnSecondaryContainer">#FECDD3</item>
+        <item name="colorTertiary">#FECDD3</item>
+        <item name="colorOnTertiary">#1F050A</item>
+        <item name="colorError">#EF4444</item>
+        <item name="colorOnError">#1F050A</item>
+        <item name="android:colorBackground">#1F050A</item>
+        <item name="colorSurface">#2D0A12</item>
+        <item name="colorOnSurface">#FECDD3</item>
+        <item name="colorSurfaceVariant">#3B0D18</item>
+        <item name="colorOnSurfaceVariant">#FB7185</item>
+        <item name="colorOutline">#4A0E1A</item>
+        <item name="colorOutlineVariant">#3B0D18</item>
+        <item name="android:statusBarColor">#1F050A</item>
+        <item name="android:navigationBarColor">#2D0A12</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="colorControlHighlight">#0AFFFFFF</item>
+        <item name="colorControlActivated">#FB7185</item>
+        <!-- Custom tokens -->
+        <item name="colorSurfaceElevated">#3B0D18</item>
+        <item name="colorSurfaceWarm">#2D0A12</item>
+        <item name="colorSurfaceSidebar">#1F050A</item>
+        <item name="colorSurfaceOverlay">#80000000</item>
+        <item name="colorTextHeading">#FFF1F2</item>
+        <item name="colorTextBody">#FECDD3</item>
+        <item name="colorTextMuted">#FB7185</item>
+        <item name="colorTextOnPrimary">#1F050A</item>
+        <item name="colorBorderDefault">#4A0E1A</item>
+        <item name="colorBorderHover">#4DFB7185</item>
+        <item name="colorBrandPrimary">#FB7185</item>
+        <item name="colorBrandPrimaryHover">#FDA4AF</item>
+        <item name="colorBrandAccent">#FDA4AF</item>
+        <item name="colorBrandBright">#FECDD3</item>
+        <item name="colorSuccess">#22C55E</item>
+        <item name="colorWarning">#F59E0B</item>
+        <item name="colorError">#EF4444</item>
+        <item name="colorSurfaceSuccess">#1A22C55E</item>
+        <item name="colorSurfaceError">#1AEF4444</item>
+        <item name="colorChartLine">#FB7185</item>
+        <item name="colorChartGrid">#4A0E1A</item>
+        <item name="colorChartFill">#20FDA4AF</item>
+        <item name="colorChartText">#FB7185</item>
+    </style>
+</resources>

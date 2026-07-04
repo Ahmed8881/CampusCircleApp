@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/dashboardScroll"
@@ -37,11 +37,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.55"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:letterSpacing="0.08"
                     android:text="OVERVIEW"
                     android:textAllCaps="true"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="11sp" />
 
                 <TextView
@@ -49,10 +49,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/inter_bold"
                     android:letterSpacing="-0.03"
                     android:text="Dashboard"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="36sp" />
 
                 <TextView
@@ -62,7 +62,7 @@
                     android:layout_marginTop="4dp"
                     android:alpha="0.6"
                     android:text="Attendance summary &amp; performance"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#517404"
+                app:cardBackgroundColor="?attr/colorPrimary"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -94,11 +94,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alpha="0.8"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.12"
                             android:text="AVG. ATTENDANCE"
                             android:textAllCaps="true"
-                            android:textColor="#E3EDD3"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="10sp" />
 
                         <TextView
@@ -106,10 +106,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:letterSpacing="-0.04"
                             android:text="—"
-                            android:textColor="#FFFFFF"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="60sp" />
                     </LinearLayout>
 
@@ -117,7 +117,7 @@
                         android:layout_width="1dp"
                         android:layout_height="60dp"
                         android:alpha="0.2"
-                        android:background="#FFFFFF" />
+                        android:background="?attr/colorOnPrimary" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -130,9 +130,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alpha="0.9"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:text="75% minimum"
-                            android:textColor="#F4F8EE"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="13sp" />
 
                         <TextView
@@ -140,10 +140,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:alpha="0.7"
-                            android:fontFamily="sans-serif"
+                            android:fontFamily="@font/inter_regular"
                             android:lineSpacingExtra="4dp"
                             android:text="Stay above threshold to meet attendance requirements"
-                            android:textColor="#E3EDD3"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -166,10 +166,10 @@
                     android:layout_columnWeight="1"
                     android:layout_marginEnd="6dp"
                     android:layout_marginBottom="12dp"
-                    app:cardBackgroundColor="#FFFFFF"
+                    style="@style/Widget.App.Card"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="@color/color_border"
+                    app:strokeColor="?attr/colorOutline"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -181,16 +181,16 @@
                         <View
                             android:layout_width="28dp"
                             android:layout_height="4dp"
-                            android:background="#517404"
+                            android:background="?attr/colorPrimary"
                             android:layout_marginBottom="12dp" />
 
                         <TextView
                             android:id="@+id/totalPresentValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="#517404"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="34sp" />
 
                         <TextView
@@ -198,11 +198,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:alpha="0.6"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.06"
                             android:text="PRESENT"
                             android:textAllCaps="true"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -214,10 +214,10 @@
                     android:layout_columnWeight="1"
                     android:layout_marginStart="6dp"
                     android:layout_marginBottom="12dp"
-                    app:cardBackgroundColor="#FFFFFF"
+                    style="@style/Widget.App.Card"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="@color/color_border"
+                    app:strokeColor="?attr/colorOutline"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -229,16 +229,16 @@
                         <View
                             android:layout_width="28dp"
                             android:layout_height="4dp"
-                            android:background="#D93025"
+                            android:background="?attr/colorError"
                             android:layout_marginBottom="12dp" />
 
                         <TextView
                             android:id="@+id/totalAbsentValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="34sp" />
 
                         <TextView
@@ -246,11 +246,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:alpha="0.6"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.06"
                             android:text="ABSENT"
                             android:textAllCaps="true"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -261,10 +261,10 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_marginEnd="6dp"
-                    app:cardBackgroundColor="#FFFFFF"
+                    style="@style/Widget.App.Card"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="@color/color_border"
+                    app:strokeColor="?attr/colorOutline"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -276,16 +276,16 @@
                         <View
                             android:layout_width="28dp"
                             android:layout_height="4dp"
-                            android:background="#F59E0B"
+                            android:background="?attr/colorWarning"
                             android:layout_marginBottom="12dp" />
 
                         <TextView
                             android:id="@+id/totalLeavesValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="34sp" />
 
                         <TextView
@@ -293,11 +293,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:alpha="0.6"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.06"
                             android:text="LEAVES"
                             android:textAllCaps="true"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -308,7 +308,7 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_marginStart="6dp"
-                    app:cardBackgroundColor="#EEF3E6"
+                    app:cardBackgroundColor="?attr/colorPrimaryContainer"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
@@ -322,16 +322,16 @@
                         <View
                             android:layout_width="28dp"
                             android:layout_height="4dp"
-                            android:background="#517404"
+                            android:background="?attr/colorPrimary"
                             android:layout_marginBottom="12dp" />
 
                         <TextView
                             android:id="@+id/totalClassesValue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="#517404"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="34sp" />
 
                         <TextView
@@ -339,11 +339,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:alpha="0.7"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.06"
                             android:text="TOTAL"
                             android:textAllCaps="true"
-                            android:textColor="#517404"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -361,15 +361,15 @@
                 <View
                     android:layout_width="3dp"
                     android:layout_height="16dp"
-                    android:background="#517404"
+                    android:background="?attr/colorPrimary"
                     android:layout_marginEnd="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Analytics"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -379,10 +379,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="14dp"
-                app:cardBackgroundColor="#FFFFFF"
+                style="@style/Widget.App.Card"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -394,9 +394,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="Attendance Trend"
-                        android:textColor="@color/color_text_primary"
+                        android:textColor="?attr/colorTextHeading"
                         android:textSize="16sp" />
 
                     <TextView
@@ -405,7 +405,7 @@
                         android:layout_marginTop="2dp"
                         android:alpha="0.5"
                         android:text="Weekly overview"
-                        android:textColor="@color/color_text_secondary"
+                        android:textColor="?attr/colorTextBody"
                         android:textSize="12sp" />
 
                     <com.github.mikephil.charting.charts.LineChart
@@ -423,10 +423,10 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                app:cardBackgroundColor="#FFFFFF"
+                style="@style/Widget.App.Card"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -438,9 +438,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="Course Performance"
-                        android:textColor="@color/color_text_primary"
+                        android:textColor="?attr/colorTextHeading"
                         android:textSize="16sp" />
 
                     <TextView
@@ -449,7 +449,7 @@
                         android:layout_marginTop="2dp"
                         android:alpha="0.5"
                         android:text="Attendance per course"
-                        android:textColor="@color/color_text_secondary"
+                        android:textColor="?attr/colorTextBody"
                         android:textSize="12sp" />
 
                     <com.github.mikephil.charting.charts.HorizontalBarChart
@@ -470,8 +470,8 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:indicatorColor="#517404"
-        app:trackColor="#DDE8C4"
+        app:indicatorColor="?attr/colorPrimary"
+        app:trackColor="?attr/colorPrimaryContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -482,10 +482,10 @@
         android:id="@+id/dashboardError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/inter_medium"
         android:gravity="center"
         android:padding="24dp"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

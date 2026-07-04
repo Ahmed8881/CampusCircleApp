@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.swiperefreshlayout)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     
     // Lifecycle and ViewModel

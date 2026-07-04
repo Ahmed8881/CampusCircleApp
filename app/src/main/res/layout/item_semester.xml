@@ -4,11 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="0dp"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/color_card"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/color_border"
+    app:strokeColor="?attr/colorOutline"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -28,8 +29,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/color_text_primary"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="15sp" />
 
             <TextView
@@ -39,7 +40,7 @@
                 android:background="@drawable/bg_pill_primary"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
-                android:textColor="@color/color_primary_light"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -50,8 +51,41 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:alpha="0.6"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/semesterEditBtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:src="@drawable/ic_edit"
+                android:tint="?attr/colorPrimary"
+                android:contentDescription="Edit" />
+
+            <ImageButton
+                android:id="@+id/semesterDeleteBtn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:padding="6dp"
+                android:src="@drawable/ic_delete"
+                android:tint="?attr/colorError"
+                android:contentDescription="Delete" />
+        </LinearLayout>
 
     </LinearLayout>
 

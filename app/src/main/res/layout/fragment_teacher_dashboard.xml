@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="?attr/android:colorBackground"
     android:fillViewport="true"
     android:overScrollMode="never">
 
@@ -26,10 +26,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/inter_bold"
                 android:letterSpacing="-0.02"
                 android:text="Teacher Dashboard"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="34sp" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_marginTop="4dp"
                 android:alpha="0.6"
                 android:text="Your classes and student overview"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -72,11 +72,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:alpha="0.75"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:letterSpacing="0.10"
                         android:text="AVG ATTENDANCE"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="10sp" />
 
                     <TextView
@@ -84,10 +84,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/inter_bold"
                         android:letterSpacing="-0.03"
                         android:text="—"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="52sp" />
                 </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:layout_width="1dp"
                     android:layout_height="56dp"
                     android:alpha="0.3"
-                    android:background="@color/white" />
+                    android:background="?attr/colorOnPrimary" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -105,7 +105,7 @@
                     android:alpha="0.85"
                     android:lineSpacingExtra="4dp"
                     android:text="Good performance! Keep engaging your students."
-                    android:textColor="@color/white"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="13sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -144,16 +144,16 @@
                         android:letterSpacing="0.10"
                         android:text="STUDENTS"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="10sp" />
                     <TextView
                         android:id="@+id/teacherTotalStudents"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/inter_bold"
                         android:text="—"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="30sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -182,16 +182,16 @@
                         android:letterSpacing="0.10"
                         android:text="COURSES"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="10sp" />
                     <TextView
                         android:id="@+id/teacherTotalCourses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/inter_bold"
                         android:text="—"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="30sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -219,16 +219,16 @@
                         android:letterSpacing="0.10"
                         android:text="PRESENT TODAY"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="10sp" />
                     <TextView
                         android:id="@+id/teacherPresentToday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/inter_bold"
                         android:text="—"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="30sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -256,16 +256,16 @@
                         android:letterSpacing="0.10"
                         android:text="ABSENT TODAY"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="10sp" />
                     <TextView
                         android:id="@+id/teacherAbsentToday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/inter_bold"
                         android:text="—"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="30sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -278,10 +278,10 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="@color/color_card"
+            app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="24dp"
             app:cardElevation="0dp"
-            app:strokeColor="@color/color_border"
+            app:strokeColor="?attr/colorOutline"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -293,9 +293,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Monthly Attendance Trend"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="16sp" />
 
                 <com.github.mikephil.charting.charts.LineChart

@@ -1,9 +1,12 @@
 package com.example.campuscircleapp.features.admin.models
 
+import com.google.gson.annotations.SerializedName
+
 data class InstructorResponse(
-    val userId: Long,
-    val name: String,
-    val email: String,
-    val username: String,
-    val image: String?
+    @SerializedName("id") val id: Long,
+    @SerializedName("name") val name: String,
+    @SerializedName("email") val email: String?,
+    @SerializedName("username") val username: String? = null,
+    @SerializedName("updatedAt") val updatedAt: String? = null,
+    @SerializedName("updatedBy") val updatedBy: String? = null
 )

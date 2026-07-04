@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="@color/color_card"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/color_border"
+    app:strokeColor="?attr/colorOutline"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -46,9 +46,9 @@
                     android:id="@+id/teacherCourseName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Course Name"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="15sp" />
 
                 <TextView
@@ -58,7 +58,7 @@
                     android:layout_marginTop="3dp"
                     android:alpha="0.6"
                     android:text="CS101"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="13sp" />
             </LinearLayout>
 
@@ -70,7 +70,7 @@
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
                 android:text="3 Credits"
-                android:textColor="@color/color_primary_light"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>

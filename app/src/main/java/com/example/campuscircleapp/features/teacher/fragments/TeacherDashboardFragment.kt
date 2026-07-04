@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.core.theme.ChartThemeHelper
 import com.example.campuscircleapp.shared.services.SessionManager
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
@@ -60,18 +61,19 @@ class TeacherDashboardFragment : Fragment() {
         val entries = monthlyData.mapIndexed { i, d -> Entry(i.toFloat(), d.percentage) }
         val labels = monthlyData.map { it.month }
 
+        val ctx = requireContext()
         val dataSet = LineDataSet(entries, "Attendance %").apply {
-            color = Color.parseColor("#8B5CF6")
-            valueTextColor = Color.parseColor("#102A43")
+            color = ChartThemeHelper.lineColor(ctx)
+            valueTextColor = ChartThemeHelper.textColor(ctx)
             lineWidth = 3f
             setDrawCircles(true)
-            setCircleColor(Color.parseColor("#8B5CF6"))
+            setCircleColor(ChartThemeHelper.lineColor(ctx))
             circleRadius = 5f
             setDrawValues(false)
             mode = LineDataSet.Mode.CUBIC_BEZIER
             fillAlpha = 60
             setDrawFilled(true)
-            fillColor = Color.parseColor("#8B5CF6")
+            fillColor = ChartThemeHelper.fillColor(ctx)
         }
 
         chart.apply {
@@ -88,7 +90,7 @@ class TeacherDashboardFragment : Fragment() {
                 granularity = 1f
                 setDrawGridLines(false)
                 valueFormatter = IndexAxisValueFormatter(labels)
-                textColor = Color.parseColor("#102A43")
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             axisLeft.apply {
@@ -96,7 +98,7 @@ class TeacherDashboardFragment : Fragment() {
                 axisMaximum = 95f
                 granularity = 5f
                 setDrawGridLines(true)
-                textColor = Color.parseColor("#102A43")
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             invalidate()

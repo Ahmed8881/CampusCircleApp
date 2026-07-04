@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.features.home.models.StudentEnrollmentResponse
 
 class EnrolledCourseAdapter(private val items: List<StudentEnrollmentResponse>) :
@@ -40,10 +41,11 @@ class EnrolledCourseAdapter(private val items: List<StudentEnrollmentResponse>) 
         }
 
         holder.statusChip.text = item.status
+        val ctx = holder.itemView.context
         val chipColor = when (item.status.lowercase()) {
-            "approved" -> 0xFF22C55E.toInt()
-            "pending" -> 0xFFF59E0B.toInt()
-            else -> 0xFFEF4444.toInt()
+            "approved" -> ThemeManager.resolveColorCompat(ctx, R.attr.colorSuccess)
+            "pending" -> ThemeManager.resolveColorCompat(ctx, R.attr.colorWarning)
+            else -> ThemeManager.resolveColorCompat(ctx, R.attr.colorError)
         }
         holder.statusChip.setBackgroundColor(chipColor)
     }

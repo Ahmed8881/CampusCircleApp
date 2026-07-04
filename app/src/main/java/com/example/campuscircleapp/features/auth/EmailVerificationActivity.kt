@@ -7,11 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.google.android.material.button.MaterialButton
 
 class EmailVerificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_email_verification)

@@ -5,15 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCFDFB"> <!-- Cohesive premium off-white base -->
+    android:background="?attr/android:colorBackground">
 
-    <!-- Elegant, minimal top ambient glow (Deep Olive Tint matching Login screen) -->
     <View
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:alpha="0.04"
         android:background="@android:drawable/dialog_holo_light_frame"
-        android:backgroundTint="#3B4D24"
+        android:backgroundTint="?attr/colorPrimary"
         android:translationX="-150dp"
         android:translationY="-150dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +47,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    app:cardBackgroundColor="#F1F4EE"
+                    app:cardBackgroundColor="?attr/colorPrimaryContainer"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
@@ -57,9 +56,9 @@
                         android:id="@+id/logo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:src="@drawable/logo_2"
-                        app:tint="#3B4D24" />
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/logo_web" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <!-- Title -->
@@ -68,21 +67,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_bold"
                     android:letterSpacing="-0.02"
                     android:text="Create account"
-                    android:textColor="#191F11"
-                    android:textSize="32sp"
-                    android:textStyle="bold" />
+                    android:textColor="?attr/colorTextHeading"
+                    android:textSize="32sp" />
 
                 <!-- Subtitle -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif"
+                    android:fontFamily="@font/inter_regular"
                     android:text="Join CampusCircle today"
-                    android:textColor="#5C6453"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -104,120 +102,82 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/nameLayout"
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Full name"
-                        app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#00000000"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#3B4D24"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#3B4D24"
-                        app:startIconDrawable="@android:drawable/ic_menu_myplaces"
-                        app:startIconTint="#5C6453">
+                        app:startIconDrawable="@android:drawable/ic_menu_myplaces">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/nameInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="textPersonName"
                             android:paddingVertical="18dp"
-                            android:textColor="#191F11"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/emailLayout"
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Email address"
-                        app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#00000000"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#3B4D24"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#3B4D24"
-                        app:startIconDrawable="@android:drawable/ic_dialog_email"
-                        app:startIconTint="#5C6453">
+                        app:startIconDrawable="@android:drawable/ic_dialog_email">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/emailInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="textEmailAddress"
                             android:paddingVertical="18dp"
-                            android:textColor="#191F11"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/passwordLayout"
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Password"
-                        app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#00000000"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#3B4D24"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#3B4D24"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="#5C6453"
-                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                        app:startIconTint="#5C6453">
+                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/passwordInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="textPassword"
                             android:paddingVertical="18dp"
-                            android:textColor="#191F11"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/confirmPasswordLayout"
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Confirm password"
-                        app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#00000000"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#3B4D24"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#3B4D24"
                         app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="#5C6453"
-                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                        app:startIconTint="#5C6453">
+                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/confirmPasswordInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="textPassword"
                             android:paddingVertical="18dp"
-                            android:textColor="#191F11"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -233,59 +193,41 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/usernameLayout"
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Username"
-                        app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#00000000"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#3B4D24"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#3B4D24"
-                        app:startIconDrawable="@android:drawable/ic_menu_search"
-                        app:startIconTint="#5C6453">
+                        app:startIconDrawable="@android:drawable/ic_menu_search">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/usernameInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="text"
                             android:paddingVertical="18dp"
-                            android:textColor="#191F11"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/dobLayout"
+                        style="@style/Widget.App.TextInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Date of birth"
-                        app:boxBackgroundMode="outline"
-                        app:boxBackgroundColor="#00000000"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#3B4D24"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#3B4D24"
-                        app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
-                        app:startIconTint="#5C6453">
+                        app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/dobInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:focusable="false"
+                            android:fontFamily="@font/inter_regular"
                             android:inputType="date"
                             android:paddingVertical="18dp"
-                            android:textColor="#191F11"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -299,42 +241,26 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <!-- Premium Outlined Back Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/prevBtn"
+                        style="@style/Widget.App.Button.Outlined"
                         android:layout_width="0dp"
                         android:layout_height="56dp"
                         android:layout_weight="1"
                         android:text="Back"
-                        android:textAllCaps="false"
-                        android:textColor="#5C6453"
-                        android:visibility="invisible"
-                        app:backgroundTint="#00000000"
-                        app:cornerRadius="12dp"
-                        app:elevation="0dp"
-                        app:strokeColor="#D2D7CD"
-                        app:strokeWidth="1dp" />
+                        android:visibility="invisible" />
 
-                    <!-- Gap spacer explicitly defined inside layout structure -->
                     <View
                         android:layout_width="16dp"
                         android:layout_height="0dp" />
 
-                    <!-- Primary Olive Accent Navigation Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nextBtn"
+                        style="@style/Widget.App.Button.Primary"
                         android:layout_width="0dp"
                         android:layout_height="56dp"
                         android:layout_weight="1"
-                        android:text="Continue"
-                        android:textAllCaps="false"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:backgroundTint="#3B4D24"
-                        app:cornerRadius="12dp"
-                        app:elevation="0dp"
-                        />
+                        android:text="Continue" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -351,53 +277,46 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1"
-                    android:background="#E3E6DF" />
+                    android:background="?attr/colorOutline" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="16dp"
-                    android:text="or"
-                    android:textColor="#8A9382"
-                    android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_regular"
+                            android:paddingHorizontal="16dp"
+                            android:text="or"
+                            android:textColor="?attr/colorTextMuted"
+                            android:textSize="14sp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:background="#E3E6DF" />
-            </LinearLayout>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="?attr/colorOutline" />
+                </LinearLayout>
 
-            <!-- Google Sign Up Button (Crisp Minimalist Style matching Login) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/googleSignInBtn"
+                style="@style/Widget.App.Button.Outlined"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
                 android:text="Continue with Google"
-                android:textAllCaps="false"
-                android:textColor="#191F11"
-                android:textSize="15sp"
-                app:backgroundTint="#00000000"
-                app:cornerRadius="12dp"
                 app:icon="@drawable/google"
                 app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="@null"
-                app:strokeColor="#D2D7CD"
-                app:strokeWidth="1dp" />
+                app:iconTint="@null" />
 
-            <!-- Login link -->
             <TextView
                 android:id="@+id/loginText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="36dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_semibold"
                 android:padding="8dp"
                 android:text="Already have an account? Sign in"
-                android:textColor="#3B4D24"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="15sp" />
 
         </LinearLayout>

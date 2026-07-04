@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -35,21 +35,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.55"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:letterSpacing="0.08"
                     android:text="CAMPUS"
                     android:textAllCaps="true"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/inter_bold"
                     android:letterSpacing="-0.02"
                     android:text="Events"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="36sp" />
 
                 <TextView
@@ -58,7 +58,7 @@
                     android:layout_marginTop="4dp"
                     android:alpha="0.6"
                     android:text="Birthdays &amp; upcoming schedules"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -68,10 +68,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/color_card"
+                app:cardBackgroundColor="?attr/colorSurface"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/color_border"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -94,7 +94,7 @@
                             android:background="@drawable/bg_pill_muted"
                             android:gravity="center"
                             android:text="‹"
-                            android:textColor="@color/color_primary_light"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="22sp"
                             android:textStyle="bold" />
 
@@ -103,10 +103,10 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:gravity="center"
                             android:letterSpacing="0.01"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="17sp" />
 
                         <TextView
@@ -116,7 +116,7 @@
                             android:background="@drawable/bg_pill_muted"
                             android:gravity="center"
                             android:text="›"
-                            android:textColor="@color/color_primary_light"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -128,13 +128,13 @@
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="W" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="F" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="@color/color_text_muted" android:textSize="11sp" android:fontFamily="sans-serif-medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="M" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="W" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="T" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="F" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="S" android:textColor="?attr/colorTextMuted" android:textSize="11sp" android:fontFamily="@font/inter_medium" android:alpha="0.6" />
                     </LinearLayout>
 
                     <!-- Calendar days grid -->
@@ -160,16 +160,16 @@
                 <View
                     android:layout_width="3dp"
                     android:layout_height="18dp"
-                    android:background="#517404"
+                    android:background="?attr/colorPrimary"
                     android:layout_marginEnd="10dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Birthdays This Month"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -180,7 +180,7 @@
                 android:layout_height="36dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="28dp"
-                android:indeterminateTint="#517404"
+                android:indeterminateTint="?attr/colorPrimary"
                 android:visibility="gone" />
 
             <!-- Empty State -->
@@ -197,10 +197,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.45"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
                     android:text="No birthdays this month"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="14sp"
                     android:visibility="gone" />
             </LinearLayout>

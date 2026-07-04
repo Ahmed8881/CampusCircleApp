@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:text="Edit Class"
+        android:textColor="?attr/colorTextHeading"
+        android:textSize="20sp" />
+
+    <!-- Course -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter_medium"
+        android:letterSpacing="0.08"
+        android:text="COURSE"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorTextMuted"
+        android:textSize="11sp" />
+
+    <Spinner
+        android:id="@+id/dialogCourseSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/spinner_background"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp" />
+
+    <!-- Day (spinner for add mode) -->
+    <LinearLayout
+        android:id="@+id/dialogDaySpinnerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/inter_medium"
+            android:letterSpacing="0.08"
+            android:text="DAY"
+            android:textAllCaps="true"
+            android:textColor="?attr/colorTextMuted"
+            android:textSize="11sp" />
+
+        <Spinner
+            android:id="@+id/dialogDaySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/spinner_background"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+    </LinearLayout>
+
+    <!-- Time Slot -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/inter_medium"
+        android:letterSpacing="0.08"
+        android:text="TIME SLOT"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorTextMuted"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.App.TextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:hint="Start Time">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dialogStartTimeInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="09:00"
+                android:focusable="false"
+                android:clickable="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.App.TextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:hint="End Time">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dialogEndTimeInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="11:00"
+                android:focusable="false"
+                android:clickable="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Room -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/inter_medium"
+        android:letterSpacing="0.08"
+        android:text="VENUE"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorTextMuted"
+        android:textSize="11sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Room / Venue">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dialogRoomInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Delete button (visible only in edit mode) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogDeleteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="22dp"
+        android:text="Delete Entry"
+        android:textAllCaps="false"
+        android:textColor="?attr/colorError"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:backgroundTint="@null"
+        app:cornerRadius="16dp"
+        app:strokeColor="?attr/colorError"
+        app:strokeWidth="1.5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogCancelBtn"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorTextMuted"
+            android:textSize="14sp"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialogSaveBtn"
+            style="@style/Widget.App.Button.Primary"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:text="Save" />
+    </LinearLayout>
+
+</LinearLayout>

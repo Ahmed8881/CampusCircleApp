@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="@color/color_card"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/color_border"
+    app:strokeColor="?attr/colorOutline"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="14dp"
-            app:cardBackgroundColor="@color/color_primary_container"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
@@ -32,10 +32,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/inter_bold"
                 android:gravity="center"
                 android:text="S"
-                android:textColor="@color/color_primary"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -50,9 +50,9 @@
                 android:id="@+id/markStudentName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_medium"
                 android:text="Student Name"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="14sp" />
 
             <TextView
@@ -61,9 +61,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:alpha="0.55"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/inter_regular"
                 android:text="2023-CS-01"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -88,10 +88,10 @@
                 android:minWidth="0dp"
                 android:text="P"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                app:backgroundTint="@color/color_success"
+                app:backgroundTint="?attr/colorSuccess"
                 app:cornerRadius="10dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -108,10 +108,10 @@
                 android:minWidth="0dp"
                 android:text="A"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                app:backgroundTint="@color/color_error"
+                app:backgroundTint="?attr/colorError"
                 app:cornerRadius="10dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -128,10 +128,10 @@
                 android:minWidth="0dp"
                 android:text="L"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                app:backgroundTint="@color/color_warning"
+                app:backgroundTint="?attr/colorWarning"
                 app:cornerRadius="10dp" />
         </LinearLayout>
     </LinearLayout>

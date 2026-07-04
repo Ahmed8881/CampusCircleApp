@@ -6,11 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#E2E8F0"
-    app:strokeWidth="1dp">
+    style="@style/Widget.App.Card">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +29,7 @@
                 android:id="@+id/unreadIndicator"
                 android:layout_width="4dp"
                 android:layout_height="40dp"
-                android:background="#2563EB"
+                android:background="?attr/colorBrandAccent"
                 android:layout_marginEnd="12dp" />
 
 
@@ -52,7 +48,7 @@
 
 
                     android:text="All Spaces"
-                    android:textColor="#2563EB"
+                    android:textColor="?attr/colorBrandAccent"
                     android:textSize="11sp"
                     android:textStyle="bold"
                     android:textAllCaps="true"
@@ -66,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:text="2024-01-01"
-                    android:textColor="#94A3B8"
+                    android:textColor="?attr/colorTextMuted"
                     android:textSize="11sp" />
             </LinearLayout>
 
@@ -77,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="Read"
                 android:textSize="11sp"
-                android:textColor="#2563EB"
+                android:textColor="?attr/colorBrandAccent"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:padding="4dp" />
@@ -89,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Announcement message here"
-            android:textColor="#1E293B"
+            android:textColor="?attr/colorTextHeading"
             android:textSize="14sp"
             android:lineSpacingExtra="4dp" />
     </LinearLayout>

@@ -92,4 +92,16 @@
     <color name="nav_selected">#3B4D24</color>
     <color name="nav_unselected">#8A9382</color>
     <color name="nav_indicator">#E8EDE2</color>
+
+    <!-- Theme Preview Colors -->
+    <color name="preview_seckho">#4A5D23</color>
+    <color name="preview_ocean">#2563EB</color>
+    <color name="preview_midnight">#6366F1</color>
+    <color name="preview_forest">#059669</color>
+    <color name="preview_lavender">#7C3AED</color>
+    <color name="preview_sunset">#EA580C</color>
+    <color name="preview_rose">#E11D48</color>
+    <color name="preview_slate">#475569</color>
+    <color name="preview_aubergine">#6B21A8</color>
+    <color name="preview_gold">#D97706</color>
 </resources>

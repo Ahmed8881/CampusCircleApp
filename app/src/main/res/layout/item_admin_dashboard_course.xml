@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="20dp"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/color_card"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardCornerRadius="18dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/color_border"
+    app:strokeColor="?attr/colorOutline"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -44,7 +44,7 @@
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="CSC303"
-                    android:textColor="@color/color_primary"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:alpha="0.55"
                     android:text="61 enrolled"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -69,9 +69,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_medium"
                 android:text="Compiler Construction"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="15sp" />
 
             <!-- Attendance label + status badge -->
@@ -87,9 +87,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="59% attendance"
-                    android:textColor="@color/color_secondary"
+                    android:textColor="?attr/colorBrandAccent"
                     android:textSize="13sp" />
 
                 <TextView
@@ -99,7 +99,7 @@
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="3dp"
                     android:text="Active"
-                    android:textColor="@color/color_success"
+                    android:textColor="?attr/colorSuccess"
                     android:textSize="10sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -113,8 +113,8 @@
                 android:layout_marginTop="8dp"
                 android:max="100"
                 android:progress="59"
-                android:progressBackgroundTint="@color/color_border"
-                android:progressTint="@color/color_primary"
+                android:progressBackgroundTint="?attr/colorOutline"
+                android:progressTint="?attr/colorPrimary"
                 android:indeterminate="false" />
         </LinearLayout>
     </LinearLayout>

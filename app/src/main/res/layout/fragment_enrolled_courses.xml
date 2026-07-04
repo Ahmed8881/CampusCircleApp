@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <!-- Collapsing App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_bg"
+        android:background="?attr/android:colorBackground"
         app:elevation="0dp"
         app:liftOnScroll="true">
 
@@ -48,21 +48,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alpha="0.55"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:letterSpacing="0.08"
                             android:text="LEARNING"
                             android:textAllCaps="true"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="11sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:letterSpacing="-0.03"
                             android:text="My Courses"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="32sp" />
 
                     </LinearLayout>
@@ -93,7 +93,7 @@
                         android:layout_weight="1"
                         android:alpha="0.5"
                         android:text="Enrolled courses &amp; attendance"
-                        android:textColor="@color/color_text_secondary"
+                        android:textColor="?attr/colorTextBody"
                         android:textSize="14sp" />
 
                     <!-- Courses count badge -->
@@ -105,7 +105,7 @@
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="3dp"
                         android:text="0 active"
-                        android:textColor="@color/color_text_primary"
+                        android:textColor="?attr/colorTextHeading"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="18dp"
-                    app:cardBackgroundColor="@color/color_surface"
+                    app:cardBackgroundColor="?attr/colorSurface"
                     app:cardCornerRadius="14dp"
                     app:cardElevation="0dp">
 
@@ -144,8 +144,8 @@
                             android:imeOptions="actionSearch"
                             android:inputType="text"
                             android:singleLine="true"
-                            android:textColor="@color/color_text_primary"
-                            android:textColorHint="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextHeading"
+                            android:textColorHint="?attr/colorTextBody"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/color_surface"
+                    app:cardBackgroundColor="?attr/colorSurface"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 
@@ -260,9 +260,9 @@
                             android:id="@+id/tvTotalCourses"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="26sp" />
 
                         <TextView
@@ -271,7 +271,7 @@
                             android:layout_marginTop="2dp"
                             android:alpha="0.5"
                             android:text="Enrolled"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -284,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/color_surface"
+                    app:cardBackgroundColor="?attr/colorSurface"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 
@@ -298,9 +298,9 @@
                             android:id="@+id/tvAvgAttendance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="26sp" />
 
                         <TextView
@@ -309,7 +309,7 @@
                             android:layout_marginTop="2dp"
                             android:alpha="0.5"
                             android:text="Avg. Attend."
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -321,7 +321,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/color_surface"
+                    app:cardBackgroundColor="?attr/colorSurface"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 
@@ -335,9 +335,9 @@
                             android:id="@+id/tvCredits"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/inter_bold"
                             android:text="—"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="26sp" />
 
                         <TextView
@@ -346,7 +346,7 @@
                             android:layout_marginTop="2dp"
                             android:alpha="0.5"
                             android:text="Credits"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -367,9 +367,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Course List"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -406,10 +406,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:alpha="0.5"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
                     android:text="No enrolled courses"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="16sp" />
 
                 <TextView
@@ -420,7 +420,7 @@
                     android:gravity="center"
                     android:paddingHorizontal="40dp"
                     android:text="Your enrolled courses will appear here"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="13sp" />
 
             </LinearLayout>

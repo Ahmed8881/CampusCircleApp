@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <LinearLayout
         android:id="@+id/teacherStudentsHeader"
@@ -21,10 +21,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/inter_bold"
             android:letterSpacing="-0.02"
             android:text="My Students"
-            android:textColor="@color/color_text_primary"
+            android:textColor="?attr/colorTextHeading"
             android:textSize="32sp" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_marginTop="4dp"
             android:alpha="0.6"
             android:text="Students enrolled in your courses"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="14sp" />
 
         <!-- Course filter spinner -->
@@ -51,7 +51,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:alpha="0.4"
-            android:background="@color/color_border" />
+            android:background="?attr/colorOutline" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -86,7 +86,7 @@
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
         android:padding="24dp"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:alpha="0.35"
             android:text="No students enrolled"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="16sp" />
 
         <TextView
@@ -120,7 +120,7 @@
             android:layout_marginTop="6dp"
             android:alpha="0.25"
             android:text="Students will appear once they enroll"
-            android:textColor="@color/color_text_muted"
+            android:textColor="?attr/colorTextMuted"
             android:textSize="13sp" />
     </LinearLayout>
 

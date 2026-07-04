@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.adapters.AdminDashboardCourseAdapter
 import com.example.campuscircleapp.core.models.UiState
+import com.example.campuscircleapp.core.theme.ChartThemeHelper
 import com.example.campuscircleapp.features.home.models.AdminDashboardCourse
 import com.example.campuscircleapp.features.home.models.AdminDashboardResponse
 import com.example.campuscircleapp.features.home.viewModels.AdminDashboardViewModel
@@ -145,14 +146,17 @@ class AdminDashboardFragment : Fragment() {
             PieEntry(remaining, "Gap")
         )
 
+        val ctx = requireContext()
+        val (primaryColor, mutedColor) = ChartThemeHelper.attendancePieColors(ctx)
         val dataSet = PieDataSet(entries, "").apply {
-            colors = listOf(
-                Color.parseColor("#2563EB"),
-                Color.parseColor("#BFDBFE")
-            )
-            valueTextColor = Color.WHITE
-            valueTextSize = 12f
+            colors = listOf(primaryColor, mutedColor)
+            valueTextColor = android.graphics.Color.WHITE
+            valueTextSize = 14f
             sliceSpace = 2f
+            valueLinePart1OffsetPercentage = 80f
+            valueLinePart1Length = 0.3f
+            valueLinePart2Length = 0.5f
+            yValuePosition = com.github.mikephil.charting.data.PieDataSet.ValuePosition.OUTSIDE_SLICE
         }
 
         attendancePieChart.apply {
@@ -161,14 +165,16 @@ class AdminDashboardFragment : Fragment() {
             }
             setUsePercentValues(true)
             description = Description().apply { text = "" }
-            legend.textColor = Color.parseColor("#334155")
-            setEntryLabelColor(Color.parseColor("#0F172A"))
+            legend.textColor = ChartThemeHelper.mutedColor(ctx)
+            legend.textSize = 12f
+            setEntryLabelColor(android.graphics.Color.WHITE)
+            setEntryLabelTextSize(12f)
             centerText = "${String.format(Locale.getDefault(), "%.1f", safeAverage)}%"
-            setCenterTextSize(18f)
-            setCenterTextColor(Color.parseColor("#1E3A8A"))
-            setHoleColor(Color.WHITE)
-            holeRadius = 62f
-            transparentCircleRadius = 66f
+            setCenterTextSize(20f)
+            setCenterTextColor(ChartThemeHelper.headingColor(ctx))
+            setHoleColor(ChartThemeHelper.surfaceColor(ctx))
+            holeRadius = 58f
+            transparentCircleRadius = 62f
             animateY(900)
             invalidate()
         }
@@ -191,9 +197,10 @@ class AdminDashboardFragment : Fragment() {
         }
         val labels = topCourses.map { it.courseCode.trim() }
 
+        val ctx = requireContext()
         val dataSet = BarDataSet(entries, "").apply {
-            color = Color.parseColor("#2563EB")
-            valueTextColor = Color.parseColor("#1E3A8A")
+            color = ChartThemeHelper.brandPrimary(ctx)
+            valueTextColor = ChartThemeHelper.textColor(ctx)
             valueTextSize = 11f
         }
 
@@ -212,7 +219,7 @@ class AdminDashboardFragment : Fragment() {
                 position = XAxis.XAxisPosition.BOTTOM
                 granularity = 1f
                 setDrawGridLines(false)
-                textColor = Color.parseColor("#334155")
+                textColor = ChartThemeHelper.textColor(ctx)
                 valueFormatter = IndexAxisValueFormatter(labels)
             }
 
@@ -221,8 +228,8 @@ class AdminDashboardFragment : Fragment() {
                 axisMaximum = 100f
                 granularity = 20f
                 setDrawGridLines(true)
-                gridColor = Color.parseColor("#E2E8F0")
-                textColor = Color.parseColor("#334155")
+                gridColor = ChartThemeHelper.gridColor(ctx)
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             animateY(900)

@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.campuscircleapp.core.services.signalr.SignalRManager
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.features.admin.fragments.MarkAttendanceFragment
 import com.example.campuscircleapp.features.auth.LoginActivity
 import com.example.campuscircleapp.features.home.fragments.SettingsFragment
@@ -29,6 +30,7 @@ class TeacherActivity : AppCompatActivity() {
     private val homeService = HomeService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_teacher)

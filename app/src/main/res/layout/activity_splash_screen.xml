@@ -58,13 +58,12 @@
         app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toTopOf="@+id/logo" />
 
-    <!-- Brand Logo tinted to Professional Deep Olive -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/logo_2"
-        android:tint="#3B4D24"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo_web"
         app:layout_constraintBottom_toTopOf="@+id/appName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

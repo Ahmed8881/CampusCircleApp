@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="?attr/android:colorBackground"
     android:fillViewport="true"
     android:overScrollMode="never">
 
@@ -20,10 +20,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/inter_bold"
             android:letterSpacing="-0.02"
             android:text="Announcements"
-            android:textColor="@color/color_text_primary"
+            android:textColor="?attr/colorTextHeading"
             android:textSize="30sp" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_marginTop="4dp"
             android:alpha="0.55"
             android:text="Broadcast messages to your campus"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="13sp" />
 
         <!-- Compose card -->
@@ -40,10 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:cardBackgroundColor="@color/color_card"
+            app:cardBackgroundColor="?attr/colorSurface"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
-            app:strokeColor="@color/color_border"
+            app:strokeColor="?attr/colorOutline"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -75,9 +75,9 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:text="New Announcement"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="16sp" />
 
                         <TextView
@@ -87,7 +87,7 @@
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
                             android:text="Broadcast"
-                            android:textColor="@color/color_primary"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="11sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -96,11 +96,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:letterSpacing="0.08"
                         android:text="TARGET AUDIENCE"
                         android:textAllCaps="true"
-                        android:textColor="@color/color_text_muted"
+                        android:textColor="?attr/colorTextMuted"
                         android:textSize="11sp" />
 
                     <RadioGroup
@@ -120,7 +120,7 @@
                             android:gravity="center"
                             android:paddingHorizontal="12dp"
                             android:text="All Spaces"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="13sp" />
 
                         <RadioButton
@@ -133,7 +133,7 @@
                             android:gravity="center"
                             android:paddingHorizontal="12dp"
                             android:text="Specific Space"
-                            android:textColor="@color/color_text_secondary"
+                            android:textColor="?attr/colorTextBody"
                             android:textSize="13sp" />
                     </RadioGroup>
 
@@ -153,17 +153,17 @@
                         android:layout_marginTop="18dp"
                         android:layout_marginBottom="18dp"
                         android:alpha="0.35"
-                        android:background="@color/color_border" />
+                        android:background="?attr/colorOutline" />
 
                     <!-- Message label -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:letterSpacing="0.08"
                         android:text="MESSAGE"
                         android:textAllCaps="true"
-                        android:textColor="@color/color_text_muted"
+                        android:textColor="?attr/colorTextMuted"
                         android:textSize="11sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -180,7 +180,7 @@
                             android:inputType="textMultiLine"
                             android:maxLines="6"
                             android:minLines="3"
-                            android:textColor="@color/color_text_primary"
+                            android:textColor="?attr/colorTextHeading"
                             android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -192,7 +192,7 @@
                         android:background="@drawable/bg_gradient_primary"
                         android:text="Send Announcement"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:backgroundTint="@null"
@@ -204,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_success_dim"
+                        android:background="?attr/colorSurfaceSuccess"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:paddingHorizontal="16dp"
@@ -216,7 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:textColor="@color/color_success"
+                            android:textColor="?attr/colorSuccess"
                             android:textSize="13sp"
                             android:visibility="gone" />
                     </LinearLayout>
@@ -227,10 +227,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:background="@color/color_error_dim"
+                        android:background="?attr/colorSurfaceError"
                         android:gravity="center"
                         android:padding="12dp"
-                        android:textColor="@color/color_error"
+                        android:textColor="?attr/colorError"
                         android:textSize="13sp"
                         android:visibility="gone" />
                 </LinearLayout>

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.campuscircleapp.R
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.features.home.models.AttendanceHistoryItem
 
 class AttendanceHistoryAdapter(
@@ -31,10 +32,11 @@ class AttendanceHistoryAdapter(
         holder.markedByText.text = "Marked by: ${item.markedBy}"
 
         val statusLower = item.status.lowercase()
+        val ctx = holder.itemView.context
         val statusColor = when (statusLower) {
-            "present" -> android.graphics.Color.parseColor("#0F766E")
-            "absent" -> android.graphics.Color.parseColor("#B91C1C")
-            else -> android.graphics.Color.parseColor("#C27803")
+            "present" -> ThemeManager.resolveColorCompat(ctx, R.attr.colorSuccess)
+            "absent" -> ThemeManager.resolveColorCompat(ctx, R.attr.colorError)
+            else -> ThemeManager.resolveColorCompat(ctx, R.attr.colorWarning)
         }
         holder.statusText.setTextColor(statusColor)
     }

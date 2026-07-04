@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <!-- Header section -->
     <LinearLayout
@@ -34,10 +34,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/inter_bold"
                     android:letterSpacing="-0.02"
                     android:text="Enrollments"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="30sp" />
 
                 <TextView
@@ -46,7 +46,7 @@
                     android:layout_marginTop="4dp"
                     android:alpha="0.55"
                     android:text="Review pending enrollment requests"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="13sp" />
             </LinearLayout>
 
@@ -57,7 +57,7 @@
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="6dp"
                 android:text="Pending"
-                android:textColor="@color/color_warning"
+                android:textColor="?attr/colorWarning"
                 android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -80,9 +80,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_medium"
                 android:text="Pending Requests"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -91,7 +91,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="12dp"
             android:alpha="0.35"
-            android:background="@color/color_border" />
+            android:background="?attr/colorOutline" />
     </LinearLayout>
 
     <!-- Enrollment list -->
@@ -127,10 +127,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:background="@color/color_error_dim"
+        android:background="?attr/colorSurfaceError"
         android:gravity="center"
         android:padding="16dp"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -156,7 +156,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="88dp"
             android:layout_height="88dp"
-            app:cardBackgroundColor="@color/color_success_dim"
+            app:cardBackgroundColor="?attr/colorSurfaceSuccess"
             app:cardCornerRadius="28dp"
             app:cardElevation="0dp"
             app:strokeColor="#40000000"
@@ -168,7 +168,7 @@
                 android:layout_gravity="center"
                 android:contentDescription="All clear"
                 android:src="@drawable/ic_nav_enrollments"
-                app:tint="@color/color_success" />
+                app:tint="?attr/colorSuccess" />
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Status badge -->
@@ -180,7 +180,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="All Clear"
-            android:textColor="@color/color_success"
+            android:textColor="?attr/colorSuccess"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -189,11 +189,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/inter_bold"
             android:gravity="center"
             android:letterSpacing="-0.01"
             android:text="No Pending Requests"
-            android:textColor="@color/color_text_primary"
+            android:textColor="?attr/colorTextHeading"
             android:textSize="20sp" />
 
         <!-- Subtitle -->
@@ -205,7 +205,7 @@
             android:gravity="center"
             android:lineSpacingExtra="3dp"
             android:text="All enrollment requests have been reviewed.\nNew requests will appear here."
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="14sp" />
 
         <!-- Divider dot row -->
@@ -220,7 +220,7 @@
                 android:layout_width="6dp"
                 android:layout_height="6dp"
                 android:background="@drawable/bg_timetable_dot"
-                android:backgroundTint="@color/color_success" />
+                android:backgroundTint="?attr/colorSuccess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -228,7 +228,7 @@
                 android:layout_marginStart="8dp"
                 android:alpha="0.45"
                 android:text="Refreshes automatically"
-                android:textColor="@color/color_text_muted"
+                android:textColor="?attr/colorTextMuted"
                 android:textSize="12sp" />
         </LinearLayout>
 

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <!-- Header -->
     <LinearLayout
@@ -35,21 +35,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.55"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:letterSpacing="0.08"
                     android:text="CAMPUS"
                     android:textAllCaps="true"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/inter_bold"
                     android:letterSpacing="-0.02"
                     android:text="Announcements"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="32sp" />
 
                 <TextView
@@ -58,7 +58,7 @@
                     android:layout_marginTop="4dp"
                     android:alpha="0.6"
                     android:text="Latest updates from your space"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clear All"
-                android:textColor="#517404"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="13sp"
                 android:visibility="gone" />
 
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
-            android:background="@color/color_border" />
+            android:background="?attr/colorOutline" />
 
     </LinearLayout>
 
@@ -106,8 +106,8 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:visibility="gone"
-        app:indicatorColor="#517404"
-        app:trackColor="#DDE8C4"
+        app:indicatorColor="?attr/colorPrimary"
+        app:trackColor="?attr/colorPrimaryContainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="24dp"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,7 +145,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="72dp"
             android:layout_height="72dp"
-            app:cardBackgroundColor="#EEF3E6"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
             app:cardCornerRadius="24dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
@@ -163,10 +163,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:alpha="0.55"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/inter_medium"
             android:gravity="center"
             android:text="No announcements yet"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="16sp" />
 
         <TextView
@@ -176,7 +176,7 @@
             android:alpha="0.35"
             android:gravity="center"
             android:text="New announcements from your courses will appear here"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="13sp" />
 
     </LinearLayout>

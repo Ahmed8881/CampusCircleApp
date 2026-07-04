@@ -27,8 +27,12 @@ import com.example.campuscircleapp.features.admin.models.CreateSemesterRequest
 import com.example.campuscircleapp.features.admin.models.SemesterResponse
 import com.example.campuscircleapp.features.admin.models.CreateInstructorRequest
 import com.example.campuscircleapp.features.admin.models.InstructorResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import com.example.campuscircleapp.features.admin.models.AssignmentResponse
 import com.example.campuscircleapp.features.admin.models.CreateTimetableEntryRequest
+import com.example.campuscircleapp.features.admin.models.UpdateTimetableEntryRequest
+import com.example.campuscircleapp.features.admin.models.StudentResponse
 import com.example.campuscircleapp.features.notifications.models.NotificationModel
 import retrofit2.Response
 import retrofit2.http.*
@@ -158,10 +162,34 @@ interface ApiService {
         @Body request: ResetPasswordRequest
     ): Response<apiResponse<Any>>
 
+    @Multipart
     @POST("Space/CreateSpace")
     suspend fun createWorkspace(
         @Header("Authorization") token: String,
-        @Body request: CreateWorkspaceRequest
+        @Part("name") name: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): Response<apiResponse<Any>>
+
+    @Multipart
+    @POST("Space/UpdateSpace")
+    suspend fun updateWorkspace(
+        @Header("Authorization") token: String,
+        @Part("Id") id: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): Response<apiResponse<Any>>
+
+    @POST("Space/DeleteSpace")
+    suspend fun deleteWorkspace(
+        @Header("Authorization") token: String,
+        @Query("id") id: Long
+    ): Response<apiResponse<Any>>
+
+    @POST("Space/ActiveAndInActiveSpaces")
+    suspend fun toggleWorkspaceStatus(
+        @Header("Authorization") token: String,
+        @Query("id") id: Long,
+        @Query("isActive") isActive: Boolean
     ): Response<apiResponse<Any>>
 
     @POST("Semester/CreateSemester")
@@ -170,16 +198,44 @@ interface ApiService {
         @Body request: CreateSemesterRequest
     ): Response<apiResponse<Any>>
 
+    @POST("Semester/UpdateSemester")
+    suspend fun updateSemester(
+        @Header("Authorization") token: String,
+        @Body request: CreateSemesterRequest
+    ): Response<apiResponse<Any>>
+
+    @POST("Semester/DeleteSemester")
+    suspend fun deleteSemester(
+        @Header("Authorization") token: String,
+        @Query("semesterId") semesterId: Long
+    ): Response<apiResponse<Any>>
+
+    @GET("Semester/GetAllSemesters")
+    suspend fun getAllSemesters(
+        @Header("Authorization") token: String
+    ): Response<apiResponse<List<SemesterResponse>>>
+
     @GET("Semester/GetSemesters")
     suspend fun getSemesters(
         @Header("Authorization") token: String
     ): Response<apiResponse<List<SemesterResponse>>>
 
-    @POST("User/CreateInstructor")
-    suspend fun createInstructor(
+    @POST("User/AddInstructor")
+    suspend fun addInstructor(
         @Header("Authorization") token: String,
         @Body request: CreateInstructorRequest
     ): Response<apiResponse<Any>>
+
+    @POST("User/DeleteInstructor")
+    suspend fun deleteInstructor(
+        @Header("Authorization") token: String,
+        @Query("instructorId") instructorId: Long
+    ): Response<apiResponse<Any>>
+
+    @GET("User/GetAllInstructors")
+    suspend fun getAllInstructors(
+        @Header("Authorization") token: String
+    ): Response<apiResponse<List<InstructorResponse>>>
 
     @GET("User/GetInstructors")
     suspend fun getInstructors(
@@ -191,10 +247,47 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<apiResponse<List<AssignmentResponse>>>
 
+    @GET("User/GetAllStudents")
+    suspend fun getAllStudents(
+        @Header("Authorization") token: String
+    ): Response<apiResponse<List<StudentResponse>>>
+
+    @POST("Space/AssignSeamester")
+    suspend fun assignSemester(
+        @Header("Authorization") token: String,
+        @Query("spaceId") spaceId: Long,
+        @Query("semesterId") semesterId: Long
+    ): Response<apiResponse<Any>>
+
+    @POST("User/AssignSpacesToInstructor")
+    suspend fun assignSpaceToInstructor(
+        @Header("Authorization") token: String,
+        @Query("instructorId") instructorId: Long,
+        @Query("spaceId") spaceId: Long
+    ): Response<apiResponse<Any>>
+
+    @POST("User/AssignCR_Of_Space")
+    suspend fun assignCR(
+        @Header("Authorization") token: String,
+        @Query("userName") userName: String
+    ): Response<apiResponse<Any>>
+
     @POST("Timetable/CreateTimetable")
     suspend fun createTimetableEntry(
         @Header("Authorization") token: String,
         @Body request: CreateTimetableEntryRequest
+    ): Response<apiResponse<Any>>
+
+    @POST("Timetable/UpdateTimetable")
+    suspend fun updateTimetableEntry(
+        @Header("Authorization") token: String,
+        @Body request: UpdateTimetableEntryRequest
+    ): Response<apiResponse<Any>>
+
+    @POST("Timetable/DeleteTimetable")
+    suspend fun deleteTimetableEntry(
+        @Header("Authorization") token: String,
+        @Query("id") id: Long
     ): Response<apiResponse<Any>>
 
     // Notification Endpoints

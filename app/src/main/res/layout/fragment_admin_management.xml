@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -28,10 +28,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/inter_bold"
                 android:letterSpacing="-0.02"
                 android:text="Management"
-                android:textColor="@color/color_text_primary"
+                android:textColor="?attr/colorTextHeading"
                 android:textSize="30sp" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_marginTop="4dp"
                 android:alpha="0.55"
                 android:text="Campus administration tools"
-                android:textColor="@color/color_text_secondary"
+                android:textColor="?attr/colorTextBody"
                 android:textSize="13sp" />
 
             <!-- Quick Actions label -->
@@ -61,9 +61,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Quick Actions"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -98,16 +98,16 @@
                             android:layout_height="38dp"
                             android:alpha="0.90"
                             android:src="@drawable/ic_workspace"
-                            android:tint="@color/white" />
+                            android:tint="?attr/colorOnPrimary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:gravity="center"
                             android:text="Create\nWorkspace"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -117,7 +117,7 @@
                             android:alpha="0.65"
                             android:gravity="center"
                             android:text="New course space"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -146,16 +146,16 @@
                             android:layout_height="38dp"
                             android:alpha="0.90"
                             android:src="@drawable/ic_semester"
-                            android:tint="@color/white" />
+                            android:tint="?attr/colorOnPrimary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:gravity="center"
                             android:text="Create\nSemester"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -165,7 +165,7 @@
                             android:alpha="0.65"
                             android:gravity="center"
                             android:text="Academic term"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -202,16 +202,16 @@
                             android:layout_height="38dp"
                             android:alpha="0.90"
                             android:src="@drawable/ic_instructor"
-                            android:tint="@color/white" />
+                            android:tint="?attr/colorOnPrimary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:gravity="center"
                             android:text="Add\nInstructor"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -221,7 +221,7 @@
                             android:alpha="0.65"
                             android:gravity="center"
                             android:text="Faculty accounts"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -250,16 +250,16 @@
                             android:layout_height="38dp"
                             android:alpha="0.90"
                             android:src="@drawable/ic_timetable_crud"
-                            android:tint="@color/white" />
+                            android:tint="?attr/colorOnPrimary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:gravity="center"
                             android:text="Timetable\nManagement"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -269,7 +269,7 @@
                             android:alpha="0.65"
                             android:gravity="center"
                             android:text="Class schedules"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -298,7 +298,7 @@
                         android:layout_height="40dp"
                         android:alpha="0.90"
                         android:src="@drawable/ic_assignment"
-                        android:tint="@color/white" />
+                        android:tint="?attr/colorOnPrimary" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -310,9 +310,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
+                            android:fontFamily="@font/inter_medium"
                             android:text="Assignments &amp; Assessments"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="15sp" />
 
                         <TextView
@@ -321,7 +321,7 @@
                             android:layout_marginTop="3dp"
                             android:alpha="0.70"
                             android:text="View and manage all course assignments"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -330,7 +330,7 @@
                         android:layout_height="20dp"
                         android:alpha="0.70"
                         android:src="@drawable/ic_nav_courses"
-                        android:tint="@color/white" />
+                        android:tint="?attr/colorOnPrimary" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

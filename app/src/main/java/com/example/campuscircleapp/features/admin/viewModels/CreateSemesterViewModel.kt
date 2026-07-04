@@ -19,11 +19,14 @@ class CreateSemesterViewModel : ViewModel() {
     private val _semestersState = MutableStateFlow<UiState<List<SemesterResponse>>>(UiState.Idle)
     val semestersState = _semestersState.asStateFlow()
 
+    private val _actionState = MutableStateFlow<UiState<Unit>>(UiState.Idle)
+    val actionState = _actionState.asStateFlow()
+
     fun loadSemesters(token: String) {
         _semestersState.value = UiState.Loading
         viewModelScope.launch {
             try {
-                val result = homeService.getSemesters(token)
+                val result = homeService.getAllSemesters(token)
                 _semestersState.value = UiState.Success(result.data, result.message)
             } catch (e: Exception) {
                 _semestersState.value = UiState.Error(e.message ?: "Failed to load semesters")
@@ -38,7 +41,7 @@ class CreateSemesterViewModel : ViewModel() {
         _createState.value = UiState.Loading
         viewModelScope.launch {
             try {
-                val result = homeService.createSemester(token, CreateSemesterRequest(name, no, start, end))
+                val result = homeService.createSemester(token, CreateSemesterRequest(id = 0, number = no, name = name, startDate = start, endDate = end))
                 _createState.value = UiState.Success(Unit, result.message)
             } catch (e: Exception) {
                 _createState.value = UiState.Error(e.message ?: "Failed to create semester")
@@ -46,5 +49,33 @@ class CreateSemesterViewModel : ViewModel() {
         }
     }
 
+    fun updateSemester(token: String, id: Long, name: String, no: Int, start: String, end: String) {
+        if (name.isBlank() || start.isBlank() || end.isBlank()) {
+            _actionState.value = UiState.Error("All fields are required"); return
+        }
+        _actionState.value = UiState.Loading
+        viewModelScope.launch {
+            try {
+                val result = homeService.updateSemester(token, CreateSemesterRequest(id = id, number = no, name = name, startDate = start, endDate = end))
+                _actionState.value = UiState.Success(Unit, result.message)
+            } catch (e: Exception) {
+                _actionState.value = UiState.Error(e.message ?: "Failed to update semester")
+            }
+        }
+    }
+
+    fun deleteSemester(token: String, semesterId: Long) {
+        _actionState.value = UiState.Loading
+        viewModelScope.launch {
+            try {
+                val result = homeService.deleteSemester(token, semesterId)
+                _actionState.value = UiState.Success(Unit, result.message)
+            } catch (e: Exception) {
+                _actionState.value = UiState.Error(e.message ?: "Failed to delete semester")
+            }
+        }
+    }
+
     fun resetCreateState() { _createState.value = UiState.Idle }
+    fun resetActionState() { _actionState.value = UiState.Idle }
 }

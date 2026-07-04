@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <!-- Header section -->
     <LinearLayout
@@ -24,11 +24,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0.55"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/inter_medium"
             android:letterSpacing="0.08"
             android:text="RECORDS"
             android:textAllCaps="true"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="11sp" />
 
         <TextView
@@ -36,10 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/inter_bold"
             android:letterSpacing="-0.02"
             android:text="Attendance History"
-            android:textColor="@color/color_text_primary"
+            android:textColor="?attr/colorTextHeading"
             android:textSize="32sp" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_marginTop="4dp"
             android:alpha="0.6"
             android:text="Select a course to view your day-by-day records"
-            android:textColor="@color/color_text_secondary"
+            android:textColor="?attr/colorTextBody"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -61,10 +61,10 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="4dp"
-        app:cardBackgroundColor="@color/color_card"
+        app:cardBackgroundColor="?attr/colorSurface"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
-        app:strokeColor="@color/color_border"
+        app:strokeColor="?attr/colorOutline"
         app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
             <View
                 android:layout_width="4dp"
                 android:layout_height="20dp"
-                android:background="#517404"
+                android:background="?attr/colorPrimary"
                 android:layout_marginEnd="12dp" />
 
             <Spinner
@@ -122,16 +122,16 @@
                 android:layout_width="4dp"
                 android:layout_height="24dp"
                 android:alpha="0.5"
-                android:background="@color/white" />
+                android:background="?attr/colorOnPrimary" />
 
             <TextView
                 android:id="@+id/attendanceSummary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/inter_medium"
                 android:text="Select a course above"
-                android:textColor="@color/white"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="13sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -174,7 +174,7 @@
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -192,7 +192,7 @@
         android:gravity="center"
         android:lineSpacingExtra="6dp"
         android:text="No attendance records found&#10;for this course"
-        android:textColor="@color/color_text_secondary"
+        android:textColor="?attr/colorTextBody"
         android:textSize="15sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

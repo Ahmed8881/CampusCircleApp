@@ -19,11 +19,14 @@ class CreateInstructorsViewModel : ViewModel() {
     private val _instructorsState = MutableStateFlow<UiState<List<InstructorResponse>>>(UiState.Idle)
     val instructorsState = _instructorsState.asStateFlow()
 
+    private val _actionState = MutableStateFlow<UiState<Unit>>(UiState.Idle)
+    val actionState = _actionState.asStateFlow()
+
     fun loadInstructors(token: String) {
         _instructorsState.value = UiState.Loading
         viewModelScope.launch {
             try {
-                val result = homeService.getInstructors(token)
+                val result = homeService.getAllInstructors(token)
                 _instructorsState.value = UiState.Success(result.data, result.message)
             } catch (e: Exception) {
                 _instructorsState.value = UiState.Error(e.message ?: "Failed to load instructors")
@@ -38,7 +41,15 @@ class CreateInstructorsViewModel : ViewModel() {
         _createState.value = UiState.Loading
         viewModelScope.launch {
             try {
-                val result = homeService.createInstructor(token, CreateInstructorRequest(name, email, username, password, dob))
+                val result = homeService.addInstructor(
+                    token, CreateInstructorRequest(
+                        fullName = name,
+                        userName = username,
+                        email = email,
+                        password = password,
+                        dob = dob
+                    )
+                )
                 _createState.value = UiState.Success(Unit, result.message)
             } catch (e: Exception) {
                 _createState.value = UiState.Error(e.message ?: "Failed to create instructor")
@@ -46,5 +57,18 @@ class CreateInstructorsViewModel : ViewModel() {
         }
     }
 
+    fun deleteInstructor(token: String, instructorId: Long) {
+        _actionState.value = UiState.Loading
+        viewModelScope.launch {
+            try {
+                val result = homeService.deleteInstructor(token, instructorId)
+                _actionState.value = UiState.Success(Unit, result.message)
+            } catch (e: Exception) {
+                _actionState.value = UiState.Error(e.message ?: "Failed to delete instructor")
+            }
+        }
+    }
+
     fun resetCreateState() { _createState.value = UiState.Idle }
+    fun resetActionState() { _actionState.value = UiState.Idle }
 }

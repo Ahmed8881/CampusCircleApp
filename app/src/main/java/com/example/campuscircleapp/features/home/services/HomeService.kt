@@ -22,7 +22,12 @@ import com.example.campuscircleapp.features.admin.models.CreateInstructorRequest
 import com.example.campuscircleapp.features.admin.models.InstructorResponse
 import com.example.campuscircleapp.features.admin.models.AssignmentResponse
 import com.example.campuscircleapp.features.admin.models.CreateTimetableEntryRequest
+import com.example.campuscircleapp.features.admin.models.UpdateTimetableEntryRequest
+import com.example.campuscircleapp.features.admin.models.StudentResponse
 import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class HomeService {
 
@@ -275,8 +280,43 @@ class HomeService {
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
 
-    suspend fun createWorkspace(token: String, request: CreateWorkspaceRequest): ServiceResult<Unit> {
-        val response = RetrofitInstance.api.createWorkspace("Bearer $token", request)
+    suspend fun createWorkspace(token: String, name: String): ServiceResult<Unit> {
+        val namePart = name.toRequestBody("text/plain".toMediaTypeOrNull())
+        val emptyPart = MultipartBody.Part.createFormData("image", "")
+        val response = RetrofitInstance.api.createWorkspace("Bearer $token", namePart, emptyPart)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun updateWorkspace(token: String, id: Long, name: String): ServiceResult<Unit> {
+        val idPart = id.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+        val namePart = name.toRequestBody("text/plain".toMediaTypeOrNull())
+        val emptyPart = MultipartBody.Part.createFormData("image", "")
+        val response = RetrofitInstance.api.updateWorkspace("Bearer $token", idPart, namePart, emptyPart)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun deleteWorkspace(token: String, id: Long): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.deleteWorkspace("Bearer $token", id)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun toggleWorkspaceStatus(token: String, id: Long, isActive: Boolean): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.toggleWorkspaceStatus("Bearer $token", id, isActive)
         val body = response.body()
         if (response.isSuccessful && body != null) {
             if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
@@ -295,6 +335,39 @@ class HomeService {
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
 
+    suspend fun updateSemester(token: String, request: CreateSemesterRequest): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.updateSemester("Bearer $token", request)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun deleteSemester(token: String, semesterId: Long): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.deleteSemester("Bearer $token", semesterId)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun getAllSemesters(token: String): ServiceResult<List<SemesterResponse>> {
+        val response = RetrofitInstance.api.getAllSemesters("Bearer $token")
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) return ServiceResult(body.data, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        if (response.code() == 404) {
+            return ServiceResult(emptyList(), "No semesters found")
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
     suspend fun getSemesters(token: String): ServiceResult<List<SemesterResponse>> {
         val response = RetrofitInstance.api.getSemesters("Bearer $token")
         val body = response.body()
@@ -302,15 +375,41 @@ class HomeService {
             if (body.responseCode == 200 && body.data != null) return ServiceResult(body.data, body.responseMessage)
             throw Exception(body.errorMessage ?: body.responseMessage)
         }
+        if (response.code() == 404) {
+            return ServiceResult(emptyList(), "No semesters found")
+        }
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
 
-    suspend fun createInstructor(token: String, request: CreateInstructorRequest): ServiceResult<Unit> {
-        val response = RetrofitInstance.api.createInstructor("Bearer $token", request)
+    suspend fun addInstructor(token: String, request: CreateInstructorRequest): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.addInstructor("Bearer $token", request)
         val body = response.body()
         if (response.isSuccessful && body != null) {
             if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
             throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun deleteInstructor(token: String, instructorId: Long): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.deleteInstructor("Bearer $token", instructorId)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun getAllInstructors(token: String): ServiceResult<List<InstructorResponse>> {
+        val response = RetrofitInstance.api.getAllInstructors("Bearer $token")
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) return ServiceResult(body.data, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        if (response.code() == 404) {
+            return ServiceResult(emptyList(), "No instructors found")
         }
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
@@ -321,6 +420,9 @@ class HomeService {
         if (response.isSuccessful && body != null) {
             if (body.responseCode == 200 && body.data != null) return ServiceResult(body.data, body.responseMessage)
             throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        if (response.code() == 404) {
+            return ServiceResult(emptyList(), "No instructors found")
         }
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
@@ -337,6 +439,69 @@ class HomeService {
 
     suspend fun createTimetableEntry(token: String, request: CreateTimetableEntryRequest): ServiceResult<Unit> {
         val response = RetrofitInstance.api.createTimetableEntry("Bearer $token", request)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun getAllStudents(token: String): ServiceResult<List<StudentResponse>> {
+        val response = RetrofitInstance.api.getAllStudents("Bearer $token")
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200 && body.data != null) return ServiceResult(body.data, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        if (response.code() == 404) {
+            return ServiceResult(emptyList(), "No students found")
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun assignSemester(token: String, spaceId: Long, semesterId: Long): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.assignSemester("Bearer $token", spaceId, semesterId)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun assignSpaceToInstructor(token: String, instructorId: Long, spaceId: Long): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.assignSpaceToInstructor("Bearer $token", instructorId, spaceId)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun assignCR(token: String, userName: String): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.assignCR("Bearer $token", userName)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun updateTimetableEntry(token: String, request: UpdateTimetableEntryRequest): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.updateTimetableEntry("Bearer $token", request)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
+    suspend fun deleteTimetableEntry(token: String, id: Long): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.deleteTimetableEntry("Bearer $token", id)
         val body = response.body()
         if (response.isSuccessful && body != null) {
             if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)

@@ -12,6 +12,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.core.models.UiState
+import com.example.campuscircleapp.core.theme.ChartThemeHelper
 import com.example.campuscircleapp.features.home.models.AttendancePerCourseItem
 import com.example.campuscircleapp.features.home.models.AttendanceTrendItem
 import com.example.campuscircleapp.features.home.models.DashboardAnalyticsResponse
@@ -140,19 +141,20 @@ class DashboardFragment : Fragment() {
         val entries = items.mapIndexed { index, item -> Entry(index.toFloat(), item.attendance) }
         val labels = items.map { it.month.trim() }
 
+        val ctx = requireContext()
         val dataSet = LineDataSet(entries, "Attendance Trend").apply {
-            color = Color.parseColor("#2F80ED")
-            valueTextColor = Color.parseColor("#102A43")
+            color = ChartThemeHelper.lineColor(ctx)
+            valueTextColor = ChartThemeHelper.textColor(ctx)
             lineWidth = 3f
             setDrawCircles(true)
-            setCircleColor(Color.parseColor("#2F80ED"))
+            setCircleColor(ChartThemeHelper.lineColor(ctx))
             circleRadius = 5f
             setDrawValues(false)
             mode = LineDataSet.Mode.CUBIC_BEZIER
-            highLightColor = Color.parseColor("#2F80ED")
+            highLightColor = ChartThemeHelper.lineColor(ctx)
             fillAlpha = 80
             setDrawFilled(true)
-            fillColor = Color.parseColor("#2F80ED")
+            fillColor = ChartThemeHelper.fillColor(ctx)
         }
 
         lineChart.apply {
@@ -172,7 +174,7 @@ class DashboardFragment : Fragment() {
                 granularity = 1f
                 setDrawGridLines(false)
                 valueFormatter = IndexAxisValueFormatter(labels)
-                textColor = Color.parseColor("#102A43")
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             axisLeft.apply {
@@ -180,7 +182,7 @@ class DashboardFragment : Fragment() {
                 axisMaximum = 100f
                 granularity = 20f
                 setDrawGridLines(true)
-                textColor = Color.parseColor("#102A43")
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             invalidate()
@@ -199,9 +201,10 @@ class DashboardFragment : Fragment() {
         val entries = items.take(8).mapIndexed { index, item -> BarEntry(index.toFloat(), item.attendance) }
         val labels = items.take(8).map { it.course.trim() }
 
+        val ctx = requireContext()
         val dataSet = BarDataSet(entries, "Attendance by Course").apply {
-            color = Color.parseColor("#0F766E")
-            valueTextColor = Color.parseColor("#102A43")
+            color = ChartThemeHelper.brandAccent(ctx)
+            valueTextColor = ChartThemeHelper.textColor(ctx)
             valueTextSize = 12f
             setDrawValues(true)
         }
@@ -225,7 +228,7 @@ class DashboardFragment : Fragment() {
                 granularity = 1f
                 valueFormatter = IndexAxisValueFormatter(labels)
                 setDrawGridLines(false)
-                textColor = Color.parseColor("#102A43")
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             axisLeft.apply {
@@ -233,7 +236,7 @@ class DashboardFragment : Fragment() {
                 axisMaximum = 100f
                 granularity = 20f
                 setDrawGridLines(true)
-                textColor = Color.parseColor("#102A43")
+                textColor = ChartThemeHelper.textColor(ctx)
             }
 
             invalidate()

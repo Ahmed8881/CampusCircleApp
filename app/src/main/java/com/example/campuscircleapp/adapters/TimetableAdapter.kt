@@ -9,7 +9,8 @@ import com.example.campuscircleapp.R
 import com.example.campuscircleapp.features.home.models.TimetableEntry
 
 class TimetableAdapter(
-    private var items: List<TimetableEntry>
+    private var items: List<TimetableEntry>,
+    private val onItemClick: (TimetableEntry) -> Unit = {}
 ) : RecyclerView.Adapter<TimetableAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,6 +34,7 @@ class TimetableAdapter(
         holder.room.text = item.room
         holder.startTime.text = item.startTime.take(5)
         holder.endTime.text = item.endTime.take(5)
+        holder.itemView.setOnClickListener { onItemClick(item) }
     }
 
     override fun getItemCount(): Int = items.size

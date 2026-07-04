@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.adapters.BirthdayAdapter
 import com.example.campuscircleapp.core.models.UiState
+import com.example.campuscircleapp.core.theme.ChartThemeHelper
 import com.example.campuscircleapp.features.home.models.BirthdayResponse
 import com.example.campuscircleapp.features.home.viewModels.EventsViewModel
 import com.example.campuscircleapp.shared.services.SessionManager
@@ -122,9 +124,9 @@ class EventsFragment : Fragment() {
             val tv = TextView(requireContext()).apply {
                 text = day
                 textSize = 12f
-                typeface = Typeface.create("sans-serif-medium", Typeface.NORMAL)
+                typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_medium)
                 gravity = Gravity.CENTER
-                setTextColor(0xFF64748B.toInt()) // Slate grey
+                setTextColor(ChartThemeHelper.mutedColor(requireContext()))
                 val spec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
                 layoutParams = GridLayout.LayoutParams(spec, spec).apply {
                     width = 0
@@ -189,22 +191,22 @@ class EventsFragment : Fragment() {
 
                 when {
                     isToday -> {
-                        // Premium programmatic circular blue highlight
+                        // Premium programmatic circular accent highlight
                         background = GradientDrawable().apply {
                             shape = GradientDrawable.OVAL
-                            setColor(0xFF3B82F6.toInt()) // Modern Blue
+                            setColor(ChartThemeHelper.brandAccent(requireContext()))
                         }
-                        setTextColor(0xFFFFFFFF.toInt())
-                        typeface = Typeface.create("sans-serif-medium", Typeface.BOLD)
+                        setTextColor(ChartThemeHelper.surfaceColor(requireContext()))
+                        typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_bold)
                     }
                     hasBirthday -> {
                         // Subtle indicator for birthdays
-                        setTextColor(0xFF3B82F6.toInt())
-                        typeface = Typeface.create("sans-serif-bold", Typeface.BOLD)
+                        setTextColor(ChartThemeHelper.brandAccent(requireContext()))
+                        typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_bold)
                     }
                     else -> {
-                        setTextColor(0xFF0F172A.toInt()) // Slate dark
-                        typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+                        setTextColor(ChartThemeHelper.headingColor(requireContext()))
+                        typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_regular)
                     }
                 }
             }

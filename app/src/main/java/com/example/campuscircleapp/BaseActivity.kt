@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.campuscircleapp.core.services.signalr.SignalRManager
+import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.core.utils.DeviceRegistrationHelper
 import com.example.campuscircleapp.shared.services.LoaderManager
 import com.example.campuscircleapp.shared.services.SessionManager
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(this)
         super.onCreate(savedInstanceState)
         
         val token = SessionManager.getToken(this)

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="?attr/android:colorBackground">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/timetableContent"
@@ -37,21 +37,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.55"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:letterSpacing="0.08"
                     android:text="SCHEDULE"
                     android:textAllCaps="true"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="sans-serif-black"
+                    android:fontFamily="@font/inter_bold"
                     android:letterSpacing="-0.02"
                     android:text="Timetable"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="36sp" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:layout_marginTop="4dp"
                     android:alpha="0.6"
                     android:text="Weekly class schedule"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -99,11 +99,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:alpha="0.75"
-                                android:fontFamily="sans-serif-medium"
+                                android:fontFamily="@font/inter_medium"
                                 android:letterSpacing="0.12"
                                 android:text="TODAY'S CLASSES"
                                 android:textAllCaps="true"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="10sp" />
 
                             <TextView
@@ -111,10 +111,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:fontFamily="sans-serif-black"
+                                android:fontFamily="@font/inter_bold"
                                 android:letterSpacing="-0.01"
                                 android:text="Monday"
-                                android:textColor="@color/white"
+                                android:textColor="?attr/colorOnPrimary"
                                 android:textSize="28sp" />
                         </LinearLayout>
 
@@ -126,7 +126,7 @@
                             android:gravity="center"
                             android:alpha="0.6"
                             android:text="•••"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorOnPrimary"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -135,7 +135,7 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="18dp"
                         android:alpha="0.2"
-                        android:background="@color/white" />
+                        android:background="?attr/colorOnPrimary" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/todayClassesRecycler"
@@ -151,9 +151,9 @@
                         android:layout_marginTop="14dp"
                         android:alpha="0.65"
                         android:gravity="center"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="No classes scheduled today"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/colorOnPrimary"
                         android:textSize="13sp"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -171,16 +171,16 @@
                 <View
                     android:layout_width="3dp"
                     android:layout_height="18dp"
-                    android:background="#517404"
+                    android:background="?attr/colorPrimary"
                     android:layout_marginEnd="10dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="Full Week Schedule"
-                    android:textColor="@color/color_text_primary"
+                    android:textColor="?attr/colorTextHeading"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -206,10 +206,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.4"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/inter_medium"
                     android:gravity="center"
                     android:text="No timetable found"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="?attr/colorTextBody"
                     android:textSize="15sp"
                     android:visibility="gone" />
             </LinearLayout>
@@ -237,7 +237,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="24dp"
-        android:textColor="@color/color_error"
+        android:textColor="?attr/colorError"
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
