@@ -8,12 +8,16 @@ import com.example.campuscircleapp.features.home.services.HomeService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 
 class SettingsViewModel : ViewModel() {
     private val homeService = HomeService()
 
     private val _resetState = MutableStateFlow<UiState<Unit>>(UiState.Idle)
     val resetState = _resetState.asStateFlow()
+
+    private val _uploadState = MutableStateFlow<UiState<Unit>>(UiState.Idle)
+    val uploadState = _uploadState.asStateFlow()
 
     fun resetPassword(token: String, oldPassword: String, newPassword: String) {
         _resetState.value = UiState.Loading
@@ -27,5 +31,18 @@ class SettingsViewModel : ViewModel() {
         }
     }
 
+    fun uploadProfilePicture(token: String, filePart: MultipartBody.Part) {
+        _uploadState.value = UiState.Loading
+        viewModelScope.launch {
+            try {
+                val result = homeService.uploadProfilePicture(token, filePart)
+                _uploadState.value = UiState.Success(Unit, result.message)
+            } catch (e: Exception) {
+                _uploadState.value = UiState.Error(e.message ?: "Failed to upload image")
+            }
+        }
+    }
+
     fun resetIdle() { _resetState.value = UiState.Idle }
+    fun uploadIdle() { _uploadState.value = UiState.Idle }
 }

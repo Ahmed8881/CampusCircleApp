@@ -25,7 +25,7 @@ class BirthdayAdapter(private val items: List<BirthdayResponse>) :
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = items[position]
         holder.name.text = item.name
-        holder.dob.text = item.dob
+        holder.dob.text = item.birthdayDay?.let { "${item.birthdayMonth} $it" } ?: ""
         holder.avatar.text = item.name.firstOrNull()?.uppercase() ?: "?"
     }
 }

@@ -30,9 +30,14 @@ class EventsFragment : Fragment() {
     private lateinit var viewModel: EventsViewModel
     private var currentCalendar = Calendar.getInstance()
     private var allBirthdays: List<BirthdayResponse> = emptyList()
+    private var selectedDay: Int = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
 
     private lateinit var birthdayList: RecyclerView
     private lateinit var emptyView: TextView
+    private lateinit var monthTitle: TextView
+    private lateinit var calendarGrid: GridLayout
+
+    private val monthNames = listOf("January","February","March","April","May","June","July","August","September","October","November","December")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_events, container, false)
@@ -41,10 +46,10 @@ class EventsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[EventsViewModel::class.java]
 
-        val monthTitle = view.findViewById<TextView>(R.id.eventsMonthTitle)
+        monthTitle = view.findViewById(R.id.eventsMonthTitle)
         val prevBtn = view.findViewById<TextView>(R.id.eventsPrevMonth)
         val nextBtn = view.findViewById<TextView>(R.id.eventsNextMonth)
-        val calendarGrid = view.findViewById<GridLayout>(R.id.eventsCalendarGrid)
+        calendarGrid = view.findViewById(R.id.eventsCalendarGrid)
         birthdayList = view.findViewById(R.id.eventsBirthdayList)
         val loadingView = view.findViewById<View>(R.id.eventsLoadingView)
         emptyView = view.findViewById(R.id.eventsEmptyView)
@@ -53,14 +58,16 @@ class EventsFragment : Fragment() {
 
         prevBtn.setOnClickListener {
             currentCalendar.add(Calendar.MONTH, -1)
-            renderCalendar(monthTitle, calendarGrid)
-            showBirthdaysForCurrentMonth()
+            selectedDay = 1
+            renderCalendar()
+            showBirthdaysForSelectedDay()
         }
 
         nextBtn.setOnClickListener {
             currentCalendar.add(Calendar.MONTH, 1)
-            renderCalendar(monthTitle, calendarGrid)
-            showBirthdaysForCurrentMonth()
+            selectedDay = 1
+            renderCalendar()
+            showBirthdaysForSelectedDay()
         }
 
         val token = SessionManager.getToken(requireContext()) ?: return
@@ -75,8 +82,8 @@ class EventsFragment : Fragment() {
                 is UiState.Success -> {
                     loadingView.visibility = View.GONE
                     allBirthdays = state.data
-                    renderCalendar(monthTitle, calendarGrid)
-                    showBirthdaysForCurrentMonth()
+                    renderCalendar()
+                    showBirthdaysForSelectedDay()
                 }
                 is UiState.Error -> {
                     loadingView.visibility = View.GONE
@@ -89,21 +96,19 @@ class EventsFragment : Fragment() {
         }
 
         viewModel.load(token)
-        renderCalendar(monthTitle, calendarGrid)
+        renderCalendar()
     }
 
-    private fun showBirthdaysForCurrentMonth() {
+    private fun showBirthdaysForSelectedDay() {
         val currentMonth = currentCalendar.get(Calendar.MONTH)
+        val currentMonthName = monthNames[currentMonth]
         val filtered = allBirthdays.filter { b ->
-            try {
-                val parts = b.dob.split("-")
-                parts.size >= 3 && parts[1].toIntOrNull()?.minus(1) == currentMonth
-            } catch (_: Exception) { false }
+            b.birthdayMonth?.lowercase() == currentMonthName.lowercase() && b.birthdayDay == selectedDay
         }
         if (filtered.isEmpty()) {
             birthdayList.visibility = View.GONE
             emptyView.visibility = View.VISIBLE
-            emptyView.text = "No birthdays this month"
+            emptyView.text = "No birthdays on this day"
         } else {
             birthdayList.visibility = View.VISIBLE
             emptyView.visibility = View.GONE
@@ -111,14 +116,13 @@ class EventsFragment : Fragment() {
         }
     }
 
-    private fun renderCalendar(monthTitle: TextView, grid: GridLayout) {
+    private fun renderCalendar() {
         val sdf = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
         monthTitle.text = sdf.format(currentCalendar.time)
 
-        grid.removeAllViews()
-        grid.columnCount = 7
+        calendarGrid.removeAllViews()
+        calendarGrid.columnCount = 7
 
-        // Clean typography for headers
         val dayNames = listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
         dayNames.forEach { day ->
             val tv = TextView(requireContext()).apply {
@@ -134,7 +138,7 @@ class EventsFragment : Fragment() {
                     setMargins(2, 4, 2, 12)
                 }
             }
-            grid.addView(tv)
+            calendarGrid.addView(tv)
         }
 
         val cal = currentCalendar.clone() as Calendar
@@ -143,74 +147,77 @@ class EventsFragment : Fragment() {
         val daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
         val currentMonth = cal.get(Calendar.MONTH)
 
-        // Correctly parse day from YYYY-MM-DD to highlight birthdays in the grid
         val birthdayDays = allBirthdays.mapNotNull { b ->
-            try {
-                val parts = b.dob.split("-")
-                if (parts.size >= 3) {
-                    val dobMonth = parts[1].toIntOrNull()?.minus(1)
-                    val dobDay = parts[2].substringBefore('T').toIntOrNull()
-                    if (dobMonth == currentMonth) dobDay else null
-                } else null
-            } catch (_: Exception) { null }
+            if (b.birthdayMonth?.lowercase() == monthNames[currentMonth].lowercase()) b.birthdayDay else null
         }.toSet()
 
-        // Empty cells before the 1st of the month
         repeat(firstDayOfWeek) {
-            grid.addView(View(requireContext()).apply {
+            calendarGrid.addView(View(requireContext()).apply {
                 val spec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
                 layoutParams = GridLayout.LayoutParams(spec, spec).apply { width = 0 }
             })
         }
 
         val today = Calendar.getInstance()
-        
+        val ctx = requireContext()
+
         for (day in 1..daysInMonth) {
             val isToday = today.get(Calendar.MONTH) == currentMonth &&
                           today.get(Calendar.DAY_OF_MONTH) == day &&
                           today.get(Calendar.YEAR) == cal.get(Calendar.YEAR)
-                          
-            val hasBirthday = birthdayDays.contains(day)
 
-            val tv = TextView(requireContext()).apply {
+            val hasBirthday = birthdayDays.contains(day)
+            val isSelected = day == selectedDay && !isToday
+
+            val tv = TextView(ctx).apply {
                 text = day.toString()
                 textSize = 14f
                 gravity = Gravity.CENTER
-                
-                // Creates a perfectly square cell so the circular background fits perfectly
+
                 val spec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
                 layoutParams = GridLayout.LayoutParams(spec, spec).apply {
                     width = 0
-                    // Ensures height matches width based on constraints
-                    height = ViewGroup.LayoutParams.WRAP_CONTENT 
+                    height = ViewGroup.LayoutParams.WRAP_CONTENT
                     setMargins(4, 8, 4, 8)
                 }
-                
-                // Add symmetric padding to force a circular look on the background shape
+
                 setPadding(0, 16, 0, 16)
 
                 when {
                     isToday -> {
-                        // Premium programmatic circular accent highlight
                         background = GradientDrawable().apply {
                             shape = GradientDrawable.OVAL
-                            setColor(ChartThemeHelper.brandAccent(requireContext()))
+                            setColor(ChartThemeHelper.brandAccent(ctx))
                         }
-                        setTextColor(ChartThemeHelper.surfaceColor(requireContext()))
-                        typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_bold)
+                        setTextColor(ChartThemeHelper.surfaceColor(ctx))
+                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
+                    }
+                    isSelected -> {
+                        background = GradientDrawable().apply {
+                            shape = GradientDrawable.OVAL
+                            setColor(ChartThemeHelper.brandPrimary(ctx))
+                            alpha = 30
+                        }
+                        setTextColor(ChartThemeHelper.brandPrimary(ctx))
+                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
                     }
                     hasBirthday -> {
-                        // Subtle indicator for birthdays
-                        setTextColor(ChartThemeHelper.brandAccent(requireContext()))
-                        typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_bold)
+                        setTextColor(ChartThemeHelper.brandAccent(ctx))
+                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
                     }
                     else -> {
-                        setTextColor(ChartThemeHelper.headingColor(requireContext()))
-                        typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_regular)
+                        setTextColor(ChartThemeHelper.headingColor(ctx))
+                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_regular)
                     }
                 }
+
+                setOnClickListener {
+                    selectedDay = day
+                    renderCalendar()
+                    showBirthdaysForSelectedDay()
+                }
             }
-            grid.addView(tv)
+            calendarGrid.addView(tv)
         }
     }
 }

@@ -1,8 +1,9 @@
 package com.example.campuscircleapp.features.home.models
 
 data class BirthdayResponse(
-    val userId: Long,
+    val id: Long,
     val name: String,
-    val dob: String,
-    val image: String?
+    val avatar: String?,
+    val birthdayDay: Int?,
+    val birthdayMonth: String?
 )

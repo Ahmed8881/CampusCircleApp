@@ -5,40 +5,88 @@
     android:layout_height="match_parent"
     android:background="?attr/android:colorBackground">
 
-    <ImageView
-        android:id="@+id/onboardingImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="80dp"
-        android:importantForAccessibility="no"
-        android:scaleType="centerInside"
+    <!-- Guideline to cleanly separate the image area from the text area -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <!-- Decorative Background Circle -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/decorativeCircle"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:alpha="0.08"
+        android:clickable="false"
+        android:focusable="false"
+        app:cardBackgroundColor="?attr/colorPrimary"
+        app:cardCornerRadius="140dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
+    <!-- Main Image/Logo Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imageContainer"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:clipToOutline="true"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="80dp"
+        app:cardElevation="12dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/decorativeCircle"
+        app:layout_constraintEnd_toEndOf="@id/decorativeCircle"
+        app:layout_constraintStart_toStartOf="@id/decorativeCircle"
+        app:layout_constraintTop_toTopOf="@id/decorativeCircle">
+
+        <ImageView
+            android:id="@+id/onboardingImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Title -->
     <TextView
         android:id="@+id/onboardingTitle"
-        style="@style/TextAppearance.App.Headline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/inter_bold"
         android:gravity="center"
+        android:letterSpacing="-0.01"
+        android:lineSpacingMultiplier="1.15"
         android:textColor="?attr/colorTextHeading"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onboardingImage" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal" />
 
+    <!-- Description -->
     <TextView
         android:id="@+id/onboardingDescription"
-        style="@style/TextAppearance.App.Body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:layout_marginTop="16dp"
+        android:alpha="0.8"
+        android:fontFamily="@font/inter_regular"
         android:gravity="center"
-        android:lineSpacingMultiplier="1.6"
+        android:lineSpacingMultiplier="1.5"
+        android:textColor="?attr/colorTextBody"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

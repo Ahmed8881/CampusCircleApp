@@ -101,27 +101,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Notification bell -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="10dp"
-            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="0dp">
-
-            <ImageView
-                android:id="@+id/adminNotificationBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="Notifications"
-                android:padding="8dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_bell"
-                app:tint="?attr/colorTextBody" />
-        </com.google.android.material.card.MaterialCardView>
-
         <!-- Profile avatar -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="38dp"
@@ -138,8 +117,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="Admin Profile"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo_2"
-                app:tint="?attr/colorPrimary" />
+                android:src="@drawable/logo_2" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

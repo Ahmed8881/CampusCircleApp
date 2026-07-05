@@ -33,6 +33,7 @@ android {
     
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -63,7 +64,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation(libs.androidx.benchmark.common)
+    // debugImplementation(libs.androidx.benchmark.common)
 
     // SignalR
     implementation(libs.signalr)

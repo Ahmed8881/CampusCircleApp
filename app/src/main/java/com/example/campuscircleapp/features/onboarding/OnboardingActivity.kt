@@ -30,12 +30,12 @@ class OnboardingActivity : AppCompatActivity() {
             description = "Mark and track attendance with ease. View your attendance trends, identify patterns, and stay on top of your academic performance."
         ),
         OnboardingPage(
-            imageRes = R.drawable.onboarding_growth,
+            imageRes = R.drawable.onboarding_trend,
             title = "Insights & Analytics",
             description = "Visualize your academic journey with beautiful charts and detailed analytics. Understand your performance at a glance."
         ),
         OnboardingPage(
-            imageRes = R.drawable.ic_onboard_connect,
+            imageRes = R.drawable.onboarding_connect,
             title = "Stay Connected",
             description = "Get real-time announcements, manage your schedule, coordinate with instructors, and never miss an important update."
         )

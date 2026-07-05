@@ -138,8 +138,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="Profile"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo_2"
-                app:tint="?attr/colorPrimary" />
+                android:src="@drawable/logo_2" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>

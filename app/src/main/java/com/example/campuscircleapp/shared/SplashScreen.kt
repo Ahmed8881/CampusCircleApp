@@ -69,7 +69,7 @@ class SplashScreen : AppCompatActivity() {
     private fun startTimer() {
         Handler(Looper.getMainLooper()).postDelayed({
             proceedToNextScreen()
-        }, 2500)
+        }, 800)
     }
 
     private fun proceedToNextScreen() {

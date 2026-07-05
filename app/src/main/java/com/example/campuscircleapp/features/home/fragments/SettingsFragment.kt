@@ -1,31 +1,72 @@
 package com.example.campuscircleapp.features.home.fragments
 
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.campuscircleapp.R
 import com.example.campuscircleapp.core.models.UiState
 import com.example.campuscircleapp.core.theme.ThemeManager
+import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.features.home.viewModels.SettingsViewModel
 import com.example.campuscircleapp.shared.services.SessionManager
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
+import java.io.File
+
+interface SettingsLogoutListener {
+    fun onLogoutRequested()
+}
 
 class SettingsFragment : Fragment() {
 
     private lateinit var viewModel: SettingsViewModel
+    private var logoutListener: SettingsLogoutListener? = null
+    private var previousImageUri: Uri? = null
+    private val homeService = HomeService()
+
+    private val imagePickerLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri == null) return@registerForActivityResult
+        previousImageUri = uri
+        val token = SessionManager.getToken(requireContext()) ?: return@registerForActivityResult
+        val filePart = uriToMultipartPart(uri)
+        if (filePart != null) {
+            viewModel.uploadProfilePicture(token, filePart)
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        logoutListener = context as? SettingsLogoutListener
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        logoutListener = null
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_settings, container, false)
@@ -38,8 +79,37 @@ class SettingsFragment : Fragment() {
         val newPasswordInput = view.findViewById<TextInputEditText>(R.id.settingsNewPassword)
         val confirmPasswordInput = view.findViewById<TextInputEditText>(R.id.settingsConfirmPassword)
         val saveBtn = view.findViewById<MaterialButton>(R.id.settingsSaveBtn)
+        val changePhotoCard = view.findViewById<MaterialCardView>(R.id.changePhotoCard)
 
         val token = SessionManager.getToken(requireContext()) ?: return
+
+        // --- Load User Profile ---
+        val profileImage = view.findViewById<ShapeableImageView>(R.id.settingsProfileImage)
+        val userNameText = view.findViewById<TextView>(R.id.settingsUserName)
+        val roleText = view.findViewById<TextView>(R.id.settingsRoleText)
+        lifecycleScope.launch {
+            try {
+                val userData = homeService.getUserData(token).data
+                userNameText.text = userData.name
+                Glide.with(this@SettingsFragment)
+                    .load(userData.image)
+                    .placeholder(R.drawable.logo_2)
+                    .error(R.drawable.logo_2)
+                    .circleCrop()
+                    .into(profileImage)
+            } catch (_: Exception) {
+                userNameText.text = "User"
+            }
+        }
+
+        // --- Logout ---
+        val logoutCard = view.findViewById<MaterialCardView>(R.id.logoutCard)
+        logoutCard?.setOnClickListener { logoutListener?.onLogoutRequested() }
+
+        // --- Change Profile Picture ---
+        changePhotoCard?.setOnClickListener {
+            imagePickerLauncher.launch("image/*")
+        }
 
         // --- Dark Mode Toggle ---
         val darkModeSwitch = view.findViewById<SwitchMaterial>(R.id.darkModeSwitch)
@@ -50,7 +120,6 @@ class SettingsFragment : Fragment() {
         }
 
         // --- Dynamic Role Text ---
-        val roleText = view.findViewById<TextView>(R.id.settingsRoleText)
         val role = SessionManager.getRole(requireContext())
         roleText.text = when (role?.lowercase()) {
             "admin", "superadmin" -> "Admin Account"
@@ -60,6 +129,40 @@ class SettingsFragment : Fragment() {
 
         // --- Theme Picker ---
         setupThemeGrid(view)
+
+        // --- Upload State ---
+        viewModel.uploadState.asLiveData().observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> changePhotoCard?.isEnabled = false
+                is UiState.Success -> {
+                    changePhotoCard?.isEnabled = true
+                    MotionToast.createColorToast(
+                        requireActivity(),
+                        "Success",
+                        "Profile picture updated!",
+                        MotionToastStyle.SUCCESS,
+                        MotionToast.GRAVITY_TOP,
+                        MotionToast.LONG_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular)
+                    )
+                    viewModel.uploadIdle()
+                }
+                is UiState.Error -> {
+                    changePhotoCard?.isEnabled = true
+                    MotionToast.createColorToast(
+                        requireActivity(),
+                        "Error",
+                        state.message,
+                        MotionToastStyle.ERROR,
+                        MotionToast.GRAVITY_BOTTOM,
+                        MotionToast.LONG_DURATION,
+                        ResourcesCompat.getFont(requireContext(), www.sanju.motiontoast.R.font.helvetica_regular)
+                    )
+                    viewModel.uploadIdle()
+                }
+                else -> changePhotoCard?.isEnabled = true
+            }
+        }
 
         // --- Password Reset ---
         viewModel.resetState.asLiveData().observe(viewLifecycleOwner) { state ->
@@ -117,6 +220,15 @@ class SettingsFragment : Fragment() {
             }
             viewModel.resetPassword(token, old, new)
         }
+    }
+
+    private fun uriToMultipartPart(uri: Uri): MultipartBody.Part? {
+        val context = requireContext()
+        val inputStream = context.contentResolver.openInputStream(uri) ?: return null
+        val file = File(context.cacheDir, "profile_upload_${System.currentTimeMillis()}.jpg")
+        file.outputStream().use { output -> inputStream.copyTo(output) }
+        val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+        return MultipartBody.Part.createFormData("file", file.name, requestFile)
     }
 
     private fun setupThemeGrid(root: View) {

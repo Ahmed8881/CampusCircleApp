@@ -16,11 +16,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Olive accent top bar -->
+        <!-- Theme-aware accent top bar -->
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@drawable/bg_gradient_primary" />
+            android:background="?attr/colorBrandAccent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,10 +63,8 @@
                     android:id="@+id/enrolledStatusChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_pill_success"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="5dp"
-                    android:textColor="?attr/colorSuccess"
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -91,8 +89,7 @@
                 <View
                     android:id="@+id/enrolledProgressFill"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_progress_fill" />
+                    android:layout_height="match_parent" />
             </FrameLayout>
 
         </LinearLayout>

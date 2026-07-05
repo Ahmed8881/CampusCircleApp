@@ -88,12 +88,51 @@ Native Android (Kotlin) app for Campus Circle, synced with `SeekhoFrontEnd` (Ang
 - Login, Signup, Splash screen logos updated to web logo
 - App launcher icon updated to web logo (adaptive icon + mipmap PNGs)
 
+### Phase 16 — Bundled Fonts (July 2026)
+- Switched from downloadable Google Fonts (via Play Services) to **bundled offline TTFs**
+- Downloaded Inter (Regular, Medium, SemiBold, Bold, Black) and Instrument Serif (Regular, Italic) TTFs into `res/font/`
+- Removed all downloadable font XML wrappers (7 Inter + Instrument Serif XMLs)
+- Removed unused Poppins font XMLs (4 files)
+- This fixes the `Resources$NotFoundException` crash in `EventsFragment.renderCalendar()` (font resource not available offline on some devices)
+- All `@font/inter_*` and `@font/instrument_serif_*` references remain unchanged
+
+### Phase 17 — Theme Fixes (July 2026)
+- `bg_badge_primary.xml`: hardcoded `@color/color_primary_container` → `?attr/colorPrimaryContainer`
+- `fragment_enrolled_courses.xml`: badge "0 active" text color → `?attr/colorOnPrimaryContainer`
+- `fragment_timetable.xml`: today card background → `?attr/colorPrimary` (was hardcoded gradient)
+
+### Phase 18 — Profile Picture Upload in Settings (July 2026)
+- Added `User/UploadProfilePicture` multipart endpoint to `ApiService.kt` + `HomeService.kt`
+- Added `uploadProfilePicture()` + `uploadState` to `SettingsViewModel.kt`
+- Added image picker (`ActivityResultContracts.GetContent`) in `SettingsFragment.kt`
+- Added URI-to-`MultipartBody.Part` helper in `SettingsFragment.kt`
+- Added "Change Profile Picture" clickable card in `fragment_settings.xml`
+- Removed `app:tint="?attr/colorPrimary"` from header `ShapeableImageView` in all 3 host activity layouts (so real photos don't get colorized)
+
+### Phase 19 — Logout in Settings (July 2026)
+- Created `SettingsLogoutListener` interface in `SettingsFragment.kt`
+- Added red "Logout" card with error icon in `fragment_settings.xml`
+- Implemented `SettingsLogoutListener` in `AdminActivity`, `AttendenceActivity`, `TeacherActivity`
+- Settings Logout calls `SignalRManager.stop()` + `SessionManager.clearToken()` + navigates to login
+
+### Phase 20 — Announcements Rewire (July 2026)
+- **Student**: Removed announcements from profile avatar popup menu; notification bell now opens `AnnouncementsFragment`
+- **Admin**: Removed notification bell icon from header layout entirely
+
+### Phase 21 — Performance Code Efficiency (July 2026)
+- Splash screen delay reduced from 2500ms → 800ms
+- HTTP logging interceptor set to `BASIC` in debug, `NONE` in release (via `BuildConfig.DEBUG`)
+- Commented out `androidx.benchmark:benchmark-common` from production dependencies (test-only library)
+- Enabled `buildConfig = true` in `build.gradle.kts`
+
 ## Build Status
 `.\gradlew.bat assembleDebug` — **SUCCESS**
 
 ## Key Architecture Decisions
 - **Theme switching:** 20 theme styles (10 themes × 2 modes) in XML. `ThemeManager.applyTheme()` called before `super.onCreate()`
-- **Fonts:** Downloadable Fonts via Google Play Services (no APK bloat)
+- **Fonts:** Bundled TTF files in `res/font/` (Inter + Instrument Serif). No downloadable fonts or XML wrappers.
 - **Charts:** `ChartThemeHelper` reads resolved theme colors at runtime
 - **Onboarding:** `SharedPreferences` flag, checked in `SplashScreen`
-- **Remaining:** Admin/Teacher activities still need profile Settings in bottom nav (currently in popup menu only)
+- **Profile picture:** Uploaded via `POST User/UploadProfilePicture` (multipart), picked via `ActivityResultContracts.GetContent`
+- **Logout in Settings:** Uses callback interface pattern (`SettingsLogoutListener`) so host Activity handles SignalR stop + navigation
+- **Remaining:** Profile picture URL needs caching in `SessionManager` for offline resume (currently re-fetched via `getUserData` on every header load)

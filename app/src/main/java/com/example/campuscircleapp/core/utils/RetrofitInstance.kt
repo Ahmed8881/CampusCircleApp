@@ -1,5 +1,6 @@
 package com.example.campuscircleapp.core.utils
 
+import com.example.campuscircleapp.BuildConfig
 import com.example.campuscircleapp.core.interceptor.LoaderInterceptor
 import com.example.campuscircleapp.core.services.api.ApiService
 import okhttp3.OkHttpClient
@@ -10,10 +11,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitInstance {
     private const val BASE_URL = "https://campus-circle.hserver321.dpdns.org/api/"
 
-    // Create an interceptor to log requests and responses
+    // Log requests only in debug builds to reduce overhead
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        // Log the full body (request payload and response)
-        level = HttpLoggingInterceptor.Level.BODY
+        level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BASIC
+                else HttpLoggingInterceptor.Level.NONE
     }
 
     // Attach the interceptor to OkHttpClient

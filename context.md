@@ -27,7 +27,7 @@ D:\Projects\CampusCircle\
 │   │       ├── values-night\         # Dark mode theme overrides
 │   │       ├── layout\               # All screen layouts
 │   │       ├── drawable\             # Vectors, backgrounds, gradients
-│   │       ├── font\                 # Downloadable font XMLs
+│   │       ├── font\                 # Bundled TTF files (Inter + Instrument Serif)
 │   │       ├── mipmap-*\             # App icons (web logo)
 │   │       └── menu\                 # Bottom nav + profile menus
 │   └── app\build.gradle.kts
@@ -108,6 +108,11 @@ App Launch → SplashScreen
 | `/teacher/dashboard/students` | `StudentsFragment` | ✅ Theme-aware |
 | `/teacher/dashboard/announce-assessment` | `AnnounceAssessmentFragment` | ✅ Theme-aware |
 
+## Font System
+- Bundled offline TTFs in `res/font/` (Inter 400/500/600/700/900 + Instrument Serif 400/italic)
+- `buildConfig = true` enabled for `BuildConfig.DEBUG` logging control
+- Splash delay now 800ms (was 2500ms)
+
 ## How to Run / Build
 ```powershell
 cd D:\Projects\CampusCircle\CampusCircleApp
@@ -131,6 +136,7 @@ No Jetpack Navigation. Uses `FragmentManager.beginTransaction().replace()`. Bott
 
 ## API Notes
 - Backend: `https://campus-circle.hserver321.dpdns.org/api/`
+- Profile picture: `POST User/UploadProfilePicture` (multipart, field name `file`)
 - Instructors: `GET User/GetAllInstructors` (with 404→empty list fallback)
 - Semesters: `GET Semester/GetAllSemesters` (with 404→empty list fallback)
 - Students: `GET User/GetAllStudents` (with 404→empty list fallback)
@@ -146,3 +152,5 @@ No Jetpack Navigation. Uses `FragmentManager.beginTransaction().replace()`. Bott
 3. **Admin Manage screen** — could add direct Settings option there alongside existing management cards
 4. **Gradient drawables** — `bg_gradient_primary.xml` etc. still have hardcoded colors (gradients don't support `?attr/` in all SDK versions)
 5. **Charts** — should recreate on theme change (currently need activity recreate)
+6. **Profile picture URL caching** — currently re-fetched via `getUserData` on every header load; should cache image URL in `SessionManager`
+7. **Bottom nav fragment caching** — fragments are recreated on every tab switch (user plans to handle caching later)

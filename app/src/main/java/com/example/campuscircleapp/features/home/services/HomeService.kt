@@ -280,6 +280,16 @@ class HomeService {
         throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
     }
 
+    suspend fun uploadProfilePicture(token: String, file: MultipartBody.Part): ServiceResult<Unit> {
+        val response = RetrofitInstance.api.uploadProfilePicture("Bearer $token", file)
+        val body = response.body()
+        if (response.isSuccessful && body != null) {
+            if (body.responseCode == 200) return ServiceResult(Unit, body.responseMessage)
+            throw Exception(body.errorMessage ?: body.responseMessage)
+        }
+        throw Exception(parseErrorMessage(response.errorBody()?.string(), response.code()))
+    }
+
     suspend fun createWorkspace(token: String, name: String): ServiceResult<Unit> {
         val namePart = name.toRequestBody("text/plain".toMediaTypeOrNull())
         val emptyPart = MultipartBody.Part.createFormData("image", "")

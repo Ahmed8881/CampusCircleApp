@@ -17,6 +17,7 @@ import com.example.campuscircleapp.features.admin.fragments.AdminManagementFragm
 import com.example.campuscircleapp.features.admin.fragments.MarkAttendanceFragment
 import com.example.campuscircleapp.features.auth.LoginActivity
 import com.example.campuscircleapp.features.home.fragments.SettingsFragment
+import com.example.campuscircleapp.features.home.fragments.SettingsLogoutListener
 import com.example.campuscircleapp.features.home.services.HomeService
 import com.example.campuscircleapp.core.theme.ThemeManager
 import com.example.campuscircleapp.shared.services.SessionManager
@@ -24,7 +25,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.coroutines.launch
 
-class AdminActivity : AppCompatActivity() {
+class AdminActivity : AppCompatActivity(), SettingsLogoutListener {
+
+    override fun onLogoutRequested() {
+        SignalRManager.stop()
+        SessionManager.clearToken(this)
+        navigateToLogin()
+    }
 
     private val homeService = HomeService()
 

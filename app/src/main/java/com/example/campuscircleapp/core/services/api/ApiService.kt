@@ -156,6 +156,13 @@ interface ApiService {
         @Query("spaceId") spaceId: Long = 1
     ): Response<apiResponse<List<BirthdayResponse>>>
 
+    @Multipart
+    @POST("User/UploadProfilePicture")
+    suspend fun uploadProfilePicture(
+        @Header("Authorization") token: String,
+        @Part file: MultipartBody.Part
+    ): Response<apiResponse<Any>>
+
     @POST("User/ResetPassword")
     suspend fun resetPassword(
         @Header("Authorization") token: String,
