@@ -7,7 +7,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -35,7 +35,7 @@ class EventsFragment : Fragment() {
     private lateinit var birthdayList: RecyclerView
     private lateinit var emptyView: TextView
     private lateinit var monthTitle: TextView
-    private lateinit var calendarGrid: GridLayout
+    private lateinit var calendarGrid: LinearLayout
 
     private val monthNames = listOf("January","February","March","April","May","June","July","August","September","October","November","December")
 
@@ -121,26 +121,8 @@ class EventsFragment : Fragment() {
         monthTitle.text = sdf.format(currentCalendar.time)
 
         calendarGrid.removeAllViews()
-        calendarGrid.columnCount = 7
 
-        val dayNames = listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
-        dayNames.forEachIndexed { index, day ->
-            val tv = TextView(requireContext()).apply {
-                text = day
-                textSize = 12f
-                typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_medium)
-                gravity = Gravity.CENTER
-                setTextColor(ChartThemeHelper.mutedColor(requireContext()))
-                layoutParams = GridLayout.LayoutParams().apply {
-                    rowSpec = GridLayout.spec(0)
-                    columnSpec = GridLayout.spec(index, 1f)
-                    width = 0
-                    height = ViewGroup.LayoutParams.WRAP_CONTENT
-                    setMargins(2, 4, 2, 12)
-                }
-            }
-            calendarGrid.addView(tv)
-        }
+        val ctx = requireContext()
 
         val cal = currentCalendar.clone() as Calendar
         cal.set(Calendar.DAY_OF_MONTH, 1)
@@ -152,45 +134,40 @@ class EventsFragment : Fragment() {
             if (b.birthdayMonth?.lowercase() == monthNames[currentMonth].lowercase()) b.birthdayDay else null
         }.toSet()
 
-        val totalCells = firstDayOfWeek + daysInMonth
-        val totalRows = (totalCells + 6) / 7
+        val cells = mutableListOf<Int>()
+        repeat(firstDayOfWeek) { cells.add(0) }
+        for (d in 1..daysInMonth) cells.add(d)
+        while (cells.size % 7 != 0) cells.add(0)
 
-        for (row in 1..totalRows) {
-            for (col in 0 until 7) {
-                val flatIndex = (row - 1) * 7 + col
-                if (flatIndex < firstDayOfWeek || flatIndex >= totalCells) {
-                    calendarGrid.addView(View(requireContext()).apply {
-                        layoutParams = GridLayout.LayoutParams().apply {
-                            rowSpec = GridLayout.spec(row)
-                            columnSpec = GridLayout.spec(col, 1f)
-                            width = 0
-                            height = 0
-                        }
+        for (row in cells.chunked(7)) {
+            val rowLayout = LinearLayout(ctx).apply {
+                orientation = LinearLayout.HORIZONTAL
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+            }
+
+            for (dayNum in row) {
+                if (dayNum == 0) {
+                    rowLayout.addView(View(ctx).apply {
+                        layoutParams = LinearLayout.LayoutParams(0, 1, 1f)
                     })
                 } else {
-                    val day = flatIndex - firstDayOfWeek + 1
                     val isToday = today.get(Calendar.MONTH) == currentMonth &&
-                                  today.get(Calendar.DAY_OF_MONTH) == day &&
+                                  today.get(Calendar.DAY_OF_MONTH) == dayNum &&
                                   today.get(Calendar.YEAR) == cal.get(Calendar.YEAR)
-
-                    val hasBirthday = birthdayDays.contains(day)
-                    val isSelected = day == selectedDay && !isToday
-                    val ctx = requireContext()
+                    val hasBirthday = birthdayDays.contains(dayNum)
+                    val isSelected = dayNum == selectedDay && !isToday
 
                     val tv = TextView(ctx).apply {
-                        text = day.toString()
+                        text = dayNum.toString()
                         textSize = 14f
                         gravity = Gravity.CENTER
-
-                        layoutParams = GridLayout.LayoutParams().apply {
-                            rowSpec = GridLayout.spec(row)
-                            columnSpec = GridLayout.spec(col, 1f)
-                            width = 0
-                            height = ViewGroup.LayoutParams.WRAP_CONTENT
+                        setPadding(0, 16, 0, 16)
+                        layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply {
                             setMargins(4, 8, 4, 8)
                         }
-
-                        setPadding(0, 16, 0, 16)
 
                         when {
                             isToday -> {
@@ -221,14 +198,16 @@ class EventsFragment : Fragment() {
                         }
 
                         setOnClickListener {
-                            selectedDay = day
+                            selectedDay = dayNum
                             renderCalendar()
                             showBirthdaysForSelectedDay()
                         }
                     }
-                    calendarGrid.addView(tv)
+                    rowLayout.addView(tv)
                 }
             }
+
+            calendarGrid.addView(rowLayout)
         }
     }
 

@@ -138,12 +138,12 @@
                     </LinearLayout>
 
                     <!-- Calendar days grid -->
-                    <GridLayout
+                    <LinearLayout
                         android:id="@+id/eventsCalendarGrid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:columnCount="7" />
+                        android:orientation="vertical" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
