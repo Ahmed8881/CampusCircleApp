@@ -41,7 +41,7 @@ class NotificationViewModel : ViewModel() {
                 // Update local list
                 val currentList = _notifications.value?.toMutableList()
                 currentList?.find { it.id == notification.id }?.isRead = true
-                _notifications.value = currentList
+                _notifications.value = currentList ?: emptyList()
             } catch (e: Exception) {
                 _error.value = e.message
             }
