@@ -124,15 +124,16 @@ class EventsFragment : Fragment() {
         calendarGrid.columnCount = 7
 
         val dayNames = listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
-        dayNames.forEach { day ->
+        dayNames.forEachIndexed { index, day ->
             val tv = TextView(requireContext()).apply {
                 text = day
                 textSize = 12f
                 typeface = ResourcesCompat.getFont(requireContext(), R.font.inter_medium)
                 gravity = Gravity.CENTER
                 setTextColor(ChartThemeHelper.mutedColor(requireContext()))
-                val spec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
-                layoutParams = GridLayout.LayoutParams(spec, spec).apply {
+                layoutParams = GridLayout.LayoutParams().apply {
+                    rowSpec = GridLayout.spec(0)
+                    columnSpec = GridLayout.spec(index, 1f)
                     width = 0
                     height = ViewGroup.LayoutParams.WRAP_CONTENT
                     setMargins(2, 4, 2, 12)
@@ -151,73 +152,85 @@ class EventsFragment : Fragment() {
             if (b.birthdayMonth?.lowercase() == monthNames[currentMonth].lowercase()) b.birthdayDay else null
         }.toSet()
 
-        repeat(firstDayOfWeek) {
-            calendarGrid.addView(View(requireContext()).apply {
-                val spec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
-                layoutParams = GridLayout.LayoutParams(spec, spec).apply { width = 0 }
-            })
-        }
+        val totalCells = firstDayOfWeek + daysInMonth
+        val totalRows = (totalCells + 6) / 7
 
-        val today = Calendar.getInstance()
-        val ctx = requireContext()
-
-        for (day in 1..daysInMonth) {
-            val isToday = today.get(Calendar.MONTH) == currentMonth &&
-                          today.get(Calendar.DAY_OF_MONTH) == day &&
-                          today.get(Calendar.YEAR) == cal.get(Calendar.YEAR)
-
-            val hasBirthday = birthdayDays.contains(day)
-            val isSelected = day == selectedDay && !isToday
-
-            val tv = TextView(ctx).apply {
-                text = day.toString()
-                textSize = 14f
-                gravity = Gravity.CENTER
-
-                val spec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
-                layoutParams = GridLayout.LayoutParams(spec, spec).apply {
-                    width = 0
-                    height = ViewGroup.LayoutParams.WRAP_CONTENT
-                    setMargins(4, 8, 4, 8)
-                }
-
-                setPadding(0, 16, 0, 16)
-
-                when {
-                    isToday -> {
-                        background = GradientDrawable().apply {
-                            shape = GradientDrawable.OVAL
-                            setColor(ChartThemeHelper.brandAccent(ctx))
+        for (row in 1..totalRows) {
+            for (col in 0 until 7) {
+                val flatIndex = (row - 1) * 7 + col
+                if (flatIndex < firstDayOfWeek || flatIndex >= totalCells) {
+                    calendarGrid.addView(View(requireContext()).apply {
+                        layoutParams = GridLayout.LayoutParams().apply {
+                            rowSpec = GridLayout.spec(row)
+                            columnSpec = GridLayout.spec(col, 1f)
+                            width = 0
+                            height = 0
                         }
-                        setTextColor(ChartThemeHelper.surfaceColor(ctx))
-                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
-                    }
-                    isSelected -> {
-                        background = GradientDrawable().apply {
-                            shape = GradientDrawable.OVAL
-                            setColor(ChartThemeHelper.brandPrimary(ctx))
-                            alpha = 30
-                        }
-                        setTextColor(ChartThemeHelper.brandPrimary(ctx))
-                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
-                    }
-                    hasBirthday -> {
-                        setTextColor(ChartThemeHelper.brandAccent(ctx))
-                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
-                    }
-                    else -> {
-                        setTextColor(ChartThemeHelper.headingColor(ctx))
-                        typeface = ResourcesCompat.getFont(ctx, R.font.inter_regular)
-                    }
-                }
+                    })
+                } else {
+                    val day = flatIndex - firstDayOfWeek + 1
+                    val isToday = today.get(Calendar.MONTH) == currentMonth &&
+                                  today.get(Calendar.DAY_OF_MONTH) == day &&
+                                  today.get(Calendar.YEAR) == cal.get(Calendar.YEAR)
 
-                setOnClickListener {
-                    selectedDay = day
-                    renderCalendar()
-                    showBirthdaysForSelectedDay()
+                    val hasBirthday = birthdayDays.contains(day)
+                    val isSelected = day == selectedDay && !isToday
+                    val ctx = requireContext()
+
+                    val tv = TextView(ctx).apply {
+                        text = day.toString()
+                        textSize = 14f
+                        gravity = Gravity.CENTER
+
+                        layoutParams = GridLayout.LayoutParams().apply {
+                            rowSpec = GridLayout.spec(row)
+                            columnSpec = GridLayout.spec(col, 1f)
+                            width = 0
+                            height = ViewGroup.LayoutParams.WRAP_CONTENT
+                            setMargins(4, 8, 4, 8)
+                        }
+
+                        setPadding(0, 16, 0, 16)
+
+                        when {
+                            isToday -> {
+                                background = GradientDrawable().apply {
+                                    shape = GradientDrawable.OVAL
+                                    setColor(ChartThemeHelper.brandAccent(ctx))
+                                }
+                                setTextColor(ChartThemeHelper.surfaceColor(ctx))
+                                typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
+                            }
+                            isSelected -> {
+                                background = GradientDrawable().apply {
+                                    shape = GradientDrawable.OVAL
+                                    setColor(ChartThemeHelper.brandPrimary(ctx))
+                                    alpha = 30
+                                }
+                                setTextColor(ChartThemeHelper.brandPrimary(ctx))
+                                typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
+                            }
+                            hasBirthday -> {
+                                setTextColor(ChartThemeHelper.brandAccent(ctx))
+                                typeface = ResourcesCompat.getFont(ctx, R.font.inter_bold)
+                            }
+                            else -> {
+                                setTextColor(ChartThemeHelper.headingColor(ctx))
+                                typeface = ResourcesCompat.getFont(ctx, R.font.inter_regular)
+                            }
+                        }
+
+                        setOnClickListener {
+                            selectedDay = day
+                            renderCalendar()
+                            showBirthdaysForSelectedDay()
+                        }
+                    }
+                    calendarGrid.addView(tv)
                 }
             }
-            calendarGrid.addView(tv)
         }
     }
+
+    private val today = Calendar.getInstance()
 }
