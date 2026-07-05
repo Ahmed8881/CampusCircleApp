@@ -211,7 +211,7 @@ class LoginActivity : BaseActivity() {
             try {
                 // Register Device for Notifications
                 // Force registration upon login to ensure sync
-                DeviceRegistrationHelper.enqueueRegistration(this@LoginActivity, force = true)
+                DeviceRegistrationHelper.enqueueRegistration(this@LoginActivity)
 
                 // Initialize SignalR after successful login
                 SignalRManager.init(this@LoginActivity)

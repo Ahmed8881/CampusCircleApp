@@ -29,7 +29,7 @@ class SplashScreen : AppCompatActivity() {
         SessionManager.setNotificationPermissionGranted(this, isGranted)
         if (isGranted) {
             // Force registration if permission was just granted
-            DeviceRegistrationHelper.enqueueRegistration(this, force = true)
+            DeviceRegistrationHelper.enqueueRegistration(this)
         }
         proceedToNextScreen()
     }
@@ -52,7 +52,7 @@ class SplashScreen : AppCompatActivity() {
                 ) == PackageManager.PERMISSION_GRANTED -> {
                     SessionManager.setNotificationPermissionGranted(this, true)
                     // Force sync on every cold start to handle cases where backend cleared the token
-                    DeviceRegistrationHelper.enqueueRegistration(this, force = true)
+                    DeviceRegistrationHelper.enqueueRegistration(this)
                     startTimer()
                 }
                 else -> {
@@ -61,7 +61,7 @@ class SplashScreen : AppCompatActivity() {
             }
         } else {
             SessionManager.setNotificationPermissionGranted(this, true)
-            DeviceRegistrationHelper.enqueueRegistration(this, force = true)
+            DeviceRegistrationHelper.enqueueRegistration(this)
             startTimer()
         }
     }

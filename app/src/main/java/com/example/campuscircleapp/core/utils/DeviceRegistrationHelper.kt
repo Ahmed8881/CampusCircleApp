@@ -20,9 +20,8 @@ object DeviceRegistrationHelper {
 
     /**
      * Enqueues a worker to register the current FCM token with the backend.
-     * @param force If true, it will bypass the local cache check and always attempt to register.
      */
-    fun enqueueRegistration(context: Context, force: Boolean = false) {
+    fun enqueueRegistration(context: Context) {
         val appContext = context.applicationContext
         val authToken = SessionManager.getToken(appContext)
         
@@ -34,9 +33,8 @@ object DeviceRegistrationHelper {
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val currentToken = task.result
-                val lastRegistered = SessionManager.getLastRegisteredFcmToken(appContext)
-                
-                Log.d(TAG, "Current FCM Token: ${currentToken?.take(10)}... Last Registered: ${lastRegistered?.take(10)}...")
+
+                Log.d(TAG, "Current FCM Token: ${currentToken?.take(10)}...")
 
                 if (currentToken.isNullOrBlank()) {
                     Log.w(TAG, "FCM Token is null or empty. Skipping registration.")
@@ -55,13 +53,8 @@ object DeviceRegistrationHelper {
                     platform = "Android"
                 )
 
-                // Sync if forced, token changed, or never registered
-                if (force || currentToken != lastRegistered || lastRegistered.isNullOrBlank()) {
-                    Log.i(TAG, "Scheduling FCM registration worker (force=$force)")
-                    scheduleWorker(appContext)
-                } else {
-                    Log.d(TAG, "FCM registration up to date locally.")
-                }
+                Log.i(TAG, "Scheduling FCM registration worker")
+                scheduleWorker(appContext)
             } else {
                 Log.e(TAG, "FCM Token fetch failed: ${task.exception?.message}")
             }
@@ -82,10 +75,10 @@ object DeviceRegistrationHelper {
                 // Clear the local record of the last successful registration
                 SessionManager.setLastRegisteredFcmToken(appContext, null)
                 // Trigger a fresh registration
-                enqueueRegistration(appContext, force = true)
+                enqueueRegistration(appContext)
             } else {
                 Log.e(TAG, "Failed to delete FCM token: ${task.exception?.message}. Attempting re-registration anyway.")
-                enqueueRegistration(appContext, force = true)
+                enqueueRegistration(appContext)
             }
         }
     }
@@ -106,7 +99,7 @@ object DeviceRegistrationHelper {
 
         WorkManager.getInstance(context).enqueueUniqueWork(
             WORK_NAME,
-            ExistingWorkPolicy.REPLACE, // REPLACE ensures it runs now if forced
+            ExistingWorkPolicy.REPLACE,
             registrationRequest
         )
     }
